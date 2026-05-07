@@ -1,0 +1,538 @@
+[
+  {
+    "objectID": "ex5.html",
+    "href": "ex5.html",
+    "title": "Exercícios do tópico 5",
+    "section": "",
+    "text": "Nos exercícios abaixo, use a base unificada dados.\n\n\nQuestão 1: Tendência central\na) Calcule a média e a mediana da variável glicose_mg_dl.\nb) A média é maior ou menor que a mediana? O que isso sugere sobre a distribuição?\n\n\n\n\n\n\nDicaAjuda\n\n\n\n\n\nmean(dados$glicose_mg_dl, na.rm = TRUE)\nmedian(dados$glicose_mg_dl, na.rm = TRUE)\nSe a média for maior que a mediana, a distribuição tende a ser assimétrica à direita — poucos valores muito altos puxam a média para cima.\n\n\n\n\n\n\nQuestão 2: Dispersão\na) Calcule o desvio padrão da variável pressao_sistolica.\nb) Calcule o intervalo interquartil (IQR) da mesma variável.\nc) Use summary() para ver um resumo completo da variável.\n\n\n\n\n\n\nDicaAjuda\n\n\n\n\n\nsd(dados$pressao_sistolica, na.rm = TRUE)\nIQR(dados$pressao_sistolica, na.rm = TRUE)\nsummary(dados$pressao_sistolica)\n\n\n\n\n\n\nQuestão 3: Coeficiente de variação\nCalcule o coeficiente de variação (CV) da variável renda_reais. O CV é calculado assim:\n\\[CV = \\frac{\\text{desvio padrão}}{\\text{média}} \\times 100\\]\nCom base no resultado, como você classificaria a variabilidade da renda?\n\n\n\n\n\n\nDicaAjuda\n\n\n\n\n\nmedia &lt;- mean(dados$renda_reais, na.rm = TRUE)\ndp    &lt;- sd(dados$renda_reais,   na.rm = TRUE)\ncv    &lt;- (dp / media) * 100\nround(cv, 1)\n\n\n\nCV\nVariabilidade\n\n\n\n\n≤ 10%\nBaixa\n\n\n10–20%\nMédia\n\n\n20–30%\nAlta\n\n\n&gt; 30%\nMuito alta\n\n\n\n\n\n\n\n\n\nQuestão 4: Histograma\nFaça um histograma da variável imc com título, rótulos nos eixos e cor \"#d8b4fe\".\nEm seguida, adicione uma linha vertical vermelha indicando a média.\n\n\n\n\n\n\nDicaAjuda\n\n\n\n\n\nhist(dados$imc,\n     main   = \"Distribuição do IMC\",\n     xlab   = \"IMC\",\n     ylab   = \"Frequência\",\n     col    = \"#d8b4fe\",\n     border = \"white\")\n\nabline(v   = mean(dados$imc, na.rm = TRUE),\n       col = \"red\",\n       lwd = 2,\n       lty = 2)\n\n\n\n\n\n\nQuestão 5: Tabela de frequência\na) Use table() para ver a frequência absoluta da variável percepcao_saude.\nb) Use prop.table() junto com table() para obter a frequência relativa em percentual. Arredonde para 1 casa decimal com round().\n\n\n\n\n\n\nDicaAjuda\n\n\n\n\n\n# a)\ntable(dados$percepcao_saude)\n\n# b)\nround(prop.table(table(dados$percepcao_saude)) * 100, 1)\n\n\n\n\n\n\nQuestão 6: Correlação\na) Calcule a correlação entre glicose_mg_dl e imc. Use cor() com use = \"complete.obs\".\nb) Faça um gráfico de dispersão entre as duas variáveis com plot().\nc) O valor de r encontrado indica uma associação fraca, moderada ou forte? Em qual direção (positiva ou negativa)?\n\n\n\n\n\n\nDicaAjuda\n\n\n\n\n\n# a)\ncor(dados$glicose_mg_dl, dados$imc, use = \"complete.obs\")\n\n# b)\nplot(dados$imc, dados$glicose_mg_dl,\n     main = \"IMC vs Glicose\",\n     xlab = \"IMC\",\n     ylab = \"Glicose (mg/dL)\",\n     pch  = 19,\n     col  = \"#9333ea\",\n     cex  = 0.6)\nReferência rápida para r: - |r| &lt; 0,3 → associação fraca - 0,3 ≤ |r| &lt; 0,6 → associação moderada - |r| ≥ 0,6 → associação forte\n\n\n\n\n\n\nQuestão 7: Teste t\nA pressão sistólica difere entre pessoas com e sem diabetes? Use t.test() para responder.\nInterprete o p-valor: há diferença significativa (p &lt; 0,05)?\n\n\n\n\n\n\nDicaAjuda\n\n\n\n\n\nt.test(pressao_sistolica ~ diabetes, data = dados)\nO R vai mostrar o p-valor na saída. Se p &lt; 0,05, a diferença entre os grupos é estatisticamente significativa.\n\n\n\n\n\n\nQuestão 8: Qui-quadrado\nExiste associação entre sexo e hipertensão na base dados?\na) Crie uma tabela de contingência com table().\nb) Aplique o teste qui-quadrado com chisq.test().\nc) Interprete o resultado.\n\n\n\n\n\n\nDicaAjuda\n\n\n\n\n\ndados$sexo        &lt;- toupper(dados$sexo)\ndados$hipertensao &lt;- toupper(dados$hipertensao)\n\ntabela &lt;- table(dados$sexo, dados$hipertensao)\ntabela\n\nchisq.test(tabela)"
+  },
+  {
+    "objectID": "projeto-pratico.html",
+    "href": "projeto-pratico.html",
+    "title": "Projeto prático",
+    "section": "",
+    "text": "Você faz parte de uma equipe de vigilância epidemiológica do estado de Minas Gerais. A equipe coletou dados de 500 indivíduos de 10 municípios diferentes, com o objetivo de estudar a prevalência de uma doença crônica e seus possíveis fatores associados.\nOs dados chegaram para você em um arquivo Excel, e como é comum em projetos reais, estão longe de estar prontos para análise.\nSeu trabalho é organizar esses dados, explorar os padrões e responder às perguntas da equipe, com evidências estatísticas.",
+    "crumbs": [
+      "Projeto prático"
+    ]
+  },
+  {
+    "objectID": "projeto-pratico.html#entrega",
+    "href": "projeto-pratico.html#entrega",
+    "title": "Projeto prático",
+    "section": "📫 Entrega",
+    "text": "📫 Entrega\nA entrega do arquivo pode ser realizada no formato .R para o e-mail emanuel.simoes@aluno.ufop.edu.br, de modo que as correções possam ser feitas e contribuam para uma melhor compreensão do aluno.\nSugestão de script:\n\nlibrary(readxl)\n\ndados &lt;- read_excel('data/demografico.xlsx')\n\n## QUESTÃO 1\n\nstr(dados)\nsummary(dados)\n\n# 1606 linhas e 8 colunas\n# data_nascimento está no formato character\n# sexo e estado_civil são categóricas e estão no formato character\n\n\n## QUESTÃO 2\n## ...\n\nA ideia é manter respostas bem simples, para que o cursista não se perca durante a análise e possa usar suas próprias anotações como apoio. Em caso de dúvidas, é possível entrar em contato pelo mesmo e-mail de entrega.",
+    "crumbs": [
+      "Projeto prático"
+    ]
+  },
+  {
+    "objectID": "projeto-pratico.html#dados",
+    "href": "projeto-pratico.html#dados",
+    "title": "Projeto prático",
+    "section": "📦 Dados",
+    "text": "📦 Dados\nImporte o arquivo dados_epidemiologicos.xlsx, disponível na pasta data/ do seu projeto.\n\nlibrary(readxl)\n\ndados &lt;- read_excel('data/dados_epidemiologicos.xlsx')\n\nO banco contém as seguintes variáveis:\n\n\n\n\n\n\n\n\nVariável\nTipo\nDescrição\n\n\n\n\nidade\nNumérica\nIdade em anos completos\n\n\nsexo\nCategórica\nSexo do participante\n\n\ncidade\nCategórica\nMunicípio de residência\n\n\ndiagnostico\nCategórica\nDiagnóstico da doença (Sim/Não)\n\n\nimc\nNumérica\nÍndice de Massa Corporal (kg/m²)\n\n\npressao_sistolica\nNumérica\nPressão arterial sistólica (mmHg)",
+    "crumbs": [
+      "Projeto prático"
+    ]
+  },
+  {
+    "objectID": "projeto-pratico.html#parte-1-conhecendo-e-preparando-os-dados",
+    "href": "projeto-pratico.html#parte-1-conhecendo-e-preparando-os-dados",
+    "title": "Projeto prático",
+    "section": "Parte 1 — Conhecendo e preparando os dados",
+    "text": "Parte 1 — Conhecendo e preparando os dados\n\nQuestão 1\nInspecione o banco de dados e verifique quantas linhas e colunas ele tem. Também verifique se todas as classes estão corretas.\n\nFunções úteis: str(), summary()\n\n\n\n\nQuestão 2\nVerifique se há valores duplicados e valores nulos no banco. Quantos são? Em quais colunas estão concentrados?\n\nFunções úteis: sum(duplicated()), is.na(), colSums()\n\n\n\n\nQuestão 3\nObserve os valores únicos das variáveis sexo e diagnostico. Você vai notar que a mesma categoria foi registrada de formas diferentes ao longo do banco.\nPadronize ambas as variáveis para que:\n\nsexo contenha apenas \"F\" e \"M\"\ndiagnostico contenha apenas \"SIM\" e \"NAO\"\n\nApós a padronização, converta as duas para fator.\n\nFunções úteis: unique(), toupper(), gsub(), as.factor()\n\n\n\n\n\n\n\nDica\n\n\n\nUma forma prática de substituir múltiplos valores de uma vez é combinando toupper() para normalizar a capitalização e depois gsub() para ajustar variações específicas.\n\n\n\n\n\nQuestão 4\nRemova as linhas com valores nulos nas variáveis diagnostico, imc e pressao_sistolica, pois elas são essenciais para a análise. Para as demais variáveis com NA, mantenha os registros. Após a remoção, deve restar 470 observações.\n\nFunções úteis: is.na(), indexação com [ ]\n\n\n\n\nQuestão 5\nCrie duas novas variáveis no banco:\na) faixa_etaria: categorize a idade nos seguintes grupos:\n\n\n\nFaixa\nIntervalo\n\n\n\n\n\"18-29\"\n18 a 29 anos\n\n\n\"30-39\"\n30 a 39 anos\n\n\n\"40-49\"\n40 a 49 anos\n\n\n\"50-59\"\n50 a 59 anos\n\n\n\"60-69\"\n60 a 69 anos\n\n\n\"70+\"\n70 anos ou mais\n\n\n\nb) grupo_risco: classifique cada participante como \"Alto risco\" se tiver IMC ≥ 30 e pressão sistólica ≥ 140 mmHg simultaneamente, e \"Baixo risco\" caso contrário. Converta para fator ao final.\n\nFunções úteis: ifelse(), as.factor()",
+    "crumbs": [
+      "Projeto prático"
+    ]
+  },
+  {
+    "objectID": "projeto-pratico.html#parte-2-análise-descritiva",
+    "href": "projeto-pratico.html#parte-2-análise-descritiva",
+    "title": "Projeto prático",
+    "section": "Parte 2 — Análise descritiva",
+    "text": "Parte 2 — Análise descritiva\n\nQuestão 6\nCalcule para as variáveis idade, imc e pressao_sistolica:\n\nMédia\nMediana\nDesvio padrão\nMínimo e máximo\n\nOrganize os resultados e interprete brevemente: a distribuição de alguma variável parece assimétrica? O que isso significa?\n\nFunções úteis: mean(), median(), sd(), range(), summary()\n\n\n\n\nQuestão 7\nConstrua uma tabela de frequência absoluta e relativa (%) para a variável diagnostico. Em seguida, faça o mesmo separando por sexo. Ou seja, uma tabela cruzada entre diagnostico e sexo.\nQual é a prevalência geral da doença? Ela é diferente entre homens e mulheres?\n\nFunções úteis: table(), prop.table()\n\n\n\n\nQuestão 8\nCalcule a prevalência do diagnóstico (%) por faixa_etaria.\nExiste algum padrão claro? Crie um gráfico de barras que mostre essa prevalência visualmente.\n\nFunções úteis: aggregate(), barplot()\n\n\n\n\n\n\n\nDica\n\n\n\nPara calcular a prevalência por faixa, uma abordagem é usar aggregate() com FUN = mean em uma variável numérica 0/1 criada a partir do diagnóstico: as.numeric(dados$diagnostico == \"SIM\").",
+    "crumbs": [
+      "Projeto prático"
+    ]
+  },
+  {
+    "objectID": "projeto-pratico.html#parte-3-exploração-e-visualização",
+    "href": "projeto-pratico.html#parte-3-exploração-e-visualização",
+    "title": "Projeto prático",
+    "section": "Parte 3 — Exploração e visualização",
+    "text": "Parte 3 — Exploração e visualização\n\nQuestão 9\nCompare a distribuição do IMC e da pressão sistólica entre os grupos diagnostico == \"SIM\" e diagnostico == \"NAO\" usando boxplots lado a lado.\nO que os gráficos sugerem sobre a relação entre essas variáveis e o diagnóstico?\n\nFunções úteis: boxplot(variavel ~ grupo, data = ...)\n\n\n\n\nQuestão 10\nCalcule a correlação de Pearson entre imc e pressao_sistolica. O resultado é significativo?\nEm seguida, produza um gráfico de dispersão entre as duas variáveis.\n\nFunções úteis: cor(), cor.test(), plot()",
+    "crumbs": [
+      "Projeto prático"
+    ]
+  },
+  {
+    "objectID": "projeto-pratico.html#parte-4-testes-estatísticos",
+    "href": "projeto-pratico.html#parte-4-testes-estatísticos",
+    "title": "Projeto prático",
+    "section": "Parte 4 — Testes estatísticos",
+    "text": "Parte 4 — Testes estatísticos\n\nQuestão 11\nA equipe quer saber se a pressão sistólica média é significativamente diferente entre os participantes diagnosticados e os não diagnosticados.\nAplique o teste t adequado e interprete o resultado: há diferença significativa? Qual grupo apresenta maior pressão média?\n\nFunções úteis: t.test(variavel ~ grupo, data = ...)\n\n\n\n\nQuestão 12\nExiste associação entre o diagnóstico e o grupo de risco (grupo_risco) criado na Questão 5?\nConstrua a tabela de contingência e aplique o teste qui-quadrado. Interprete o resultado.\n\nFunções úteis: table(), chisq.test()",
+    "crumbs": [
+      "Projeto prático"
+    ]
+  },
+  {
+    "objectID": "projeto-pratico.html#parte-5-síntese",
+    "href": "projeto-pratico.html#parte-5-síntese",
+    "title": "Projeto prático",
+    "section": "Parte 5 — Síntese",
+    "text": "Parte 5 — Síntese\n\nQuestão 13\nCom base em tudo que você analisou, escreva um pequeno parágrafo (3 a 5 linhas) resumindo os principais achados:\n\nQual é a prevalência geral da doença?\nO risco aumenta com a idade?\nIMC e pressão estão associados ao diagnóstico?\nO grupo de alto risco concentra mais casos?\n\n\nEsta questão não tem código — é uma interpretação livre com base nos resultados que você obteve.",
+    "crumbs": [
+      "Projeto prático"
+    ]
+  },
+  {
+    "objectID": "projeto-pratico.html#checklist-final",
+    "href": "projeto-pratico.html#checklist-final",
+    "title": "Projeto prático",
+    "section": "✅ Checklist final",
+    "text": "✅ Checklist final\nAntes de entregar, verifique se você:\n\nPadronizou e corrigiu as variáveis categóricas\nRemoveu os valores nulos essenciais\nCriou faixa_etaria e grupo_risco corretamente\nCalculou as medidas descritivas das variáveis numéricas\nConstruiu tabelas de frequência e calculou prevalências\nProduziu pelo menos 3 gráficos (barras, boxplot, dispersão)\nAplicou e interpretou os testes t e qui-quadrado\nEscreveu a síntese final (Questão 13)",
+    "crumbs": [
+      "Projeto prático"
+    ]
+  },
+  {
+    "objectID": "ex4.html",
+    "href": "ex4.html",
+    "title": "Exercícios do tópico 4",
+    "section": "",
+    "text": "Questão 1: Unindo tabelas\nUna as tabelas demografico e laboratorio usando merge() com all.x = TRUE e salve o resultado no objeto dados.\n\ndados &lt;- merge(___, ___, by = \"id\", all.x = TRUE)\n\na) Quantas linhas e colunas a base unificada tem? Use dim().\nb) Quais são os nomes das colunas? Use colnames().\n\n\n\n\n\n\nDicaAjuda\n\n\n\n\n\ndados &lt;- merge(demografico, laboratorio, by = \"id\", all.x = TRUE)\ndim(dados)\ncolnames(dados)\n\n\n\n\n\n\nQuestão 2: Conhecendo os participantes\nUse o banco demografico para responder:\na) Quantos participantes há de cada sexo? Use table().\nb) Quantos participantes há de cada estado civil? Use table().\nc) Ordene o banco por idade em ordem decrescente. Quem são os 3 participantes mais velhos? Mostre apenas nome e idade.\n\n\n\n\n\n\nDicaAjuda\n\n\n\n\n\n# a)\ntable(demografico$sexo)\n\n# b)\ntable(demografico$estado_civil)\n\n# c)\nordenado &lt;- demografico[order(demografico$idade, decreasing = TRUE), ]\nordenado[1:3, c(\"nome\", \"idade\")]\n\n\n\n\n\n\nQuestão 3: Filtrando participantes\na) Filtre o banco demografico para manter apenas os participantes com renda acima de R$120. Quantos são?\nb) Qual percentual do total isso representa?\n\n\n\n\n\n\nDicaAjuda\n\n\n\n\n\n# a)\ncom_renda &lt;- demografico[demografico$renda_reais &gt; 0, ]\nnrow(com_renda)\n\n# b) dividir pelo total e multiplicar por 100\nnrow(com_renda) / nrow(demografico) * 100\n\n\n\n\n\n\nQuestão 4: Criando uma variável nova\nNo banco demografico, crie uma variável chamada baixa_renda que vale \"Sim\" se a renda for menor que R$ 120 e \"Não\" caso contrário. Use ifelse().\nEm seguida, use table() para ver quantos participantes estão em cada categoria.\n\n\n\n\n\n\nDicaAjuda\n\n\n\n\n\ndemografico$baixa_renda &lt;- ifelse(demografico$renda_reais &lt; 120, \"Sim\", \"Não\")\ntable(demografico$baixa_renda)\n\n\n\n\n\n\nQuestão 5: Classificando o IMC\nO banco medidas_fisicas contém a variável imc. Crie uma variável chamada classif_imc usando a tabela abaixo:\n\n\n\nClassificação\nIMC\n\n\n\n\n\"Abaixo do peso\"\n&lt; 18,5\n\n\n\"Peso normal\"\n18,5 a 24,9\n\n\n\"Sobrepeso\"\n25,0 a 29,9\n\n\n\"Obesidade\"\n≥ 30,0\n\n\n\na) Crie a variável com ifelse() aninhado.\nb) Use table() para ver quantos participantes há em cada categoria.\n\n\n\n\n\n\nDicaAjuda\n\n\n\n\n\nO ifelse() aninhado funciona assim: dentro do “senão” de um ifelse(), você coloca outro ifelse().\nmedidas_fisicas$classif_imc &lt;- ifelse(\n  medidas_fisicas$imc &lt; 18.5, \"Abaixo do peso\",\n  ifelse(medidas_fisicas$imc &lt; 25, \"Peso normal\",\n  ifelse(medidas_fisicas$imc &lt; 30, \"Sobrepeso\",\n                                   \"Obesidade\")))\n\ntable(medidas_fisicas$classif_imc)\n\n\n\n\n\n\nQuestão 6: Resumindo por grupo\nUse a função aggregate() para calcular a média de renda separada por estado civil no banco demografico.\n\n\n\n\n\n\nDicaAjuda\n\n\n\n\n\naggregate(renda_reais ~ estado_civil, data = demografico, FUN = mean, na.rm = TRUE)\nA fórmula variavel ~ grupo significa: “calcule a variável separada por grupo”."
+  },
+  {
+    "objectID": "ex2.html",
+    "href": "ex2.html",
+    "title": "Exercícios do tópico 2",
+    "section": "",
+    "text": "Questão 1\nDavi tem 19 anos, 1,68m de altura e pesa 72kg. Com base nestas informações, resolva os exercícios abaixo:\na) Com as informações de Davi, crie 4 variáveis: nome, idade, altura e peso. Em seguida, use class() para confirmar a classe de cada uma.\nb) Calcule o IMC dele usando o R. A fórmula do IMC é: peso dividido pela altura ao quadrado.\n\nSugestão: Use o operador ^ para elevar ao quadrado e / para dividir.\n\nc) Com base na tabela abaixo, utilize operadores lógicos para verificar em qual classificação o IMC de Davi se enquadra.\n\nSugestão: A verificação deve usar um operador lógico e o resultado será TRUE ou FALSE.\n\n\n\n\nQuestão 2\nO vetor abaixo representa os batimentos cardíacos (bpm) medidos de 8 idosos:\n\nbpm &lt;- c(72, 85, 91, 68, 77, 104, 83, 95)\n\na) Selecione o terceiro valor do vetor.\nb) Selecione os valores do segundo ao quinto elemento.\nc) Selecione apenas os valores acima de 90 bpm.\nd) Quantos pacientes têm bpm acima de 90? Use sum().\n\n\nQuestão 3\nCrie os vetores abaixo usando a forma mais curta possível:\na) Números de 1 a 10.\nb) Números de 0 a 100, de 10 em 10.\nc) O número 5 repetido 8 vezes."
+  },
+  {
+    "objectID": "5.html",
+    "href": "5.html",
+    "title": "Análise, interpretação e apresentação de dados",
+    "section": "",
+    "text": "Ter os dados organizados é apenas o ponto de partida. O foco passa a ser a extração de informação: identificar padrões, avaliar comportamentos esperados ou atípicos e investigar possíveis relações entre variáveis. É nessa etapa que os resultados ganham interpretação e passam a subsidiar a tomada de decisão.\nNeste módulo, vamos trabalhar sempre com a base unificada dados, construída unindo todas as tabelas do curso pelo id.",
+    "crumbs": [
+      "Análise, interpretação e apresentação"
+    ]
+  },
+  {
+    "objectID": "5.html#medidas-de-tendência-central",
+    "href": "5.html#medidas-de-tendência-central",
+    "title": "Análise, interpretação e apresentação de dados",
+    "section": "📐 Medidas de tendência central",
+    "text": "📐 Medidas de tendência central\nMedidas de tendência central descrevem o valor típico de uma variável — onde os dados tendem a se concentrar.\n\nMédia\nA média é a soma de todos os valores dividida pela quantidade de observações. É sensível a valores extremos.\n\nmean(dados$renda_reais, na.rm = TRUE)\n\n#&gt; [1] 318.8399\n\n\n\nMediana\nA mediana é o valor que divide os dados ao meio quando ordenados. É mais robusta a valores extremos do que a média.\n\nmedian(dados$renda_reais, na.rm = TRUE)\n\n#&gt; [1] 272.94\n\n\n\n\n\n\n\nNota\n\n\n\nQuando a média é muito maior que a mediana — como nos exemplos acima (R$ 317,75 vs R$ 272,05) —, isso indica que a distribuição é assimétrica à direita: poucos indivíduos com renda muito alta puxam a média para cima. Nesses casos, a mediana representa melhor o participante típico.\n\n\n\n\nModa\nA moda é o valor que aparece com maior frequência. O R base não tem uma função pronta para isso, mas podemos calcular facilmente:\n\n# função para calcular a moda\nmoda &lt;- function(x) {\n  x &lt;- x[!is.na(x)]\n  as.numeric(names(sort(table(x), decreasing = TRUE))[1])\n}\n\nmoda(dados$n_residentes_domicilio)\n\n#&gt; [1] 2\n\n\n\nResumo completo com summary()\nA função summary() entrega as principais medidas de uma só vez:\n\nsummary(dados$glicose_mg_dl)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.     NAs \n   60.0    84.0   105.0   105.9   126.0   196.0     109",
+    "crumbs": [
+      "Análise, interpretação e apresentação"
+    ]
+  },
+  {
+    "objectID": "5.html#medidas-de-dispersão",
+    "href": "5.html#medidas-de-dispersão",
+    "title": "Análise, interpretação e apresentação de dados",
+    "section": "📏 Medidas de dispersão",
+    "text": "📏 Medidas de dispersão\nDispersão indica o quanto os dados se afastam do valor central — ou seja, o quão variáveis eles são.\n\nVariância e desvio padrão\nO desvio padrão é a medida de dispersão mais usada. Quanto maior, mais os valores se afastam da média. Está na mesma unidade da variável original.\n\nvar(dados$pressao_sistolica, na.rm = TRUE)   # variância\n#&gt; [1] 450.3195\n\nsd(dados$pressao_sistolica, na.rm = TRUE)    # desvio padrão\n#&gt; [1] 21.22073\n\n\n\nAmplitude e intervalo interquartil\n\n# amplitude total (máximo - mínimo)\nrange(dados$pressao_sistolica, na.rm = TRUE)\n#&gt; [1]  80 212\n\n# intervalo interquartil (Q3 - Q1): onde estão os 50% centrais\nIQR(dados$pressao_sistolica, na.rm = TRUE)\n#&gt; [1] 28\n\n# quartis: Q1 (25%), Q2 (50%) e Q3 (75%)\nquantile(dados$pressao_sistolica, probs = c(0.25, 0.50, 0.75), na.rm = TRUE)\n#&gt;  25%  50%  75%\n#&gt;  124  137  152\n\n\n\nCoeficiente de variação\nO coeficiente de variação (CV) expressa o desvio padrão como percentual da média, permitindo comparar a variabilidade de variáveis em escalas diferentes.\n\nmedia &lt;- mean(dados$renda_reais, na.rm = TRUE)\ndp    &lt;- sd(dados$renda_reais,   na.rm = TRUE)\ncv    &lt;- (dp / media) * 100\nround(cv, 1)\n\n#&gt; [1] 69.2\n\n\n\n\n\n\n\n\n\nCV\nVariabilidade\n\n\n\n\n≤ 10%\nBaixa\n\n\n10–20%\nMédia\n\n\n20–30%\nAlta\n\n\n&gt; 30%\nMuito alta\n\n\n\n\n\n\n\n\n\nVisualizando dispersão com boxplot\nO boxplot é uma forma gráfica de ver ao mesmo tempo a mediana, os quartis e os valores extremos.\n\nboxplot(dados$pressao_sistolica,\n        main = \"Distribuição da Pressão Sistólica\",\n        ylab = \"mmHg\",\n        col  = \"#d8b4fe\")\n\n\n\n\n\n\n\n\nTambém é possível comparar grupos lado a lado. Por exemplo, pressão sistólica por percepção de saúde:\n\ndados$percepcao_saude &lt;- factor(\n  toupper(dados$percepcao_saude),\n  levels = c(\"MUITO_BOA\", \"BOA\", \"RAZOAVEL\", \"RUIM\", \"MUITO_RUIM\")\n)\n\nboxplot(pressao_sistolica ~ percepcao_saude,\n        data = dados,\n        main = \"Pressão Sistólica por Percepção de Saúde\",\n        xlab = \"Percepção de saúde\",\n        ylab = \"mmHg\",\n        col  = \"#d8b4fe\",\n        cex.axis = 0.8)",
+    "crumbs": [
+      "Análise, interpretação e apresentação"
+    ]
+  },
+  {
+    "objectID": "5.html#correlação",
+    "href": "5.html#correlação",
+    "title": "Análise, interpretação e apresentação de dados",
+    "section": "🔗 Correlação",
+    "text": "🔗 Correlação\nA correlação mede o grau de associação linear entre duas variáveis numéricas. O resultado é o coeficiente r, que varia de −1 a +1.\n\n\n\n\n\n\n\n\nCoeficiente r\nInterpretação\n\n\n\n\nr próximo de +1\nAssociação positiva forte: quando uma variável aumenta, a outra também tende a aumentar.\n\n\nr próximo de −1\nAssociação negativa forte: quando uma variável aumenta, a outra tende a diminuir.\n\n\nr próximo de 0\nPouca ou nenhuma associação linear entre as variáveis.\n\n\n\n\n\n\n\n\n# correlação entre pressão sistólica e diastólica\ncor(dados$pressao_sistolica, dados$pressao_diastolica, use = \"complete.obs\")\n\n#&gt; [1] 0.06\n\nPara visualizar a relação entre duas variáveis, usa-se o gráfico de dispersão com plot():\n\nplot(dados$pressao_sistolica, dados$pressao_diastolica,\n     main = \"Pressão Sistólica vs. Diastólica\",\n     xlab = \"Pressão sistólica (mmHg)\",\n     ylab = \"Pressão diastólica (mmHg)\",\n     pch  = 19,\n     col  = \"#9333ea\",\n     cex  = 0.6)\n\n# adicionar linha de tendência\nabline(lm(pressao_diastolica ~ pressao_sistolica, data = dados),\n       col = \"red\", lwd = 2)\n\n\n\n\n\n\n\n\nPara correlacionar várias variáveis ao mesmo tempo, usa-se cor() com um data frame:\n\nvariaveis_lab &lt;- dados[, c(\"glicose_mg_dl\", \"colesterol_total_mg_dl\",\n                            \"hdl_mg_dl\", \"ldl_mg_dl\", \"triglicerideos_mg_dl\")]\n\nround(cor(variaveis_lab, use = \"complete.obs\"), 2)\n\n#&gt;                        glicose_mg_dl  colesterol_total_mg_dl  hdl_mg_dl  ...\n#&gt; glicose_mg_dl                   1.00                   -0.00       0.01\n#&gt; colesterol_total_mg_dl         -0.00                    1.00      -0.01\n#&gt; hdl_mg_dl                       0.01                   -0.01       1.00\n#&gt; ...",
+    "crumbs": [
+      "Análise, interpretação e apresentação"
+    ]
+  },
+  {
+    "objectID": "5.html#histograma",
+    "href": "5.html#histograma",
+    "title": "Análise, interpretação e apresentação de dados",
+    "section": "📊 Histograma",
+    "text": "📊 Histograma\nO histograma mostra a distribuição de frequências de uma variável numérica contínua, dividindo os valores em intervalos (classes) e exibindo quantas observações caem em cada um.\n\nhist(dados$glicose_mg_dl,\n     main   = \"Distribuição da Glicose\",\n     xlab   = \"Glicose (mg/dL)\",\n     ylab   = \"Frequência\",\n     col    = \"#d8b4fe\",\n     border = \"white\")\n\n\n\n\n\n\n\n\nO argumento breaks controla o número de intervalos:\n\n# mais detalhado\nhist(dados$glicose_mg_dl,\n     breaks = 30,\n     main   = \"Distribuição da Glicose (mais detalhado)\",\n     xlab   = \"Glicose (mg/dL)\",\n     col    = \"#d8b4fe\",\n     border = \"white\")\n\n\n\n\n\n\n\n\nTambém é possível adicionar uma linha vertical para indicar a média:\n\nhist(dados$glicose_mg_dl,\n     main   = \"Distribuição da Glicose com Média\",\n     xlab   = \"Glicose (mg/dL)\",\n     col    = \"#d8b4fe\",\n     border = \"white\")\n\nabline(v = mean(dados$glicose_mg_dl, na.rm = TRUE), col = \"red\", lwd = 2, lty = 2)\n\nlegend(\"topright\",\n       legend = paste(\"Média =\", round(mean(dados$glicose_mg_dl, na.rm = TRUE), 1)),\n       col = \"red\", lty = 2, lwd = 2, bty = \"n\")",
+    "crumbs": [
+      "Análise, interpretação e apresentação"
+    ]
+  },
+  {
+    "objectID": "5.html#tabela-de-frequência",
+    "href": "5.html#tabela-de-frequência",
+    "title": "Análise, interpretação e apresentação de dados",
+    "section": "📋 Tabela de frequência",
+    "text": "📋 Tabela de frequência\nTabelas de frequência resumem a distribuição de variáveis categóricas.\n\nFrequência absoluta e relativa\n\n# frequência absoluta\ntable(dados$percepcao_saude)\n\n\n MUITO_BOA        BOA   RAZOAVEL       RUIM MUITO_RUIM \n        43        354        757        345         92 \n\n# frequência relativa (proporção)\nprop.table(table(dados$percepcao_saude))\n\n\n MUITO_BOA        BOA   RAZOAVEL       RUIM MUITO_RUIM \n0.02702703 0.22250157 0.47580138 0.21684475 0.05782527 \n\n# frequência relativa em percentual, arredondada\nround(prop.table(table(dados$percepcao_saude)) * 100, 1)\n\n\n MUITO_BOA        BOA   RAZOAVEL       RUIM MUITO_RUIM \n       2.7       22.3       47.6       21.7        5.8 \n\n\n\n\nTabela de contingência (duas variáveis)\n\n# cruzamento entre percepção de saúde e diabetes\ntable(dados$percepcao_saude, dados$diabetes)\n\n            \n             NAO SIM\n  MUITO_BOA   33  10\n  BOA        280  74\n  RAZOAVEL   610 147\n  RUIM       267  78\n  MUITO_RUIM  71  21\n\n\n\n\nGráfico de barras a partir de uma tabela\n\nfreq &lt;- table(dados$percepcao_saude)\n\nbarplot(freq,\n        main   = \"Percepção de Saúde dos Participantes\",\n        xlab   = \"Percepção de saúde\",\n        ylab   = \"Número de participantes\",\n        col    = \"#d8b4fe\",\n        border = \"white\",\n        cex.names = 0.8)",
+    "crumbs": [
+      "Análise, interpretação e apresentação"
+    ]
+  },
+  {
+    "objectID": "5.html#introdução-a-testes-estatísticos",
+    "href": "5.html#introdução-a-testes-estatísticos",
+    "title": "Análise, interpretação e apresentação de dados",
+    "section": "🧪 Introdução a testes estatísticos",
+    "text": "🧪 Introdução a testes estatísticos\nTestes estatísticos permitem verificar se uma diferença ou associação observada nos dados é estatisticamente significativa — ou seja, se provavelmente não ocorreu por acaso.\nO resultado principal é o p-valor: se p &lt; 0,05, a diferença ou associação é considerada estatisticamente significativa (com 95% de confiança).\n\nTeste Kolmogorov-Smirnov (KS)\nO teste Kolmogorov-Smirnov é muito utilizado para verificar se uma variável segue distribuição normal, que é uma condição relevante para realizar o teste t.\n\nks.test(dados$idade, \"pnorm\", mean(dados$idade), sd(dados$idade))\n\nWarning in ks.test.default(dados$idade, \"pnorm\", mean(dados$idade),\nsd(dados$idade)): não devem existir empates no teste de Kolmogorov-Smirnov de\napenas uma amostra\n\n\n\n    Asymptotic one-sample Kolmogorov-Smirnov test\n\ndata:  dados$idade\nD = 0.17665, p-value &lt; 2.2e-16\nalternative hypothesis: two-sided\n\n\n\n\nTeste t\nO teste t compara médias de dois grupos, verifica se há diferença significativa entre dois grupos.\nExemplo: A pressão sistólica difere entre homens e mulheres?\n\nt.test(pressao_sistolica ~ sexo, data = dados)\n\n\n    Welch Two Sample t-test\n\ndata:  pressao_sistolica by sexo\nt = 1.5169, df = 1294.2, p-value = 0.1295\nalternative hypothesis: true difference in means between group F and group M is not equal to 0\n95 percent confidence interval:\n -0.4995114  3.9055457\nsample estimates:\nmean in group F mean in group M \n       138.5943        136.8913 \n\n\n\n\n\n\n\n\nNota\n\n\n\np-valor = 0,13 → não há diferença significativa entre homens e mulheres na pressão sistólica. A diferença observada (1,7 mmHg) pode ter ocorrido por acaso.\n\n\nAntes de interpretar o teste t, convém verificar se as médias fazem sentido visualmente:\n\nboxplot(pressao_sistolica ~ sexo,\n        data = dados,\n        main = \"Pressão Sistólica por Sexo\",\n        xlab = \"Sexo\",\n        ylab = \"mmHg\",\n        col  = c(\"#f0abfc\", \"#818cf8\"))\n\n\n\n\n\n\n\n\n\n\n\n\nTeste qui-quadrado\nO teste qui-quadrado (χ²) verifica se existe associação significativa entre duas variáveis categóricas.\nExemplo: Existe associação entre diabetes e artrite?\n\ntabela &lt;- table(dados$diabetes, dados$artrite)\ntabela\n\n     \n      NAO SIM\n  NAO 871 390\n  SIM 236  94\n\nchisq.test(tabela)\n\n\n    Pearson's Chi-squared test with Yates' continuity correction\n\ndata:  tabela\nX-squared = 0.62658, df = 1, p-value = 0.4286\n\n\n\n\n\n\n\n\nNota\n\n\n\np-valor = 0,43 → não há associação significativa entre diabetes e artrite nesta amostra.\n\n\n\n\nTeste de correlação\nO cor.test() verifica se a correlação entre duas variáveis é estatisticamente diferente de zero.\nExemplo: A correlação entre pressão sistólica e diastólica é significativa?\n\ncor.test(dados$pressao_sistolica, dados$pressao_diastolica)\n\n\n    Pearson's product-moment correlation\n\ndata:  dados$pressao_sistolica and dados$pressao_diastolica\nt = 2.1896, df = 1480, p-value = 0.02871\nalternative hypothesis: true correlation is not equal to 0\n95 percent confidence interval:\n 0.005920359 0.107432341\nsample estimates:\n       cor \n0.05682321 \n\n\n\n\n\n\n\n\nNota\n\n\n\np-valor = 0,03, então a correlação é estatisticamente significativa, mas o coeficiente r = 0,063 indica uma associação muito fraca na prática. Significância estatística não significa importância clínica — o tamanho da amostra grande (n &gt; 1.300) torna o teste muito sensível a correlações pequenas.",
+    "crumbs": [
+      "Análise, interpretação e apresentação"
+    ]
+  },
+  {
+    "objectID": "5.html#hora-de-praticar",
+    "href": "5.html#hora-de-praticar",
+    "title": "Análise, interpretação e apresentação de dados",
+    "section": "🔥 Hora de praticar",
+    "text": "🔥 Hora de praticar",
+    "crumbs": [
+      "Análise, interpretação e apresentação"
+    ]
+  },
+  {
+    "objectID": "3.html",
+    "href": "3.html",
+    "title": "Importação e preparação dos dados",
+    "section": "",
+    "text": "Você recebe um banco de dados com inconsistências, ausência de padronização e possíveis erros, uma situação comum em contextos reais. Nesta etapa, realiza-se o tratamento e a organização dos dados, garantindo sua qualidade e adequação para análise.",
+    "crumbs": [
+      "Importação e preparação"
+    ]
+  },
+  {
+    "objectID": "3.html#importação-e-inspeção-de-banco-de-dados",
+    "href": "3.html#importação-e-inspeção-de-banco-de-dados",
+    "title": "Importação e preparação dos dados",
+    "section": "📤 Importação e inspeção de banco de dados",
+    "text": "📤 Importação e inspeção de banco de dados\nOs principais formatos dos banco de dados que serão importados no R são: .txt, .csv, .xlsx.\n\n# executar pacotes úteis\nlibrary(readxl)\nlibrary(rio)\n\n# importar .xlsx com 'read_excel'\ndemografico &lt;- read_excel('data/demografico.xlsx') # função do pacote 'readxl'\n\n# importar .csv com 'read.csv' e 'read.csv2'\nlaboratorio &lt;- read.csv('data/laboratorio.csv') # função base do R\nsaude_percebida &lt;- read.csv2('data/saude_percebida.csv') # função base do R\n\n# importar .txt com 'read.table'\nmedidas_fisicas &lt;- read.table('data/medidas_fisicas.txt', header = TRUE, sep = ';') # função base do R\n\n# importar qualquer formato com 'import'\nhabitos &lt;- import('data/habitos.xlsx') # função do pacote 'rio'\n\nAs cinco bases de dados importadas anteriormente serão utilizadas ao longo das explicações e exercícios do curso. O objetivo é simular um fluxo de análise próximo ao de um projeto real, utilizando dados fictícios para fins didáticos.\nPara a apresentação das funções deste tópico, será utilizado apenas o banco de dados demografico.\n\nDados demográficos\n\nContém informações pessoais e socioeconômicas dos 1.609 participantes do estudo. É a tabela central do curso — todas as outras se conectam a ela pelo id.\n\nA função str() mostra a estrutura do banco, número de linhas, colunas, nome e tipo de cada variável, e os primeiros valores. Já summary() retorna um resumo estatístico de cada coluna.\n\nstr(demografico)\n\ntibble [1,609 × 8] (S3: tbl_df/tbl/data.frame)\n $ id                    : num [1:1609] 1 2 3 4 5 6 7 8 9 10 ...\n $ nome                  : chr [1:1609] \"Luiz Pereira\" \"Nair Nunes\" \"Raimunda Ferreira\" \"Irene Freitas\" ...\n $ sexo                  : chr [1:1609] \"M\" \"F\" \"F\" \"F\" ...\n $ data_nascimento       : chr [1:1609] \"18/01/1931\" \"17/01/1935\" \"19/01/1925\" \"19/01/1925\" ...\n $ estado_civil          : chr [1:1609] \"Casado\" \"Casado\" \"Viuvo\" \"Casado\" ...\n $ n_residentes_domicilio: num [1:1609] 2 2 2 2 2 2 2 2 1 3 ...\n $ renda_reais           : num [1:1609] 341 0 314 953 877 ...\n $ escolaridade_anos     : num [1:1609] 0 0 3 2 0 3 2 4 1 0 ...\n\nsummary(demografico)\n\n       id                nome             sexo       data_nascimento\n Min.   :   1.0   Length   :1609   Length   :1609   Length   :1609  \n 1st Qu.: 402.0   N.unique :  70   N.unique :   4   N.unique :  31  \n Median : 804.0   N.blank  :   0   N.blank  :   0   N.blank  :   0  \n Mean   : 803.7   Min.nchar:  10   Min.nchar:   1   Min.nchar:  10  \n 3rd Qu.:1205.0   Max.nchar:  18   Max.nchar:   1   Max.nchar:  10  \n Max.   :1606.0                                                     \n    estado_civil  n_residentes_domicilio  renda_reais    escolaridade_anos\n Length   :1609   Min.   :1.000          Min.   :  0.0   Min.   : 0.000   \n N.unique :  12   1st Qu.:2.000          1st Qu.:171.5   1st Qu.: 0.000   \n N.blank  :   0   Median :2.000          Median :272.1   Median : 2.000   \n Min.nchar:   5   Mean   :2.185          Mean   :317.8   Mean   : 2.527   \n Max.nchar:   8   3rd Qu.:3.000          3rd Qu.:395.1   3rd Qu.: 4.000   \n NAs      :  15   Max.   :5.000          Max.   :959.6   Max.   :16.000",
+    "crumbs": [
+      "Importação e preparação"
+    ]
+  },
+  {
+    "objectID": "3.html#preparação-dos-dados",
+    "href": "3.html#preparação-dos-dados",
+    "title": "Importação e preparação dos dados",
+    "section": "🧹 Preparação dos dados",
+    "text": "🧹 Preparação dos dados\n\n\nSelecionar colunas e filtrar linhas de uma tabela\nAntes de preparar os dados, é importante entender como selecionar e filtrar elementos de uma tabela. Primeiro, será apresentado um exemplo usando uma matriz, que pode ser vista como uma combinação de vários vetores. Em seguida, será feito o mesmo processo com um data frame, que tem estrutura semelhante, mas com mais flexibilidade.\nUma matriz é uma estrutura bidimensional (linhas × colunas) em que todos os elementos são do mesmo tipo. Já um data frame também é bidimensional, mas permite que cada coluna tenha tipos diferentes.\nA seleção de elementos em vetores já foi vista anteriormente por meio de índices. Essa mesma lógica se mantém para matrizes e data frames, com a diferença de que agora há duas dimensões: [linha, coluna].\n\nmatriz &lt;- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow = 3, byrow = TRUE)\nmatriz\n\n#&gt;      [,1] [,2] [,3]\n#&gt; [1,]    1    2    3\n#&gt; [2,]    4    5    6\n#&gt; [3,]    7    8    9\n\n# selecionar o elemento da linha 2, coluna 3\nmatriz[2, 3]\n\n#&gt; [1] 6\n\nPara data frames, a mesma notação se aplica, e é possível usar nomes de colunas no lugar de índices numéricos.\n\n# selecionar o participante da linha 10\ndemografico[10, ]\n\n# listar o nome de todas as colunas\ncolnames(demografico)\n\n#&gt; [1] \"id\"                     \"nome\"\n#&gt; [3] \"sexo\"                   \"data_nascimento\"\n#&gt; [5] \"estado_civil\"           \"n_residentes_domicilio\"\n#&gt; [7] \"renda_reais\"            \"escolaridade_anos\"\n\n# selecionar apenas a coluna 'nome' (três formas equivalentes)\ndemografico[, 2]\ndemografico[, \"nome\"]\ndemografico$nome   # mais usado\n\n# filtrar participantes com renda abaixo de R$ 120\ndemografico[demografico$renda_reais &lt; 120, ]\n\n# selecionar o nome dos participantes com estado civil \"Casado\"\ndemografico[demografico$estado_civil == \"CASADO\", \"nome\"]\n\n\n\nValores únicos e tratamento de duplicados\nAntes de qualquer análise, é importante conhecer os valores que cada variável assume. A função unique() lista os valores distintos de uma coluna e muitas vezes já revela problemas.\n\nunique(demografico$sexo)\n\n#&gt; [1] \"F\" \"M\" \"f\" \"m\"\n\nunique(demografico$estado_civil)\n\n#&gt; [1] \"Casado\"   \"Viuvo\"    \"Solteiro\"  \"Separado\"  \"casado\"\n#&gt; [6] \"viuvo\"    \"CASADO\"   \"VIUVO\"     \"separado\"  \"SOLTEIRO\"\n#&gt; [11] \"solteiro\" \"SEPARADO\"\n\nRepare que sexo tem quatro variações para o que deveria ser apenas dois valores, e estado_civil tem doze. Vamos tratar isso em breve.\nLinhas duplicadas são registros inteiramente repetidos. O mesmo participante com todos os valores idênticos. Elas inflam as contagens e distorcem qualquer análise.\n\n# quantas linhas estão duplicadas?\nsum(duplicated(demografico))\n\n#&gt; [1] 3\n\n\n# quais são as linhas duplicadas?\ndemografico[duplicated(demografico), ]\n\n# A tibble: 3 × 8\n     id nome           sexo  data_nascimento estado_civil n_residentes_domicilio\n  &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt;           &lt;chr&gt;                         &lt;dbl&gt;\n1   225 Carmem Rocha   F     17/01/1933      Casado                            2\n2  1012 Pedro Ferreira M     17/01/1935      Solteiro                          3\n3  1566 Maurício Agui… M     18/01/1932      Casado                            2\n# ℹ 2 more variables: renda_reais &lt;dbl&gt;, escolaridade_anos &lt;dbl&gt;\n\n# remover as duplicatas, mantendo apenas a primeira ocorrência\ndemografico &lt;- demografico[!duplicated(demografico), ]\n\n\n\nAjuste de textos e colunas\n\nRenomear e normalizar colunas\nA função colnames() retorna os nomes das colunas do banco. Para padronizá-los, usamos toupper() (maiúsculas), tolower() (minúsculas) e gsub() (substituição de padrões).\n\n# imprimir nome das colunas\ncolnames(demografico)\n\n#&gt; [1] \"id\"                     \"nome\"\n#&gt; [3] \"sexo\"                   \"data_nascimento\"\n#&gt; [5] \"estado_civil\"           \"n_residentes_domicilio\"\n#&gt; [7] \"renda_reais\"            \"escolaridade_anos\"\n\n# deixar o nome das colunas com letras maiúsculas\ncolnames(demografico) &lt;- toupper(colnames(demografico))\ncolnames(demografico)\n\n#&gt; [1] \"ID\"                     \"NOME\"\n#&gt; [3] \"SEXO\"                   \"DATA_NASCIMENTO\"\n#&gt; [5] \"ESTADO_CIVIL\"           \"N_RESIDENTES_DOMICILIO\"\n#&gt; [7] \"RENDA_REAIS\"            \"ESCOLARIDADE_ANOS\"\n\n# voltar para letras minúsculas\ncolnames(demografico) &lt;- tolower(colnames(demografico))\ncolnames(demografico)\n\n#&gt; [1] \"id\"                     \"nome\"\n#&gt; [3] \"sexo\"                   \"data_nascimento\"\n#&gt; [5] \"estado_civil\"           \"n_residentes_domicilio\"\n#&gt; [7] \"renda_reais\"            \"escolaridade_anos\"\n\n\n\nNormalizar variáveis textuais\nVimos que sexo e estado_civil têm múltiplas variações de capitalização para a mesma categoria. A solução mais direta é converter tudo para maiúsculas com toupper().\n\n# normalizando a variável 'sexo'\ndemografico$sexo &lt;- toupper(demografico$sexo)\nunique(demografico$sexo)\n\n#&gt; [1] \"F\" \"M\"\n\n# normalizando a variável 'estado_civil'\ndemografico$estado_civil &lt;- toupper(demografico$estado_civil)\nunique(demografico$estado_civil)\n\n#&gt; [1] \"CASADO\"   \"VIUVO\"   \"SOLTEIRO\"   \"SEPARADO\"   NA\n\n\n\nOutros tratamentos de texto\nAs funções substr() e paste() são úteis para recortar e combinar textos.\n\nxy &lt;- \"xis ípsilon\"\n\n# recortar da primeira até a terceira letra\nx &lt;- substr(xy, 1, 3)\nx\n\n#&gt; [1] \"xis\"\n\n# juntar \"xis\" com \"zê\"\nxz &lt;- paste(x, \"zê\")\nxz\n\n#&gt; [1] \"xis zê\"\n\n\n\n\nTratamento de valores nulos\nValores nulos (NA) representam informações ausentes. Antes de removê-los, é importante entender quantos são e onde estão.\n\n# contagem de NAs por coluna\ncolSums(is.na(demografico))\n\n#&gt;                     id                   nome                   sexo\n#&gt;                      0                      0                      0\n#&gt;        data_nascimento           estado_civil n_residentes_domicilio\n#&gt;                      0                     15                      0\n#&gt;            renda_reais      escolaridade_anos\n#&gt;                      0                      0\n\n\n# remover linhas com NA em 'estado_civil'\ndemografico &lt;- demografico[!is.na(demografico$estado_civil), ]\n\n\n\n\n\n\n\nNota\n\n\n\nNeste caso, os 15 valores nulos representam menos de 1% dos registros, então a remoção é uma abordagem segura. Quando a proporção de NAs é maior — acima de 20%, por exemplo — removê-los pode introduzir viés, e técnicas de imputação (substituição por média, mediana ou modelos estatísticos) devem ser consideradas.\n\n\n\n\nCorreção da classe das variáveis\n\nNúmeros\nÀs vezes, uma variável que deveria conter números acaba sendo tratada como texto (character) após a importação — especialmente se houver algum caractere inesperado na coluna.\nNo exemplo abaixo, a variável escolaridade_anos é convertida para texto propositalmente, apenas para demonstrar como identificar e corrigir esse problema.\n\ndemografico$escolaridade_anos &lt;- as.character(demografico$escolaridade_anos)\nclass(demografico$escolaridade_anos)\n\n#&gt; [1] \"character\"\n\nCorreção com as.numeric():\n\ndemografico$escolaridade_anos &lt;- as.numeric(demografico$escolaridade_anos)\nclass(demografico$escolaridade_anos)\n\n#&gt; [1] \"numeric\"\n\n\n\nDatas\nDatas também costumam ser importadas como texto. A função as.Date() faz a conversão, desde que você informe o formato correto com o argumento format.\n\nclass(demografico$data_nascimento)\n\n#&gt; [1] \"character\"\n\ndemografico$data_nascimento &lt;- as.Date(demografico$data_nascimento, format = \"%d/%m/%Y\")\nclass(demografico$data_nascimento)\n\n#&gt; [1] \"Date\"\n\n\n\n\n\n\n\nDica\n\n\n\nOs códigos de formato seguem a convenção do R: %d = dia, %m = mês numérico, %Y = ano com quatro dígitos. Para a data \"18/01/1931\", o formato correto é \"%d/%m/%Y\".\n\n\n\n\nCategorias\nVariáveis categóricas como sexo e estado_civil devem ser convertidas para fator (factor). Isso indica ao R que elas representam categorias, não texto livre, o que melhora a exibição de tabelas e gráficos.\n\nclass(demografico$sexo)\n\n#&gt; [1] \"character\"\n\n# converter 'sexo' para fator\ndemografico$sexo &lt;- as.factor(demografico$sexo)\nclass(demografico$sexo)\n\n#&gt; [1] \"factor\"\n\n\nclass(demografico$estado_civil)\n\n#&gt; [1] \"character\"\n\n# converter 'estado_civil' para fator\ndemografico$estado_civil &lt;- as.factor(demografico$estado_civil)\nclass(demografico$estado_civil)\n\n#&gt; [1] \"factor\"\n\n\nstr(demografico)\n\ntibble [1,591 × 8] (S3: tbl_df/tbl/data.frame)\n $ id                    : num [1:1591] 1 2 3 4 5 6 7 8 9 10 ...\n $ nome                  : chr [1:1591] \"Luiz Pereira\" \"Nair Nunes\" \"Raimunda Ferreira\" \"Irene Freitas\" ...\n $ sexo                  : chr [1:1591] \"M\" \"F\" \"F\" \"F\" ...\n $ data_nascimento       : chr [1:1591] \"18/01/1931\" \"17/01/1935\" \"19/01/1925\" \"19/01/1925\" ...\n $ estado_civil          : chr [1:1591] \"Casado\" \"Casado\" \"Viuvo\" \"Casado\" ...\n $ n_residentes_domicilio: num [1:1591] 2 2 2 2 2 2 2 2 1 3 ...\n $ renda_reais           : num [1:1591] 341 0 314 953 877 ...\n $ escolaridade_anos     : num [1:1591] 0 0 3 2 0 3 2 4 1 0 ...",
+    "crumbs": [
+      "Importação e preparação"
+    ]
+  },
+  {
+    "objectID": "3.html#hora-de-praticar",
+    "href": "3.html#hora-de-praticar",
+    "title": "Importação e preparação dos dados",
+    "section": "🔥 Hora de praticar",
+    "text": "🔥 Hora de praticar",
+    "crumbs": [
+      "Importação e preparação"
+    ]
+  },
+  {
+    "objectID": "1.html",
+    "href": "1.html",
+    "title": "Primeiros passos no R",
+    "section": "",
+    "text": "Pense em uma ferramenta que ajuda você a transformar dúvidas em respostas com base em dados, seja para entender o efeito de uma vacina em uma população, acompanhar o aumento de casos ao longo do tempo ou comparar quantas pessoas melhoraram após um tratamento. No começo pode parecer confuso, com telas, códigos e termos novos. Mas é assim que você começa a sair do “achismo” e passa a entender os problemas de saúde com mais clareza, precisão e base científica.",
+    "crumbs": [
+      "Primeiros passos"
+    ]
+  },
+  {
+    "objectID": "1.html#interface-do-rstudio",
+    "href": "1.html#interface-do-rstudio",
+    "title": "Primeiros passos no R",
+    "section": "📱 Interface do RStudio",
+    "text": "📱 Interface do RStudio\n\n\nAjuda\nCaso tenha dúvida em qualquer função, basta digitar ? antes da função no console, conforme o exemplo abaixo com a função mean (utilizada para obter a média de vários números).\n\n?mean\n\nNa guia help, no canto inferior direito, irá aparecer as informações de como utilizar a função.",
+    "crumbs": [
+      "Primeiros passos"
+    ]
+  },
+  {
+    "objectID": "1.html#estrutura-do-código-no-r",
+    "href": "1.html#estrutura-do-código-no-r",
+    "title": "Primeiros passos no R",
+    "section": "🧬 Estrutura do código no R",
+    "text": "🧬 Estrutura do código no R\n\n# quanto é dois mais dois? &lt;--- comentário\n2 + 2 # &lt;--- código\n\n#&gt; [1] 4 &lt;---resultado impresso no console",
+    "crumbs": [
+      "Primeiros passos"
+    ]
+  },
+  {
+    "objectID": "1.html#projetos-e-diretório-de-trabalho",
+    "href": "1.html#projetos-e-diretório-de-trabalho",
+    "title": "Primeiros passos no R",
+    "section": "📁 Projetos e diretório de trabalho",
+    "text": "📁 Projetos e diretório de trabalho\n\nAcessar bancos de dados em diretórios diferentes\nObserve a seguinte estrutura de arquivos:\n/\n├── Downloads/\n│   ├── dados_1.csv\n│   └── Pasta/\n│       └── dados_2.csv\n│\n└── Documentos/\n    └── dados_3.csv\nPara executar os 3 bancos de dados, é preciso fazer:\n\ndados_1 &lt;- read.csv('Downloads/dados_1.csv')\ndados_2 &lt;- read.csv('Downloads/Pasta/dados_2.csv')\ndados_3 &lt;- read.csv('Documentos/dados_3.csv')\n\n\n\nAcessar bancos de dados em um diretório de trabalho\nMas se estiverem organizados todos no mesmo arquivo, como abaixo:\n/\n├── Downloads/\n│   └── Pasta/\n│       └── dados_1.csv\n        └── dados_2.csv\n        └── dados_3.csv\nPode-se usar a função setwd() para definir o diretório de trabalho, e getwd() para verificar qual é o diretório atual.\n\nsetwd('Downloads/Pasta')\n\ndados_1 &lt;- read.csv('dados_1.csv')\ndados_2 &lt;- read.csv('dados_2.csv')\ndados_3 &lt;- read.csv('dados_3.csv')\n\ngetwd()\n\n#&gt; [1] \"C:/Users/Computador/Downloads/Pasta\"\n\n\n\nCriar um projeto\nUma forma simples e prática de organizar seu trabalho no R é usando projetos. Com eles, você mantém tudo do mesmo trabalho em um só lugar: dados, códigos e outros arquivos.\nAlém disso, o projeto “lembra” como você deixou seu trabalho. Quando você abre o projeto, no canto superior direito do RStudio, (veja a figura da Interface do RStudio), os scripts que estavam abertos na última vez aparecem de novo automaticamente. Assim, você pode continuar exatamente de onde parou, sem precisar procurar tudo de novo.\n/\n├── Downloads/\n│   └── Projeto/\n│       ├── projeto.Rproj\n│       ├── script-1.R\n│       ├── script-2.R\n│       ├── README.md\n│       ├── .gitignore\n│       └── Dados/\n│           ├── dados_1.csv\n│           ├── dados_2.csv\n│           └── dados_3.csv\n\ndados_1 &lt;- read.csv('Dados/dados_1.csv')\ndados_2 &lt;- read.csv('Dados/dados_2.csv')\ndados_3 &lt;- read.csv('Dados/dados_3.csv')",
+    "crumbs": [
+      "Primeiros passos"
+    ]
+  },
+  {
+    "objectID": "1.html#estrutura-de-um-banco-de-dados",
+    "href": "1.html#estrutura-de-um-banco-de-dados",
+    "title": "Primeiros passos no R",
+    "section": "🏦 Estrutura de um banco de dados",
+    "text": "🏦 Estrutura de um banco de dados\nUm banco de dados estruturado geralmente é organizado no formato de uma tabela. Nesse formato, existem diferentes formas de nomear suas linhas e colunas, dependendo do contexto:\nLinhas → Colunas\nObservações → Variáveis\nRegistros → Campos\nIndivíduos → Características\nApesar dos nomes variarem em diferentes contextos, a ideia é sempre a mesma: as linhas representam os elementos observados, enquanto as colunas representam as informações sobre esses elementos.\n\nNesse curso, utilizaremos a notação de Variáveis e Observações.",
+    "crumbs": [
+      "Primeiros passos"
+    ]
+  },
+  {
+    "objectID": "1.html#pacotes",
+    "href": "1.html#pacotes",
+    "title": "Primeiros passos no R",
+    "section": "📦 Pacotes",
+    "text": "📦 Pacotes\nOs pacotes são novas funções prontas feitas para resolver problemas específicos. No exemplo abaixo, foi instalado o pacote readxl, utilizada principalmente para importar arquivos .xlsx. A instalação é feita somente uma vez. Enquanto a execução precisa ser feita antes de executar as funções do pacote.\n\n# instalar o pacote\ninstall.packages(\"readxl\")\n\n# executar o pacote\nlibrary(readxl)",
+    "crumbs": [
+      "Primeiros passos"
+    ]
+  },
+  {
+    "objectID": "1.html#hora-de-praticar",
+    "href": "1.html#hora-de-praticar",
+    "title": "Primeiros passos no R",
+    "section": "🔥 Hora de praticar",
+    "text": "🔥 Hora de praticar",
+    "crumbs": [
+      "Primeiros passos"
+    ]
+  },
+  {
+    "objectID": "0.html",
+    "href": "0.html",
+    "title": "Como instalar o RStudio",
+    "section": "",
+    "text": "Para usar o RStudio, é preciso instalar o R, depois o RStudio, conforme o tutorial abaixo:",
+    "crumbs": [
+      "Como instalar o RStudio"
+    ]
+  },
+  {
+    "objectID": "2.html",
+    "href": "2.html",
+    "title": "Operações e estrutura básica",
+    "section": "",
+    "text": "Toda grande análise começa com coisas simples: somar, comparar, organizar. Parece básico, e é mesmo. Mas é como aprender acordes no violão: no começo são só posições, depois viram música. Aqui você começa a perceber que pequenas operações, quando bem feitas, viram raciocínios poderosos.",
+    "crumbs": [
+      "Operações e estrutura"
+    ]
+  },
+  {
+    "objectID": "2.html#operações-aritméticas",
+    "href": "2.html#operações-aritméticas",
+    "title": "Operações e estrutura básica",
+    "section": "➕ Operações aritméticas",
+    "text": "➕ Operações aritméticas\nSão usadas para fazer contas com números e a saída sempre são números.\n\n\n\n\n\n\n\n\nOperador\nDescrição\nExemplo\nResultado\n\n\n\n\n+\nAdição\n5 + 3\n8\n\n\n-\nSubtração\n10 - 5\n5\n\n\n*\nMultiplicação\n3 * 5\n15\n\n\n/\nDivisão\n10 / 2\n5\n\n\n%%\nResto da divisão\n10 %% 4\n2\n\n\n%/%\nDivisão inteira\n11 %/% 3\n3\n\n\n^\nExponenciação\n2 ^ 3\n8",
+    "crumbs": [
+      "Operações e estrutura"
+    ]
+  },
+  {
+    "objectID": "2.html#operações-lógicas",
+    "href": "2.html#operações-lógicas",
+    "title": "Operações e estrutura básica",
+    "section": "🧩 Operações lógicas",
+    "text": "🧩 Operações lógicas\nSão usadas para fazer comparações ou decisões e a saída pode ser TRUE ou FALSE.\n\n\n\n\n\n\n\n\nOperador\nSignificado\nExemplo\nResultado\n\n\n\n\n==\nigual a\n1 == 1\nTRUE\n\n\n!=\ndiferente de\n3 != 3\nFALSE\n\n\n&lt;\nmenor que\n4 &lt; 4\nFALSE\n\n\n&lt;=\nmenor ou igual a\n2 &lt;= 2\nTRUE\n\n\n&gt;\nmaior que\n5 &gt; 3\nTRUE\n\n\n&gt;=\nmaior ou igual a\n9 &gt;= 8\nTRUE\n\n\n!x\nnegação de x\n!(3 != 3)\nTRUE\n\n\nx | y\nx OU y\n(1 == 1) | (3 != 3)\nTRUE\n\n\nx & y\nx E y\n(1 == 1) & (3 != 3)\nFALSE\n\n\nx %in% y\nx está contido em y\nc(1, 2) %in% c(1, 2, 3, 4)\nTRUE TRUE\n\n\n\n\n\n\n\nNo caso de x | y, é preciso que pelo menos uma das condições seja verdadeira para retornar TRUE, caso contrário, retornará FALSE.\nEnquanto para x & y, todas as condições precisam ser verdadeiras para retornar TRUE, senão, retornará FALSE.\nJá para x %in% y, tanto x quanto y são vetores, cuja definição será abordada mais adiante.",
+    "crumbs": [
+      "Operações e estrutura"
+    ]
+  },
+  {
+    "objectID": "2.html#variáveis-classes-e-objetos",
+    "href": "2.html#variáveis-classes-e-objetos",
+    "title": "Operações e estrutura básica",
+    "section": "🏷️ Variáveis, classes e objetos",
+    "text": "🏷️ Variáveis, classes e objetos\nRegras para nomear uma variável:\n\nNomes de variáveis devem começar com uma letra.\nPodem conter letras, números, pontos (.) e sublinhados (_).\nMaiúsculas e minúsculas são consideradas diferentes.\n\nAs principais classes de objetos são:\n\nnumeric: números, que podem ser inteiros, sem casas decimais, ou reais, com casas decimais.\ncharacter: textos.\nlogical: TRUE ou FALSE.\nfactor: categorias.\n\nNo código abaixo, foi atribuido à variável variavel_numerica um objeto de classe numeric com valor 2.5.\n\n# atribuição\nvariavel_numerica &lt;- 2.5 \n# imprime o valor da variável\nvariavel_numerica\n\n#&gt; [1] 2.5\n\n# imprime a classe da variável 'variavel_numerica'\nclass(variavel_numerica)\n\n#&gt; [1] \"numeric\"\n\nAbaixo, a variável variavel_numerica é convertida para texto com a função as.character. Observe também que textos são escritos entre aspas.\n\n# converte 'variavel_numerica' para texto (character)\nvariavel_textual &lt;- as.character(variavel_numerica)\nvariavel_textual\n\n#&gt; [1] \"2.5\"\n\n# imprime a classe da variável 'variavel_textual'\nclass(variavel_textual)\n\n#&gt; [1] \"character\"\n\n# reatribui um valor para a variavel 'variavel_textual'\nvariavel_textual &lt;- \"dois ponto cinco\"\nvariavel_textual\n\n#&gt; [1] \"dois ponto cinco\"\n\nAgora, obtém-se uma variável lógica a partir das variáveis variavel_numerica e variavel_textual.\n\n# verifica se 2.5 é igual a \"dois ponto cinco\", a partir do operador lógico '=='\nverificacao &lt;- variavel_numerica == variavel_textual\nverificacao\n\n#&gt; [1] FALSE\n\nclass(verificacao)\n\n#&gt; [1] \"logical\"\n\n# pergunta se a variável 'verificacao' armazena um objeto de classe 'logical'\nis.logical(verificacao)\n\n#&gt; [1] TRUE",
+    "crumbs": [
+      "Operações e estrutura"
+    ]
+  },
+  {
+    "objectID": "2.html#vetores-e-seleção-de-elementos",
+    "href": "2.html#vetores-e-seleção-de-elementos",
+    "title": "Operações e estrutura básica",
+    "section": "🔢 Vetores e seleção de elementos",
+    "text": "🔢 Vetores e seleção de elementos\nVetores armazenam vários elementos de mesma classe.\n\nComo criar vetores\n\n# vetor de nomes\nvetor_de_nomes &lt;- c(\"Bernardo\", \"Danilo\", \"José\", \"Emanuel\", \"Kauann\", \"Guilherme\")\nvetor_de_nomes\n\n#&gt; [1] \"Bernardo\" \"Danilo\" \"José\" \"Emanuel\" \"Kauann\" \"Guilherme\"\n\n# vetor de números\nvetor_de_numeros &lt;- c(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)\n# é o mesmo que:\nvetor_de_numeros &lt;- seq(0, 9, 1) # sequência de 0 a 9, saltando de 1 em 1\n# ou:\nvetor_de_numeros &lt;- 0:9\nvetor_de_numeros\n\n#&gt; [1] 0 1 2 3 4 5 6 7 8 9\n\n# segundo vetor de números\nvetor_de_numeros_2 &lt;- c(3, 3, 3, 3, 3)\n# é o mesmo que:\nvetor_de_numeros_2 &lt;- rep(3, 5) # repetir o número 3 cinco vezes\nvetor_de_numeros_2\n\n#&gt; [1] 3 3 3 3 3\n\nCada elemento possui um indexador associado, de modo que o primeiro elemento possui índice 1, o segundo possui índice 2, e assim por diante.\nOu seja, “Bernardo” possui índice 1, “Danilo” possui índice 2, “José” possui índice 3, e assim por diante.\n\n\nSelecionar elementos por índice\n\n# seleciona um elemento\nvetor_de_nomes[2]\n\n#&gt; [1] \"Danilo\"\n\n# seleciona elementos seguidos\nvetor_de_nomes[2:5]\n\n#&gt; [1] \"Danilo\" \"José\" \"Emanuel\" \"Kauann\"\n\n# seleciona elementos em posições específicas\nvetor_de_nomes[c(2,6)]\n\n#&gt; [1] \"Danilo\" \"Guilherme\"\n\n\n\nSelecionar elementos com lógica\n\n# seleciona os nomes diferentes de \"Kauann\"\nvetor_de_nomes[vetor_de_nomes != \"Kauann\"]\n\n#&gt; [1] \"Bernardo\" \"Danilo\" \"José\" \"Emanuel\" \"Guilherme\"\n\n# seleciona os elementos numéricos maiores do que 3\nvetor_de_numeros[vetor_de_numeros &gt; 3]\n\n#&gt; [1] 4 5 6 7 8 9",
+    "crumbs": [
+      "Operações e estrutura"
+    ]
+  },
+  {
+    "objectID": "2.html#hora-de-praticar",
+    "href": "2.html#hora-de-praticar",
+    "title": "Operações e estrutura básica",
+    "section": "🔥 Hora de praticar",
+    "text": "🔥 Hora de praticar",
+    "crumbs": [
+      "Operações e estrutura"
+    ]
+  },
+  {
+    "objectID": "4.html",
+    "href": "4.html",
+    "title": "Manipulação de dados",
+    "section": "",
+    "text": "Agora imagine pegar várias tabelas soltas e transformá-las em uma única história coerente. Aqui você começa a “moldar” os dados: filtrar, juntar, organizar. É como montar um quebra-cabeça — só que você decide quais peças entram e qual imagem final quer revelar.",
+    "crumbs": [
+      "Manipulação"
+    ]
+  },
+  {
+    "objectID": "4.html#junção-de-tabelas",
+    "href": "4.html#junção-de-tabelas",
+    "title": "Manipulação de dados",
+    "section": "🔗 Junção de tabelas",
+    "text": "🔗 Junção de tabelas\nNo curso, temos 5 tabelas separadas que descrevem os mesmos participantes. Todas compartilham uma coluna id, que identifica unicamente cada indivíduo. Esse id é a chave para unir as tabelas com a função merge().\nAcesse aqui as tabelas tratadas.\n\nOs principais tipos de junção são controlados pelos argumentos all.x e all.y:\n\n\n\n\n\n\n\n\nChamada\nEquivalente\nDescrição\n\n\n\n\nmerge(A, B, by=\"id\")\ninner join\nMantém apenas as linhas com correspondência nas duas tabelas.\n\n\nmerge(A, B, by=\"id\", all.x=TRUE)\nleft join\nMantém todas as linhas de A. Linhas sem par em B viram NA.\n\n\nmerge(A, B, by=\"id\", all.y=TRUE)\nright join\nMantém todas as linhas de B. Linhas sem par em A viram NA.\n\n\nmerge(A, B, by=\"id\", all=TRUE)\nfull join\nMantém todas as linhas de ambas as tabelas.\n\n\n\n\n\n\n\nO all.x = TRUE (left join) é o mais usado no dia a dia: você parte de uma tabela principal e vai incorporando informações das demais.\n\n# unir demografico com laboratorio pela coluna 'id'\ndados &lt;- merge(demografico, laboratorio, by = \"id\", all.x = TRUE)\n\n# unir com mais tabelas em sequência\ndados &lt;- merge(dados, saude_percebida, by = \"id\", all.x = TRUE)\ndados &lt;- merge(dados, medidas_fisicas, by = \"id\", all.x = TRUE)\ndados &lt;- merge(dados, habitos,         by = \"id\", all.x = TRUE)",
+    "crumbs": [
+      "Manipulação"
+    ]
+  },
+  {
+    "objectID": "4.html#reordenação",
+    "href": "4.html#reordenação",
+    "title": "Manipulação de dados",
+    "section": "🔄 Reordenação",
+    "text": "🔄 Reordenação\n\nReordenar colunas\nApós unir tabelas, pode ser útil reorganizar a ordem das colunas.\n\n# colocar 'id' e 'nome' primeiro, mantendo o restante\ndados &lt;- dados[, c(\"id\", \"nome\", colnames(dados)[!colnames(dados) %in% c(\"id\", \"nome\")])]\n\n\n\nReordenar linhas\n\n# ordenar por idade (crescente)\ndemografico[order(demografico$idade), ]\n\n# ordenar por renda (decrescente)\ndemografico[order(demografico$renda_reais, decreasing = TRUE), ]\n\n# ordenar por estado civil e, dentro de cada grupo, por idade\ndemografico[order(demografico$estado_civil, demografico$idade), ]",
+    "crumbs": [
+      "Manipulação"
+    ]
+  },
+  {
+    "objectID": "4.html#criar-e-transformar-variáveis",
+    "href": "4.html#criar-e-transformar-variáveis",
+    "title": "Manipulação de dados",
+    "section": "✏️ Criar e transformar variáveis",
+    "text": "✏️ Criar e transformar variáveis\nNovas colunas são criadas atribuindo valores diretamente com $.\n\n# criar uma coluna com a renda em salários mínimos (R$ 120,00 em 1997)\ndemografico$renda_sm &lt;- round(demografico$renda_reais / 120, 2)\n\n\nCondicionais com ifelse()\nA função ifelse() cria uma variável com base em uma condição: se a condição for verdadeira, atribui um valor; caso contrário, atribui outro.\n\n# criar variável binária de renda\ndemografico$baixa_renda &lt;- ifelse(demografico$renda_reais &lt; 120, \"Sim\", \"Não\")\n\n\n\nCondicionais múltiplas com ifelse() aninhado\nQuando há mais de duas categorias, os ifelse() podem ser aninhados um dentro do outro.\n\n# categorizar escolaridade em níveis\ndemografico$nivel_escolaridade &lt;- ifelse(\n  demografico$escolaridade_anos == 0,  \"Sem instrução\",\n  ifelse(demografico$escolaridade_anos &lt;= 4,  \"Fundamental I\",\n  ifelse(demografico$escolaridade_anos &lt;= 8,  \"Fundamental II\",\n  ifelse(demografico$escolaridade_anos &lt;= 11, \"Médio\",\n  ifelse(demografico$escolaridade_anos &gt; 11,  \"Superior\", NA)))))\n\nunique(demografico$nivel_escolaridade)\n\n#&gt; [1] \"Fundamental I\"  \"Médio\"  \"Sem instrução\"  \"Fundamental II\"  \"Superior\"  NA",
+    "crumbs": [
+      "Manipulação"
+    ]
+  },
+  {
+    "objectID": "4.html#agrupar-e-resumir-com-aggregate",
+    "href": "4.html#agrupar-e-resumir-com-aggregate",
+    "title": "Manipulação de dados",
+    "section": "📊 Agrupar e resumir com aggregate()",
+    "text": "📊 Agrupar e resumir com aggregate()\nA função aggregate() calcula uma estatística para uma variável e separada por grupos, como por exemplo a média de renda por sexo ou por estado civil.\n\n# média de renda por sexo\naggregate(renda_reais ~ sexo, data = demografico, FUN = mean)\n\n#&gt;   sexo renda_reais\n#&gt; 1    F    812.3241\n#&gt; 2    M    976.1147\n\n# média de renda e idade por sexo (múltiplas variáveis resposta)\naggregate(cbind(renda_reais, idade) ~ sexo, data = demografico, FUN = mean)\n\n#&gt;   sexo renda_reais    idade\n#&gt; 1    F    812.3241 71.30851\n#&gt; 2    M    976.1147 70.82569\n\n# média de renda por sexo e estado civil (múltiplos grupos)\naggregate(renda_reais ~ sexo + estado_civil, data = demografico, FUN = mean)\n\nPara contar observações por grupo, usa-se table().\n\n# contagem por estado civil\ntable(demografico$estado_civil)\n\n#&gt;  CASADO SEPARADO SOLTEIRO    VIUVO\n#&gt;     748       87      235      524\n\n# proporção (em %)\nround(prop.table(table(demografico$estado_civil)) * 100, 1)\n\n#&gt;  CASADO SEPARADO SOLTEIRO    VIUVO\n#&gt;    47.2      5.5     14.8     33.1\n\nAs principais funções usadas dentro do aggregate() são:\n\n\n\n\n\n\n\n\nFunção\nDescrição\n\n\n\n\nmean(x)\nCalcula a média de x\n\n\nsum(x)\nSoma os valores de x\n\n\nmedian(x)\nCalcula a mediana de x\n\n\nsd(x)\nCalcula o desvio padrão de x\n\n\nmin(x)\nRetorna o menor valor de x\n\n\nmax(x)\nRetorna o maior valor de x\n\n\nlength(x)\nConta o número de elementos de x\n\n\n\n\n\n\n\n\n\n\n\n\n\nImportante\n\n\n\nSempre use na.rm = TRUE nas funções de resumo quando houver valores nulos. Sem esse argumento, o resultado será NA se houver qualquer valor faltante. Exemplo: aggregate(renda_reais ~ sexo, data = demografico, FUN = mean, na.rm = TRUE).",
+    "crumbs": [
+      "Manipulação"
+    ]
+  },
+  {
+    "objectID": "4.html#hora-de-praticar",
+    "href": "4.html#hora-de-praticar",
+    "title": "Manipulação de dados",
+    "section": "🔥 Hora de praticar",
+    "text": "🔥 Hora de praticar",
+    "crumbs": [
+      "Manipulação"
+    ]
+  },
+  {
+    "objectID": "ex1.html",
+    "href": "ex1.html",
+    "title": "Exercícios do tópico 1",
+    "section": "",
+    "text": "Questão 1: Criando seu primeiro projeto\nAbra o RStudio e crie um projeto chamado “introducao-ao-r” na pasta “Documentos”. Em seguida, baixe estes arquivos e exporte na pasta “Documentos/introducao-ao-r”.\n\nSugestão: Vá em File, depois em New Project…. Aparecerá uma janela flutuante. Nela, você irá em New Directory, New Project, preencherá o campo Directory name: com “introducao-ao-r” e para o campo Create project as subdirectory of: irá selecionar a pasta “Documentos”. Por fim, basta pressionar o botão Create Project.\n\n\n\nQuestão 2: Entendendo a interface e os comandos\nNo Editor de script, digite manualmente o comando abaixo e execute linha por linha para compreender a lógica de execução do R. Observe como cada comando gera uma saída no Console, como os objetos criados aparecem no Ambiente/Environment, o comando ?plot abre a guia Help e o gráfico aparece no Plots.\n\n# console e resultado\n2 + 2\n10 * 5\n\n# criando objetos (aparecem no Environment)\nidade &lt;- 68\nnome  &lt;- \"Maria\"\n\nidade\nnome\n\n# abrindo o Help\n?plot\n\n# gerando um gráfico simples (aparece no Plots)\nalturas &lt;- c(1.55, 1.62, 1.70, 1.58, 1.75)\nplot(alturas)\n\n\nSugestão: Execute cada bloco separadamente, observando o que muda em cada painel do RStudio. Perceba que linhas com # são comentários e o R as ignora na execução.\n\n\n\n\nQuestão 3: Instalando seus primeiros pacotes\nO R possui uma infinidade de pacotes para as mais diversas situações. Copie o código abaixo e execute função por função. Depois, tente alterar a cor “steelblue” para “#4A90D9” e execute novamente para ver a diferença.\n\nOBS: Este código exige um alto nível de compreensão dos pacotes ggplot2 e dplyr, clássicos para construção de gráficos e manipulação de dados, respectivamente. Eles não serão abordados no curso e sua presença aqui é apenas para entender como o R permite uma ampla personalização.\n\n\n# instalar os pacotes (apenas uma vez)\ninstall.packages(\"ggplot2\")\ninstall.packages(\"dplyr\")\n\n# carregar os pacotes\nlibrary(ggplot2)\nlibrary(dplyr)\n\n# construção de dados fictícios de uma população\npopulacao &lt;- data.frame(\n  faixa_etaria = rep(c(\"0-9\",\"10-19\",\"20-29\",\"30-39\",\"40-49\",\n                       \"50-59\",\"60-69\",\"70-79\",\"80+\"), 2),\n  sexo         = rep(c(\"Masculino\",\"Feminino\"), each = 9),\n  n            = c(820, 750, 690, 710, 680, 600, 430, 280, 120,\n                   790, 720, 710, 730, 670, 620, 460, 310, 150)\n)\n\n# geração de gráfico de pirâmide etária\npopulacao %&gt;%\n  mutate(n = ifelse(sexo == \"Masculino\", -n, n)) %&gt;%\n  ggplot(aes(x = faixa_etaria, y = n, fill = sexo)) +\n  geom_col() +\n  coord_flip() +\n  scale_y_continuous(labels = abs) +\n  scale_fill_manual(values = c(\"Feminino\" = \"#E07B8A\", \"Masculino\" = \"steelblue\")) +\n  labs(\n    title = \"Pirâmide etária — População fictícia\",\n    x     = \"Faixa etária\",\n    y     = \"Número de indivíduos\",\n    fill  = \"Sexo\"\n  ) +\n  theme_minimal(base_size = 13) +\n  theme(\n    plot.title      = element_text(hjust = 0.5, face = \"bold\"),\n    legend.position = \"bottom\",\n    panel.grid.minor = element_blank()\n  )"
+  },
+  {
+    "objectID": "ex3.html",
+    "href": "ex3.html",
+    "title": "Exercícios do tópico 3",
+    "section": "",
+    "text": "Questão 1: Importação de bancos de dados\nInstale os pacotes readxl e rio e importe os bancos de dados demografico.xlsx, laboratorio.csv, saude_percebida.csv, medidas_fisicas.txt e habitos.xlsx. Use a função adequada para cada formato e salve cada um em um objeto com o nome correspondente ao arquivo.\n\nSugestão: Lembre-se que .csv americano usa read.csv(), .csv brasileiro usa read.csv2(), .xlsx usa read_excel() e .txt usa read.table() com os argumentos header = TRUE e sep = \";\".\n\n\n\nQuestão 2: Tratamento e inspeção do banco demografico\na) Inspecione o banco demografico e verifique quais classes não estão corretas. Depois, faça as devidas correções de cada classe.\n\nSugestão: Use str() para inspecionar e verificar as classes do banco demografico.\n\n\n\n\n\n\n\nNotaAjuda\n\n\n\n\n\nVocê precisará converter as variáveis sexo e estado_civil para fator, utilizando a função as.factor. Também precisará converter a variável data_nascimento para data, utilizando as.Date.\n\nSugestão: Use format = \"%d/%m/%Y\" dentro de as.Date() para indicar o formato original da data.\n\n\n\n\nb) Verifique se há valores nulos. Caso sim, remova-os do banco de dados.\nc) Verifique se há valores duplicados. Caso sim, remova-os do banco de dados.\nd) Crie uma variável chamada idade. Com base nas datas de nascimento, calcule quantos anos eles tinham em 01/01/1997.\n\nSugestão: Faça a diferença entre “1997-01-01” e as datas de nascimento. Você obterá a quantidade de dias de vida de cada um. Após isso, divida por 365 para converter para anos.\n\ne) Qual a idade do indivíduo mais novo do banco de dados? E do mais velho?\n\n\nQuestão 3: Tratamento e inspeção do banco laboratorio\n\nContém os resultados dos exames de sangue realizados em 1.496 participantes. Os demais não compareceram à coleta.\n\na) Quais são os nomes das colunas?\nb) Qual a classe de cada variável?\nc) Normalize sorologia_chagas e converta para fator.\nd) Qual o valor mínimo e máximo da variável glicose_mg_dl?\n\n\nQuestão 4: Tratamento e inspeção do banco saude_percebida\n\nReúne as respostas dos participantes sobre como avaliam a própria saúde, suas condições crônicas e o uso de medicamentos.\n\nInspecione o banco saude_percebida, normalize e converta as variáveis categóricas para fator.\n\n\nQuestão 5: Tratamento e inspeção do banco medidas_fisicas\n\nRegistra as medições corporais e de pressão arterial dos mesmos 1.496 participantes que realizaram os exames laboratoriais.\n\nO banco medidas_fisicas foi importado com os nomes das colunas em letras minúsculas e com underline. Aplique as transformações abaixo em sequência:\na) Deixe todos os nomes em letras maiúsculas\nb) Substitua os underlines ’_’ por espaço ’ ’\nc) Volte para letras minúsculas\nd) Substitua os espaços de volta por ’_’\n\nSugestão: Ao final, os nomes devem estar exatamente iguais aos originais. Esse exercício mostra como desfazer e refazer transformações.\n\n\n\nQuestão 6: Tratamento e inspeção do banco habitos\n\nRegistra o estilo de vida dos participantes, com informações sobre alimentação, atividade física e consumo de substâncias.\n\nInspecione o banco habitos, normalize e converta as variáveis categóricas para fator."
+  },
+  {
+    "objectID": "gabarito.html",
+    "href": "gabarito.html",
+    "title": "Gabarito",
+    "section": "",
+    "text": "dados &lt;- readxl::read_excel(\"data/dados_epidemiologicos.xlsx\")\n\nstr(dados)\n\ntibble [500 × 6] (S3: tbl_df/tbl/data.frame)\n $ idade            : num [1:500] 22 73 60 41 76 51 49 50 76 42 ...\n $ sexo             : chr [1:500] \"F\" \"F\" \"F\" \"F\" ...\n $ cidade           : chr [1:500] \"Montes Claros\" \"Ipatinga\" \"Ouro Preto\" \"Montes Claros\" ...\n $ diagnostico      : chr [1:500] \"sim\" \"Sim\" \"Sim\" \"nao\" ...\n $ imc              : num [1:500] 33.3 26 23.1 30.8 30 28.8 31.3 29.2 32.7 31.9 ...\n $ pressao_sistolica: num [1:500] 111 129 130 103 114 114 119 128 150 130 ..."
+  },
+  {
+    "objectID": "gabarito.html#questão-1",
+    "href": "gabarito.html#questão-1",
+    "title": "Gabarito",
+    "section": "",
+    "text": "dados &lt;- readxl::read_excel(\"data/dados_epidemiologicos.xlsx\")\n\nstr(dados)\n\ntibble [500 × 6] (S3: tbl_df/tbl/data.frame)\n $ idade            : num [1:500] 22 73 60 41 76 51 49 50 76 42 ...\n $ sexo             : chr [1:500] \"F\" \"F\" \"F\" \"F\" ...\n $ cidade           : chr [1:500] \"Montes Claros\" \"Ipatinga\" \"Ouro Preto\" \"Montes Claros\" ...\n $ diagnostico      : chr [1:500] \"sim\" \"Sim\" \"Sim\" \"nao\" ...\n $ imc              : num [1:500] 33.3 26 23.1 30.8 30 28.8 31.3 29.2 32.7 31.9 ...\n $ pressao_sistolica: num [1:500] 111 129 130 103 114 114 119 128 150 130 ..."
+  },
+  {
+    "objectID": "gabarito.html#questão-2",
+    "href": "gabarito.html#questão-2",
+    "title": "Gabarito",
+    "section": "Questão 2",
+    "text": "Questão 2\n\nsum(duplicated(dados))\n\n[1] 0\n\n\nHá um total de zero dados duplicados.\n\ncolSums(is.na(dados))\n\n            idade              sexo            cidade       diagnostico \n               10                10                10                10 \n              imc pressao_sistolica \n               10                10 \n\n\nHá 10 dados NAs em cada uma das colunas."
+  },
+  {
+    "objectID": "gabarito.html#questão-3",
+    "href": "gabarito.html#questão-3",
+    "title": "Gabarito",
+    "section": "Questão 3",
+    "text": "Questão 3\n\ndados$sexo &lt;- substr(dados$sexo, 1, 1)\ndados$sexo &lt;- toupper(dados$sexo)\ndados$sexo &lt;- as.factor(dados$sexo)\n\ndados$diagnostico &lt;- toupper(dados$diagnostico)\ndados$diagnostico &lt;- as.factor(dados$diagnostico)"
+  },
+  {
+    "objectID": "gabarito.html#questão-4",
+    "href": "gabarito.html#questão-4",
+    "title": "Gabarito",
+    "section": "Questão 4",
+    "text": "Questão 4\n\ndados &lt;- dados[!is.na(dados$diagnostico),]\ndados &lt;- dados[!is.na(dados$imc),]\ndados &lt;- dados[!is.na(dados$pressao_sistolica),]"
+  },
+  {
+    "objectID": "gabarito.html#questão-5",
+    "href": "gabarito.html#questão-5",
+    "title": "Gabarito",
+    "section": "Questão 5",
+    "text": "Questão 5\n\nA)\n\ndados$faixa_etaria &lt;- ifelse(dados$idade &gt; 18 & dados$idade &lt; 30, \"18-29\", \n       ifelse(dados$idade &gt; 29 & dados$idade &lt; 40, \"30-39\",\n       ifelse(dados$idade &gt; 39 & dados$idade &lt; 50, \"40-49\",\n       ifelse(dados$idade &gt; 49 & dados$idade &lt; 60, \"50-59\",\n       ifelse(dados$idade &gt; 59 & dados$idade &lt; 70, \"60-69\",\n       ifelse(dados$idade &gt; 69, \"70+\", NA))))))\n\n\n\nB)\n\ndados$grupo_risco &lt;- ifelse(\n  dados$imc &gt;= 30 & dados$pressao_sistolica &gt;= 140, \n  \"Alto risco\", \n  \"Baixo risco\")"
+  },
+  {
+    "objectID": "gabarito.html#questão-6",
+    "href": "gabarito.html#questão-6",
+    "title": "Gabarito",
+    "section": "Questão 6",
+    "text": "Questão 6\n\nmean(dados$idade, na.rm = TRUE)\n\n[1] 50.23913\n\nmedian(dados$idade, na.rm = TRUE)\n\n[1] 51\n\nsd(dados$idade, na.rm = TRUE)\n\n[1] 17.18968\n\nmin(dados$idade, na.rm = TRUE)\n\n[1] 18\n\nmax(dados$idade, na.rm = TRUE)\n\n[1] 80\n\nmean(dados$imc, na.rm = TRUE)\n\n[1] 28.43468\n\nmedian(dados$imc, na.rm = TRUE)\n\n[1] 28.45\n\nsd(dados$imc, na.rm = TRUE)\n\n[1] 4.235681\n\nmin(dados$imc, na.rm = TRUE)\n\n[1] 18\n\nmax(dados$imc, na.rm = TRUE)\n\n[1] 41.3\n\nmean(dados$pressao_sistolica, na.rm = TRUE)\n\n[1] 117.6574\n\nmedian(dados$pressao_sistolica, na.rm = TRUE)\n\n[1] 118\n\nsd(dados$pressao_sistolica, na.rm = TRUE)\n\n[1] 14.61298\n\nmin(dados$pressao_sistolica, na.rm = TRUE)\n\n[1] 90\n\nmax(dados$pressao_sistolica, na.rm = TRUE)\n\n[1] 162"
+  },
+  {
+    "objectID": "gabarito.html#questão-7",
+    "href": "gabarito.html#questão-7",
+    "title": "Gabarito",
+    "section": "Questão 7",
+    "text": "Questão 7\n\ntable(dados$diagnostico)\n\n\nNAO SIM \n257 213 \n\ntable(dados$sexo)\n\n\n  F   M \n246 215 \n\ntable(dados$diagnostico, dados$sexo)\n\n     \n        F   M\n  NAO 129 124\n  SIM 117  91"
+  },
+  {
+    "objectID": "gabarito.html#questão-8",
+    "href": "gabarito.html#questão-8",
+    "title": "Gabarito",
+    "section": "Questão 8",
+    "text": "Questão 8\nA prevalência consiste na proporção de pessoas diagnosticadas em relação à amostra. Neste caso, segmenta-se por faixa etária.\n\ndados$diag_num &lt;- as.numeric(dados$diagnostico == \"SIM\")\ndados$diag_num\n\n  [1] 1 1 1 0 1 1 1 0 1 1 1 0 1 1 1 1 0 1 0 0 1 1 1 0 1 1 1 0 0 1 0 0 0 1 0 1 0\n [38] 0 0 0 1 0 1 1 0 1 1 0 0 1 0 0 0 0 1 0 1 0 1 1 1 1 1 0 1 1 0 0 0 1 0 1 1 1\n [75] 1 0 1 0 0 1 0 1 0 1 0 1 0 0 1 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0\n[112] 1 0 1 0 0 0 0 0 0 1 1 0 1 0 1 0 1 0 1 0 0 1 1 1 0 0 1 0 0 0 1 0 0 1 1 1 0\n[149] 0 1 1 1 0 0 1 1 0 1 0 0 1 1 1 1 1 1 0 0 1 0 1 1 1 0 0 0 1 0 1 0 0 0 1 0 1\n[186] 0 1 0 0 0 0 0 1 0 0 1 1 1 1 1 0 1 1 1 1 1 0 1 0 1 0 1 1 1 0 0 1 0 0 0 1 0\n[223] 1 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 1 0 0 0 1 1 1 1 1 1 1 1 0 0 1 0 0 0 1 0 0\n[260] 0 1 0 0 1 0 0 1 0 1 1 1 0 0 0 0 1 0 0 1 1 0 0 1 1 0 1 1 0 0 0 1 0 0 0 0 1\n[297] 1 0 1 1 1 1 1 0 0 1 1 1 1 0 1 0 0 0 0 1 1 1 1 0 0 0 1 0 0 0 0 1 1 0 1 1 0\n[334] 0 1 0 0 1 0 1 1 0 1 0 0 0 1 1 1 1 0 1 0 0 0 1 0 1 0 0 1 1 0 1 1 0 0 0 0 0\n[371] 0 1 0 0 1 0 0 1 1 1 1 0 0 1 0 0 0 0 0 0 1 0 0 1 0 0 1 1 0 0 1 1 1 0 0 1 1\n[408] 1 0 0 1 0 1 1 0 1 0 0 0 0 1 0 1 0 0 1 0 0 1 0 1 1 1 0 0 1 0 1 1 1 1 0 0 0\n[445] 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0\n\nprevalencia_diagnostico_por_fx_etaria &lt;- aggregate(diag_num ~ faixa_etaria, dados, FUN = mean)\n\nprevalencia_diagnostico_por_fx_etaria$diag_num &lt;- prevalencia_diagnostico_por_fx_etaria$diag_num * 100\n\nbarplot(prevalencia_diagnostico_por_fx_etaria$diag_num,\n        names.arg = prevalencia_diagnostico_por_fx_etaria$faixa_etaria,\n        main = \"Prevalência (%) por faixa etária\",\n        ylab = \"Prevalência (%)\",\n        col = c(\"red\", \"blue\", \"green\", \"orange\", \"purple\", \"cyan\"))"
+  },
+  {
+    "objectID": "gabarito.html#questão-9",
+    "href": "gabarito.html#questão-9",
+    "title": "Gabarito",
+    "section": "Questão 9",
+    "text": "Questão 9\n\nboxplot(imc ~ diagnostico, data = dados)"
+  },
+  {
+    "objectID": "gabarito.html#questão-10",
+    "href": "gabarito.html#questão-10",
+    "title": "Gabarito",
+    "section": "Questão 10",
+    "text": "Questão 10\n\ncor(dados$imc, dados$pressao_sistolica)\n\n[1] 0.3767135\n\ncor.test(dados$imc, dados$pressao_sistolica)\n\n\n    Pearson's product-moment correlation\n\ndata:  dados$imc and dados$pressao_sistolica\nt = 8.7977, df = 468, p-value &lt; 2.2e-16\nalternative hypothesis: true correlation is not equal to 0\n95 percent confidence interval:\n 0.2963630 0.4517687\nsample estimates:\n      cor \n0.3767135 \n\nplot(dados$imc, dados$pressao_sistolica)"
+  },
+  {
+    "objectID": "gabarito.html#questão-11",
+    "href": "gabarito.html#questão-11",
+    "title": "Gabarito",
+    "section": "Questão 11",
+    "text": "Questão 11\n\nt.test(pressao_sistolica ~ diagnostico, data = dados)\n\n\n    Welch Two Sample t-test\n\ndata:  pressao_sistolica by diagnostico\nt = -6.3805, df = 456.01, p-value = 4.344e-10\nalternative hypothesis: true difference in means between group NAO and group SIM is not equal to 0\n95 percent confidence interval:\n -10.825641  -5.727327\nsample estimates:\nmean in group NAO mean in group SIM \n         113.9066          122.1831"
+  },
+  {
+    "objectID": "gabarito.html#questão-12",
+    "href": "gabarito.html#questão-12",
+    "title": "Gabarito",
+    "section": "Questão 12",
+    "text": "Questão 12\n\ndiag_x_grupo_risco &lt;- table(dados$diagnostico, dados$grupo_risco)\n\nchisq.test(diag_x_grupo_risco)\n\n\n    Pearson's Chi-squared test with Yates' continuity correction\n\ndata:  diag_x_grupo_risco\nX-squared = 4.9945, df = 1, p-value = 0.02543"
+  }
+]

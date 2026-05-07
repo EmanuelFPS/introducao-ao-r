@@ -1,0 +1,285 @@
+---
+title: "Operações e estrutura básica"
+---
+
+```{r}
+#| echo: false
+#| warning: false
+
+# Bibliotecas
+
+pacman::p_load(gt, knitr, tidyverse)
+```
+
+Toda grande análise começa com coisas simples: somar, comparar, organizar. Parece básico, e é mesmo. Mas é como aprender acordes no violão: no começo são só posições, depois viram música. Aqui você começa a perceber que pequenas operações, quando bem feitas, viram raciocínios poderosos.
+
+## ➕ Operações aritméticas
+
+São usadas para fazer **contas com números** e a saída sempre são **números**.
+
+```{r}
+#| echo: false
+
+operadores_df <- data.frame(
+  Operador = c("+", "-", "*", "/", "%%", "%/%", "^"),
+  Descricao = c(
+    "Adição",
+    "Subtração",
+    "Multiplicação",
+    "Divisão",
+    "Resto da divisão",
+    "Divisão inteira",
+    "Exponenciação"
+  ),
+  Exemplo = c(
+    "5 + 3",
+    "10 - 5",
+    "3 * 5",
+    "10 / 2",
+    "10 %% 4",
+    "11 %/% 3",
+    "2 ^ 3"
+  ),
+  Resultado = c(8, 5, 15, 5, 2, 3, 8))
+
+operadores_df %>%
+  gt() %>%
+    cols_align(
+    align = "center"
+  ) %>%
+    cols_label(
+    Operador = md("**Operador**"),
+    Descricao = md("**Descrição**"),
+    Exemplo = md("**Exemplo**"),
+    Resultado = md("**Resultado**")
+  ) %>%
+  text_transform(
+    locations = cells_body(columns = Operador),
+    fn = function(x) {
+      paste0(
+        "<span style='background-color:#d8b4fe;
+             padding:2px 6px;
+             border-radius:6px;
+             font-weight:500;'>",
+        x,
+        "</span>"
+      )
+    }
+  ) %>%
+  tab_options(
+    table.align = "left"
+  )
+```
+
+## 🧩 Operações lógicas
+
+São usadas para fazer **comparações** ou **decisões** e a saída pode ser `TRUE` ou `FALSE`.
+
+```{r}
+#| echo: false
+
+op_logic <- data.frame(
+  Operador = c('==', '!=', '<', '<=', '>', '>=', '!x', 'x | y', 'x & y', 'x %in% y'), 
+  Significado = c('igual a', 'diferente de', 'menor que', 'menor ou igual a', 'maior que', 'maior ou igual a', 'negação de x', 'x OU y', 'x E y', 'x está contido em y'),
+  Exemplo = c('1 == 1', '3 != 3', '4 < 4', '2 <= 2', '5 > 3', '9 >= 8', '!(3 != 3)', '(1 == 1) | (3 != 3)', '(1 == 1) & (3 != 3)', 'c(1, 2) %in% c(1, 2, 3, 4)'),
+  Resultado = c('TRUE', 'FALSE', 'FALSE', 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'TRUE TRUE')
+)
+
+
+op_logic %>%
+  gt() %>%
+  cols_align(
+    align = "center"
+  ) %>%
+    cols_label(
+    Operador = md("**Operador**"),
+    Significado = md("**Significado**")
+  ) %>%
+  text_transform(
+    locations = cells_body(columns = Operador),
+    fn = function(x) {
+      paste0(
+        "<span style='background-color:#d8b4fe;
+             padding:2px 6px;
+             border-radius:6px;
+             font-weight:500;'>",
+        x,
+        "</span>"
+      )
+    }
+  ) %>%
+  tab_options(
+    table.align = "left"
+  )
+```
+
+No caso de `x | y`, é preciso que pelo menos uma das condições seja verdadeira para retornar `TRUE`, caso contrário, retornará `FALSE`. 
+
+Enquanto para `x & y`, todas as condições precisam ser verdadeiras para retornar `TRUE`, senão, retornará `FALSE`.
+
+Já para `x %in% y`, tanto `x` quanto `y` são **vetores**, cuja definição será abordada mais adiante.
+
+## 🏷️ Variáveis, classes e objetos
+
+**Regras para nomear uma variável:**
+
+-   Nomes de variáveis devem começar com uma **letra**.
+
+-   Podem conter **letras**, **números**, **pontos** (.) e **sublinhados** (_).
+
+-   **Maiúsculas** e **minúsculas** são consideradas **diferentes**.
+
+**As principais classes de objetos são:**
+
+-   `numeric`: números, que podem ser **inteiros**, sem casas decimais, ou **reais**, com casas decimais.
+
+-   `character`: textos.
+
+-   `logical`: **TRUE** ou **FALSE**.
+
+-   `factor`: categorias.
+
+No código abaixo, foi atribuido à variável `variavel_numerica` um objeto de classe `numeric` com valor `2.5`.
+
+```{r}
+#| eval: false
+
+# atribuição
+variavel_numerica <- 2.5 
+# imprime o valor da variável
+variavel_numerica
+
+#> [1] 2.5
+
+# imprime a classe da variável 'variavel_numerica'
+class(variavel_numerica)
+
+#> [1] "numeric"
+
+```
+
+Abaixo, a variável `variavel_numerica` é convertida para texto com a função `as.character`. Observe também que textos são escritos entre aspas.
+
+```{r}
+#| eval: false
+
+# converte 'variavel_numerica' para texto (character)
+variavel_textual <- as.character(variavel_numerica)
+variavel_textual
+
+#> [1] "2.5"
+
+# imprime a classe da variável 'variavel_textual'
+class(variavel_textual)
+
+#> [1] "character"
+
+# reatribui um valor para a variavel 'variavel_textual'
+variavel_textual <- "dois ponto cinco"
+variavel_textual
+
+#> [1] "dois ponto cinco"
+
+```
+
+Agora, obtém-se uma variável lógica a partir das variáveis `variavel_numerica` e `variavel_textual`.
+
+```{r}
+#| eval: false
+
+# verifica se 2.5 é igual a "dois ponto cinco", a partir do operador lógico '=='
+verificacao <- variavel_numerica == variavel_textual
+verificacao
+
+#> [1] FALSE
+
+class(verificacao)
+
+#> [1] "logical"
+
+# pergunta se a variável 'verificacao' armazena um objeto de classe 'logical'
+is.logical(verificacao)
+
+#> [1] TRUE
+
+```
+
+## 🔢 Vetores e seleção de elementos
+
+Vetores armazenam vários elementos de mesma classe.
+
+### Como criar vetores
+
+```{r}
+#| eval: false
+
+# vetor de nomes
+vetor_de_nomes <- c("Bernardo", "Danilo", "José", "Emanuel", "Kauann", "Guilherme")
+vetor_de_nomes
+
+#> [1] "Bernardo" "Danilo" "José" "Emanuel" "Kauann" "Guilherme"
+
+# vetor de números
+vetor_de_numeros <- c(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+# é o mesmo que:
+vetor_de_numeros <- seq(0, 9, 1) # sequência de 0 a 9, saltando de 1 em 1
+# ou:
+vetor_de_numeros <- 0:9
+vetor_de_numeros
+
+#> [1] 0 1 2 3 4 5 6 7 8 9
+
+# segundo vetor de números
+vetor_de_numeros_2 <- c(3, 3, 3, 3, 3)
+# é o mesmo que:
+vetor_de_numeros_2 <- rep(3, 5) # repetir o número 3 cinco vezes
+vetor_de_numeros_2
+
+#> [1] 3 3 3 3 3
+
+```
+
+Cada elemento possui um **indexador associado**, de modo que o primeiro elemento possui índice 1, o segundo possui índice 2, e assim por diante.
+
+Ou seja, "*Bernardo*" possui índice 1, "*Danilo*" possui índice 2, "*José*" possui índice 3, e assim por diante.
+
+### Selecionar elementos por índice
+
+```{r}
+#| eval: false
+
+# seleciona um elemento
+vetor_de_nomes[2]
+
+#> [1] "Danilo"
+
+# seleciona elementos seguidos
+vetor_de_nomes[2:5]
+
+#> [1] "Danilo" "José" "Emanuel" "Kauann"
+
+# seleciona elementos em posições específicas
+vetor_de_nomes[c(2,6)]
+
+#> [1] "Danilo" "Guilherme"
+```
+
+### Selecionar elementos com lógica
+
+```{r}
+#| eval: false
+
+# seleciona os nomes diferentes de "Kauann"
+vetor_de_nomes[vetor_de_nomes != "Kauann"]
+
+#> [1] "Bernardo" "Danilo" "José" "Emanuel" "Guilherme"
+
+# seleciona os elementos numéricos maiores do que 3
+vetor_de_numeros[vetor_de_numeros > 3]
+
+#> [1] 4 5 6 7 8 9
+
+```
+
+
+## 🔥 [Hora de praticar](ex2.html)

@@ -1,0 +1,15 @@
+{
+  "hash": "16c5dd0fd4d55dd38d0140ade4a9b294",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Exercícios do tópico 2\"\nformat: html\n---\n\n### Questão 1\n\nDavi tem  19 anos, 1,68m de altura e pesa 72kg. Com base nestas informações, resolva os exercícios abaixo:\n\n**a)** Com as informações de Davi, crie 4 variáveis: **nome**, **idade**, **altura** e **peso**. Em seguida, use `class()` para confirmar a classe de cada uma.\n\n**b)** Calcule o IMC dele usando o R. A fórmula do IMC é: peso dividido pela altura ao quadrado.\n\n> **Sugestão:** Use o operador `^` para elevar ao quadrado e `/` para dividir.\n\n**c)** Com base na tabela abaixo, utilize operadores lógicos para verificar em qual classificação o IMC de Davi se enquadra.\n\n> **Sugestão:** A verificação deve usar um operador lógico e o resultado será `TRUE` ou `FALSE`.\n\n![](images/imc.png)\n\n### Questão 2\n\nO vetor abaixo representa os batimentos cardíacos (bpm) medidos de 8 idosos:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nbpm <- c(72, 85, 91, 68, 77, 104, 83, 95)\n```\n:::\n\n\n**a)** Selecione o terceiro valor do vetor.\n\n**b)** Selecione os valores do segundo ao quinto elemento. \n\n**c)** Selecione apenas os valores acima de 90 bpm.  \n\n**d)** Quantos pacientes têm bpm acima de 90? Use `sum()`.\n\n### Questão 3\n\nCrie os vetores abaixo usando a forma mais curta possível:\n\n**a)** Números de 1 a 10.\n\n**b)** Números de 0 a 100, de 10 em 10.\n\n**c)** O número 5 repetido 8 vezes.",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,76 @@
+---
+title: "Exercícios do tópico 3"
+format: html
+---
+
+### Questão 1: Importação de bancos de dados
+
+Instale os pacotes `readxl` e `rio` e importe os bancos de dados **demografico.xlsx**, **laboratorio.csv**, **saude_percebida.csv**, **medidas_fisicas.txt** e **habitos.xlsx**. Use a função adequada para cada formato e salve cada um em um objeto com o nome correspondente ao arquivo.
+
+> **Sugestão:** Lembre-se que `.csv` americano usa `read.csv()`, `.csv` brasileiro usa `read.csv2()`, `.xlsx` usa `read_excel()` e `.txt` usa `read.table()` com os argumentos `header = TRUE` e `sep = ";"`.
+
+### Questão 2: Tratamento e inspeção do banco **demografico**
+
+**a)** Inspecione o banco **demografico** e verifique quais classes não estão corretas. Depois, faça as devidas correções de cada classe.
+
+> **Sugestão:** Use `str()` para inspecionar e verificar as classes do banco **demografico**.
+
+::: {.callout-note collapse="true"}
+## Ajuda
+
+Você precisará converter as variáveis `sexo` e `estado_civil` para fator, utilizando a função `as.factor`. Também precisará converter a variável `data_nascimento` para data, utilizando `as.Date`.
+
+> **Sugestão:** Use `format = "%d/%m/%Y"` dentro de `as.Date()` para indicar o formato original da data.
+
+:::
+
+**b)** Verifique se há valores nulos. Caso sim, remova-os do banco de dados.
+
+**c)** Verifique se há valores duplicados. Caso sim, remova-os do banco de dados.
+
+**d)** Crie uma variável chamada `idade`. Com base nas datas de nascimento, calcule quantos anos eles tinham em **01/01/1997**.
+
+> **Sugestão:** Faça a diferença entre "1997-01-01" e as datas de nascimento. Você obterá a quantidade de dias de vida de cada um. Após isso, divida por 365 para converter para anos.
+
+**e)** Qual a idade do indivíduo mais novo do banco de dados? E do mais velho?
+
+### Questão 3: Tratamento e inspeção do banco **laboratorio**
+
+> Contém os resultados dos exames de sangue realizados em 1.496 participantes. Os demais não compareceram à coleta.
+
+**a)** Quais são os nomes das colunas?
+
+**b)** Qual a classe de cada variável?
+
+**c)** Normalize `sorologia_chagas` e converta para fator.
+
+**d)** Qual o valor mínimo e máximo da variável glicose_mg_dl?
+
+### Questão 4: Tratamento e inspeção do banco **saude_percebida**
+
+> Reúne as respostas dos participantes sobre como avaliam a própria saúde, suas condições crônicas e o uso de medicamentos.
+
+Inspecione o banco `saude_percebida`, normalize e converta as variáveis categóricas para fator.
+
+### Questão 5: Tratamento e inspeção do banco **medidas_fisicas**
+
+> Registra as medições corporais e de pressão arterial dos mesmos 1.496 participantes que realizaram os exames laboratoriais.
+
+O banco `medidas_fisicas` foi importado com os nomes das colunas em letras minúsculas e com underline. Aplique as transformações abaixo em sequência:
+
+**a)** Deixe todos os nomes em letras maiúsculas
+
+**b)** Substitua os underlines '_' por espaço ' '
+
+**c)** Volte para letras minúsculas
+
+**d)** Substitua os espaços de volta por '_'
+
+> **Sugestão:** Ao final, os nomes devem estar exatamente iguais aos originais. Esse exercício mostra como desfazer e refazer transformações.
+
+### Questão 6: Tratamento e inspeção do banco **habitos**
+
+> Registra o estilo de vida dos participantes, com informações sobre alimentação, atividade física e consumo de substâncias.
+
+Inspecione o banco `habitos`, normalize e converta as variáveis categóricas para fator.
+

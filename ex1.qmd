@@ -1,0 +1,88 @@
+---
+title: "Exercícios do tópico 1"
+format: html
+---
+
+### Questão 1: Criando seu primeiro projeto
+
+Abra o RStudio e crie um projeto chamado **"introducao-ao-r"** na pasta **"Documentos"**. Em seguida, baixe [estes arquivos](https://github.com/EmanuelFPS/introducao-ao-r/raw/main/data/data.zip) e exporte na pasta **"Documentos/introducao-ao-r"**.
+
+> **Sugestão:** Vá em **File**, depois em **New Project...**. Aparecerá uma janela flutuante. Nela, você irá em **New Directory**, **New Project**, preencherá o campo **Directory name:** com **"introducao-ao-r"** e para o campo **Create project as subdirectory of:** irá selecionar a pasta **"Documentos"**. Por fim, basta pressionar o botão **Create Project**.
+
+### Questão 2: Entendendo a interface e os comandos
+
+No **Editor de script**, digite manualmente o comando abaixo e execute linha por linha para compreender a lógica de execução do R. Observe como cada comando gera uma saída no **Console**, como os objetos criados aparecem no **Ambiente/Environment**, o comando `?plot` abre a guia **Help** e o gráfico aparece no **Plots**.
+
+```{r}
+#| eval: false
+
+# console e resultado
+2 + 2
+10 * 5
+
+# criando objetos (aparecem no Environment)
+idade <- 68
+nome  <- "Maria"
+
+idade
+nome
+
+# abrindo o Help
+?plot
+
+# gerando um gráfico simples (aparece no Plots)
+alturas <- c(1.55, 1.62, 1.70, 1.58, 1.75)
+plot(alturas)
+```
+
+> **Sugestão:** Execute cada bloco separadamente, observando o que muda em cada painel do RStudio. Perceba que linhas com **\#** são comentários e o R as ignora na execução.
+
+------------------------------------------------------------------------
+
+### Questão 3: Instalando seus primeiros pacotes
+
+O R possui uma infinidade de pacotes para as mais diversas situações. Copie o código abaixo e execute função por função. Depois, tente alterar a cor **"steelblue"** para **"#4A90D9"** e execute novamente para ver a diferença.
+
+> **OBS:** Este código exige um alto nível de compreensão dos pacotes `ggplot2` e `dplyr`, clássicos para construção de gráficos e manipulação de dados, respectivamente. Eles não serão abordados no curso e sua presença aqui é apenas para entender como o R permite uma ampla personalização.
+
+```{r}
+#| eval: false
+
+# instalar os pacotes (apenas uma vez)
+install.packages("ggplot2")
+install.packages("dplyr")
+
+# carregar os pacotes
+library(ggplot2)
+library(dplyr)
+
+# construção de dados fictícios de uma população
+populacao <- data.frame(
+  faixa_etaria = rep(c("0-9","10-19","20-29","30-39","40-49",
+                       "50-59","60-69","70-79","80+"), 2),
+  sexo         = rep(c("Masculino","Feminino"), each = 9),
+  n            = c(820, 750, 690, 710, 680, 600, 430, 280, 120,
+                   790, 720, 710, 730, 670, 620, 460, 310, 150)
+)
+
+# geração de gráfico de pirâmide etária
+populacao %>%
+  mutate(n = ifelse(sexo == "Masculino", -n, n)) %>%
+  ggplot(aes(x = faixa_etaria, y = n, fill = sexo)) +
+  geom_col() +
+  coord_flip() +
+  scale_y_continuous(labels = abs) +
+  scale_fill_manual(values = c("Feminino" = "#E07B8A", "Masculino" = "steelblue")) +
+  labs(
+    title = "Pirâmide etária — População fictícia",
+    x     = "Faixa etária",
+    y     = "Número de indivíduos",
+    fill  = "Sexo"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title      = element_text(hjust = 0.5, face = "bold"),
+    legend.position = "bottom",
+    panel.grid.minor = element_blank()
+  )
+```

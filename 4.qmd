@@ -1,0 +1,246 @@
+---
+title: "Manipulação de dados"
+---
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+pacman::p_load(gt, knitr, readxl, rio)
+
+source('tratado.r')
+```
+
+Agora imagine pegar várias tabelas soltas e transformá-las em uma única história coerente. Aqui você começa a "moldar" os dados: filtrar, juntar, organizar. É como montar um quebra-cabeça — só que você decide quais peças entram e qual imagem final quer revelar.
+
+## 🔗 Junção de tabelas
+
+No curso, temos 5 tabelas separadas que descrevem os mesmos participantes. Todas compartilham uma coluna `id`, que identifica unicamente cada indivíduo. Esse `id` é a chave para unir as tabelas com a função `merge()`.
+
+Acesse aqui as [tabelas tratadas](https://raw.githubusercontent.com/EmanuelFPS/introducao-ao-r/main/tratado.R).
+
+![](images/joins.png)
+
+Os principais tipos de junção são controlados pelos argumentos `all.x` e `all.y`:
+
+```{r}
+#| echo: false
+
+joins_df <- data.frame(
+  Chamada = c(
+    'merge(A, B, by="id")',
+    'merge(A, B, by="id", all.x=TRUE)',
+    'merge(A, B, by="id", all.y=TRUE)',
+    'merge(A, B, by="id", all=TRUE)'
+  ),
+  Equivalente = c("inner join", "left join", "right join", "full join"),
+  Descrição = c(
+    "Mantém apenas as linhas com correspondência nas duas tabelas.",
+    "Mantém todas as linhas de A. Linhas sem par em B viram NA.",
+    "Mantém todas as linhas de B. Linhas sem par em A viram NA.",
+    "Mantém todas as linhas de ambas as tabelas."
+  )
+)
+
+joins_df %>%
+  gt() %>%
+  cols_align(align = "left") %>%
+  cols_label(
+    Chamada     = md("**Chamada**"),
+    Equivalente = md("**Equivalente**"),
+    Descrição   = md("**Descrição**")
+  ) %>%
+  text_transform(
+    locations = cells_body(columns = Chamada),
+    fn = function(x) {
+      paste0(
+        "<span style='background-color:#d8b4fe;
+               padding:2px 6px;
+               border-radius:6px;
+               font-weight:500;
+               font-family:monospace;'>",
+        x, "</span>"
+      )
+    }
+  ) %>%
+  tab_options(table.align = "left")
+```
+
+O `all.x = TRUE` (left join) é o mais usado no dia a dia: você parte de uma tabela principal e vai incorporando informações das demais.
+
+```{r}
+#| eval: false
+
+# unir demografico com laboratorio pela coluna 'id'
+dados <- merge(demografico, laboratorio, by = "id", all.x = TRUE)
+
+# unir com mais tabelas em sequência
+dados <- merge(dados, saude_percebida, by = "id", all.x = TRUE)
+dados <- merge(dados, medidas_fisicas, by = "id", all.x = TRUE)
+dados <- merge(dados, habitos,         by = "id", all.x = TRUE)
+```
+
+## 🔄 Reordenação
+
+### Reordenar colunas
+
+Após unir tabelas, pode ser útil reorganizar a ordem das colunas.
+
+```{r}
+#| eval: false
+
+# colocar 'id' e 'nome' primeiro, mantendo o restante
+dados <- dados[, c("id", "nome", colnames(dados)[!colnames(dados) %in% c("id", "nome")])]
+```
+
+### Reordenar linhas
+
+```{r}
+#| eval: false
+
+# ordenar por idade (crescente)
+demografico[order(demografico$idade), ]
+
+# ordenar por renda (decrescente)
+demografico[order(demografico$renda_reais, decreasing = TRUE), ]
+
+# ordenar por estado civil e, dentro de cada grupo, por idade
+demografico[order(demografico$estado_civil, demografico$idade), ]
+```
+
+## ✏️ Criar e transformar variáveis
+
+Novas colunas são criadas atribuindo valores diretamente com `$`.
+
+```{r}
+#| eval: false
+
+# criar uma coluna com a renda em salários mínimos (R$ 120,00 em 1997)
+demografico$renda_sm <- round(demografico$renda_reais / 120, 2)
+```
+
+### Condicionais com `ifelse()`
+
+A função `ifelse()` cria uma variável com base em uma condição: se a condição for verdadeira, atribui um valor; caso contrário, atribui outro.
+
+```{r}
+#| eval: false
+
+# criar variável binária de renda
+demografico$baixa_renda <- ifelse(demografico$renda_reais < 120, "Sim", "Não")
+```
+
+### Condicionais múltiplas com `ifelse()` aninhado
+
+Quando há mais de duas categorias, os `ifelse()` podem ser aninhados um dentro do outro.
+
+```{r}
+#| eval: false
+
+# categorizar escolaridade em níveis
+demografico$nivel_escolaridade <- ifelse(
+  demografico$escolaridade_anos == 0,  "Sem instrução",
+  ifelse(demografico$escolaridade_anos <= 4,  "Fundamental I",
+  ifelse(demografico$escolaridade_anos <= 8,  "Fundamental II",
+  ifelse(demografico$escolaridade_anos <= 11, "Médio",
+  ifelse(demografico$escolaridade_anos > 11,  "Superior", NA)))))
+
+unique(demografico$nivel_escolaridade)
+
+#> [1] "Fundamental I"  "Médio"  "Sem instrução"  "Fundamental II"  "Superior"  NA
+```
+
+---
+
+## 📊 Agrupar e resumir com `aggregate()`
+
+A função `aggregate()` calcula uma estatística para uma variável e separada por grupos, como por exemplo a média de renda por sexo ou por estado civil.
+
+```{r}
+#| eval: false
+
+# média de renda por sexo
+aggregate(renda_reais ~ sexo, data = demografico, FUN = mean)
+
+#>   sexo renda_reais
+#> 1    F    812.3241
+#> 2    M    976.1147
+
+# média de renda e idade por sexo (múltiplas variáveis resposta)
+aggregate(cbind(renda_reais, idade) ~ sexo, data = demografico, FUN = mean)
+
+#>   sexo renda_reais    idade
+#> 1    F    812.3241 71.30851
+#> 2    M    976.1147 70.82569
+
+# média de renda por sexo e estado civil (múltiplos grupos)
+aggregate(renda_reais ~ sexo + estado_civil, data = demografico, FUN = mean)
+```
+
+Para contar observações por grupo, usa-se `table()`.
+
+```{r}
+#| eval: false
+
+# contagem por estado civil
+table(demografico$estado_civil)
+
+#>  CASADO SEPARADO SOLTEIRO    VIUVO
+#>     748       87      235      524
+
+# proporção (em %)
+round(prop.table(table(demografico$estado_civil)) * 100, 1)
+
+#>  CASADO SEPARADO SOLTEIRO    VIUVO
+#>    47.2      5.5     14.8     33.1
+```
+
+As principais funções usadas dentro do `aggregate()` são:
+
+```{r}
+#| echo: false
+
+resumo_df <- data.frame(
+  Função = c("mean(x)", "sum(x)", "median(x)", "sd(x)", "min(x)", "max(x)", "length(x)"),
+  Descrição = c(
+    "Calcula a média de x",
+    "Soma os valores de x",
+    "Calcula a mediana de x",
+    "Calcula o desvio padrão de x",
+    "Retorna o menor valor de x",
+    "Retorna o maior valor de x",
+    "Conta o número de elementos de x"
+  )
+)
+
+resumo_df %>%
+  gt() %>%
+  cols_align(align = "left") %>%
+  cols_label(
+    Função    = md("**Função**"),
+    Descrição = md("**Descrição**")
+  ) %>%
+  text_transform(
+    locations = cells_body(columns = Função),
+    fn = function(x) {
+      paste0(
+        "<span style='background-color:#d8b4fe;
+               padding:2px 6px;
+               border-radius:6px;
+               font-weight:500;
+               font-family:monospace;'>",
+        x, "</span>"
+      )
+    }
+  ) %>%
+  tab_options(table.align = "left")
+```
+
+::: {.callout-important}
+Sempre use `na.rm = TRUE` nas funções de resumo quando houver valores nulos. Sem esse argumento, o resultado será `NA` se houver qualquer valor faltante. Exemplo: `aggregate(renda_reais ~ sexo, data = demografico, FUN = mean, na.rm = TRUE)`.
+:::
+
+---
+
+## 🔥 [Hora de praticar](ex4.html)

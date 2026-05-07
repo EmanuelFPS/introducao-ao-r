@@ -1,0 +1,212 @@
+---
+title: "Exercícios do tópico 5"
+format: html
+---
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+pacman::p_load(readxl, rio)
+source('tratado.r')
+
+dados <- merge(demografico, laboratorio,     by = "id", all.x = TRUE)
+dados <- merge(dados,       medidas_fisicas, by = "id", all.x = TRUE)
+dados <- merge(dados,       saude_percebida, by = "id", all.x = TRUE)
+dados <- merge(dados,       habitos,         by = "id", all.x = TRUE)
+```
+
+Nos exercícios abaixo, use a base unificada [dados](https://raw.githubusercontent.com/EmanuelFPS/introducao-ao-r/main/tratado2.R).
+
+
+
+---
+
+### Questão 1: Tendência central
+
+**a)** Calcule a **média** e a **mediana** da variável `glicose_mg_dl`.
+
+**b)** A média é maior ou menor que a mediana? O que isso sugere sobre a distribuição?
+
+::: {.callout-tip collapse="true"}
+## Ajuda
+
+```r
+mean(dados$glicose_mg_dl, na.rm = TRUE)
+median(dados$glicose_mg_dl, na.rm = TRUE)
+```
+
+Se a média for maior que a mediana, a distribuição tende a ser assimétrica à direita — poucos valores muito altos puxam a média para cima.
+:::
+
+---
+
+### Questão 2: Dispersão
+
+**a)** Calcule o **desvio padrão** da variável `pressao_sistolica`.
+
+**b)** Calcule o **intervalo interquartil** (IQR) da mesma variável.
+
+**c)** Use `summary()` para ver um resumo completo da variável.
+
+::: {.callout-tip collapse="true"}
+## Ajuda
+
+```r
+sd(dados$pressao_sistolica, na.rm = TRUE)
+IQR(dados$pressao_sistolica, na.rm = TRUE)
+summary(dados$pressao_sistolica)
+```
+:::
+
+---
+
+### Questão 3: Coeficiente de variação
+
+Calcule o coeficiente de variação (CV) da variável `renda_reais`. O CV é calculado assim:
+
+$$CV = \frac{\text{desvio padrão}}{\text{média}} \times 100$$
+
+Com base no resultado, como você classificaria a variabilidade da renda?
+
+::: {.callout-tip collapse="true"}
+## Ajuda
+
+```r
+media <- mean(dados$renda_reais, na.rm = TRUE)
+dp    <- sd(dados$renda_reais,   na.rm = TRUE)
+cv    <- (dp / media) * 100
+round(cv, 1)
+```
+
+| CV | Variabilidade |
+|---|---|
+| ≤ 10% | Baixa |
+| 10–20% | Média |
+| 20–30% | Alta |
+| > 30% | Muito alta |
+:::
+
+---
+
+### Questão 4: Histograma
+
+Faça um histograma da variável `imc` com título, rótulos nos eixos e cor `"#d8b4fe"`.
+
+Em seguida, adicione uma linha vertical vermelha indicando a média.
+
+::: {.callout-tip collapse="true"}
+## Ajuda
+
+```r
+hist(dados$imc,
+     main   = "Distribuição do IMC",
+     xlab   = "IMC",
+     ylab   = "Frequência",
+     col    = "#d8b4fe",
+     border = "white")
+
+abline(v   = mean(dados$imc, na.rm = TRUE),
+       col = "red",
+       lwd = 2,
+       lty = 2)
+```
+:::
+
+---
+
+### Questão 5: Tabela de frequência
+
+**a)** Use `table()` para ver a frequência absoluta da variável `percepcao_saude`.
+
+**b)** Use `prop.table()` junto com `table()` para obter a frequência relativa em percentual. Arredonde para 1 casa decimal com `round()`.
+
+::: {.callout-tip collapse="true"}
+## Ajuda
+
+```r
+# a)
+table(dados$percepcao_saude)
+
+# b)
+round(prop.table(table(dados$percepcao_saude)) * 100, 1)
+```
+:::
+
+---
+
+### Questão 6: Correlação
+
+**a)** Calcule a correlação entre `glicose_mg_dl` e `imc`. Use `cor()` com `use = "complete.obs"`.
+
+**b)** Faça um gráfico de dispersão entre as duas variáveis com `plot()`.
+
+**c)** O valor de r encontrado indica uma associação fraca, moderada ou forte? Em qual direção (positiva ou negativa)?
+
+::: {.callout-tip collapse="true"}
+## Ajuda
+
+```r
+# a)
+cor(dados$glicose_mg_dl, dados$imc, use = "complete.obs")
+
+# b)
+plot(dados$imc, dados$glicose_mg_dl,
+     main = "IMC vs Glicose",
+     xlab = "IMC",
+     ylab = "Glicose (mg/dL)",
+     pch  = 19,
+     col  = "#9333ea",
+     cex  = 0.6)
+```
+
+Referência rápida para r:
+- |r| < 0,3 → associação fraca
+- 0,3 ≤ |r| < 0,6 → associação moderada
+- |r| ≥ 0,6 → associação forte
+:::
+
+---
+
+### Questão 7: Teste t
+
+A pressão sistólica difere entre pessoas **com e sem diabetes**? Use `t.test()` para responder.
+
+Interprete o p-valor: há diferença significativa (p < 0,05)?
+
+::: {.callout-tip collapse="true"}
+## Ajuda
+
+```r
+t.test(pressao_sistolica ~ diabetes, data = dados)
+```
+
+O R vai mostrar o p-valor na saída. Se p < 0,05, a diferença entre os grupos é estatisticamente significativa.
+:::
+
+---
+
+### Questão 8: Qui-quadrado
+
+Existe associação entre **sexo** e **hipertensão** na base `dados`?
+
+**a)** Crie uma tabela de contingência com `table()`.
+
+**b)** Aplique o teste qui-quadrado com `chisq.test()`.
+
+**c)** Interprete o resultado.
+
+::: {.callout-tip collapse="true"}
+## Ajuda
+
+```r
+dados$sexo        <- toupper(dados$sexo)
+dados$hipertensao <- toupper(dados$hipertensao)
+
+tabela <- table(dados$sexo, dados$hipertensao)
+tabela
+
+chisq.test(tabela)
+```
+:::

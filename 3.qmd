@@ -1,0 +1,337 @@
+---
+title: "Importação e preparação dos dados"
+---
+
+Você recebe um banco de dados com inconsistências, ausência de padronização e possíveis erros, uma situação comum em contextos reais. Nesta etapa, realiza-se o tratamento e a organização dos dados, garantindo sua qualidade e adequação para análise.
+
+## 📤 Importação e inspeção de banco de dados
+
+Os principais formatos dos banco de dados que serão importados no R são: **.txt**, **.csv**, **.xlsx**.
+
+```{r}
+#| message: false
+#| warning: false
+
+# executar pacotes úteis
+library(readxl)
+library(rio)
+
+# importar .xlsx com 'read_excel'
+demografico <- read_excel('data/demografico.xlsx') # função do pacote 'readxl'
+
+# importar .csv com 'read.csv' e 'read.csv2'
+laboratorio <- read.csv('data/laboratorio.csv') # função base do R
+saude_percebida <- read.csv2('data/saude_percebida.csv') # função base do R
+
+# importar .txt com 'read.table'
+medidas_fisicas <- read.table('data/medidas_fisicas.txt', header = TRUE, sep = ';') # função base do R
+
+# importar qualquer formato com 'import'
+habitos <- import('data/habitos.xlsx') # função do pacote 'rio'
+```
+
+As cinco bases de dados importadas anteriormente serão utilizadas ao longo das explicações e exercícios do curso. O objetivo é simular um fluxo de análise próximo ao de um projeto real, utilizando dados fictícios para fins didáticos.
+
+Para a apresentação das funções deste tópico, será utilizado apenas o banco de dados `demografico`.
+
+### Dados demográficos
+
+> Contém informações pessoais e socioeconômicas dos 1.609 participantes do estudo. É a tabela central do curso — todas as outras se conectam a ela pelo `id`.
+
+A função `str()` mostra a estrutura do banco, número de linhas, colunas, nome e tipo de cada variável, e os primeiros valores. Já `summary()` retorna um resumo estatístico de cada coluna.
+
+```{r}
+str(demografico)
+
+summary(demografico)
+```
+
+## 🧹 Preparação dos dados
+
+![](images/preparacao.png)
+
+### Selecionar colunas e filtrar linhas de uma tabela
+
+Antes de preparar os dados, é importante entender como selecionar e filtrar elementos de uma tabela. Primeiro, será apresentado um exemplo usando uma **matriz**, que pode ser vista como uma combinação de vários **vetores**. Em seguida, será feito o mesmo processo com um **data frame**, que tem estrutura semelhante, mas com mais flexibilidade.
+
+Uma **matriz** é uma estrutura bidimensional (linhas × colunas) em que todos os elementos são do mesmo tipo. Já um **data frame** também é bidimensional, mas permite que cada coluna tenha tipos diferentes.
+
+A seleção de elementos em **vetores** já foi vista anteriormente por meio de índices. Essa mesma lógica se mantém para **matrizes** e **data frames**, com a diferença de que agora há duas dimensões: `[linha, coluna]`.
+
+```{r}
+#| eval: false
+
+matriz <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow = 3, byrow = TRUE)
+matriz
+
+#>      [,1] [,2] [,3]
+#> [1,]    1    2    3
+#> [2,]    4    5    6
+#> [3,]    7    8    9
+
+# selecionar o elemento da linha 2, coluna 3
+matriz[2, 3]
+
+#> [1] 6
+```
+
+Para **data frames**, a mesma notação se aplica, e é possível usar nomes de colunas no lugar de índices numéricos.
+
+```{r}
+#| eval: false
+
+# selecionar o participante da linha 10
+demografico[10, ]
+
+# listar o nome de todas as colunas
+colnames(demografico)
+
+#> [1] "id"                     "nome"
+#> [3] "sexo"                   "data_nascimento"
+#> [5] "estado_civil"           "n_residentes_domicilio"
+#> [7] "renda_reais"            "escolaridade_anos"
+
+# selecionar apenas a coluna 'nome' (três formas equivalentes)
+demografico[, 2]
+demografico[, "nome"]
+demografico$nome   # mais usado
+
+# filtrar participantes com renda abaixo de R$ 120
+demografico[demografico$renda_reais < 120, ]
+
+# selecionar o nome dos participantes com estado civil "Casado"
+demografico[demografico$estado_civil == "CASADO", "nome"]
+```
+
+### Valores únicos e tratamento de duplicados
+
+Antes de qualquer análise, é importante conhecer os valores que cada variável assume. A função `unique()` lista os valores distintos de uma coluna e muitas vezes já revela problemas.
+
+```{r}
+#| eval: false
+
+unique(demografico$sexo)
+
+#> [1] "F" "M" "f" "m"
+
+unique(demografico$estado_civil)
+
+#> [1] "Casado"   "Viuvo"    "Solteiro"  "Separado"  "casado"
+#> [6] "viuvo"    "CASADO"   "VIUVO"     "separado"  "SOLTEIRO"
+#> [11] "solteiro" "SEPARADO"
+```
+
+Repare que `sexo` tem quatro variações para o que deveria ser apenas dois valores, e `estado_civil` tem doze. Vamos tratar isso em breve.
+
+Linhas duplicadas são registros inteiramente repetidos. O mesmo participante com todos os valores idênticos. Elas inflam as contagens e distorcem qualquer análise.
+
+```{r}
+#| eval: false
+
+# quantas linhas estão duplicadas?
+sum(duplicated(demografico))
+
+#> [1] 3
+```
+
+```{r}
+# quais são as linhas duplicadas?
+demografico[duplicated(demografico), ]
+
+# remover as duplicatas, mantendo apenas a primeira ocorrência
+demografico <- demografico[!duplicated(demografico), ]
+```
+
+### Ajuste de textos e colunas
+
+#### Renomear e normalizar colunas
+
+A função `colnames()` retorna os nomes das colunas do banco. Para padronizá-los, usamos `toupper()` (maiúsculas), `tolower()` (minúsculas) e `gsub()` (substituição de padrões).
+
+```{r}
+#| eval: false
+
+# imprimir nome das colunas
+colnames(demografico)
+
+#> [1] "id"                     "nome"
+#> [3] "sexo"                   "data_nascimento"
+#> [5] "estado_civil"           "n_residentes_domicilio"
+#> [7] "renda_reais"            "escolaridade_anos"
+
+# deixar o nome das colunas com letras maiúsculas
+colnames(demografico) <- toupper(colnames(demografico))
+colnames(demografico)
+
+#> [1] "ID"                     "NOME"
+#> [3] "SEXO"                   "DATA_NASCIMENTO"
+#> [5] "ESTADO_CIVIL"           "N_RESIDENTES_DOMICILIO"
+#> [7] "RENDA_REAIS"            "ESCOLARIDADE_ANOS"
+
+# voltar para letras minúsculas
+colnames(demografico) <- tolower(colnames(demografico))
+colnames(demografico)
+
+#> [1] "id"                     "nome"
+#> [3] "sexo"                   "data_nascimento"
+#> [5] "estado_civil"           "n_residentes_domicilio"
+#> [7] "renda_reais"            "escolaridade_anos"
+```
+
+#### Normalizar variáveis textuais
+
+Vimos que `sexo` e `estado_civil` têm múltiplas variações de capitalização para a mesma categoria. A solução mais direta é converter tudo para maiúsculas com `toupper()`.
+
+```{r}
+#| eval: false
+
+# normalizando a variável 'sexo'
+demografico$sexo <- toupper(demografico$sexo)
+unique(demografico$sexo)
+
+#> [1] "F" "M"
+
+# normalizando a variável 'estado_civil'
+demografico$estado_civil <- toupper(demografico$estado_civil)
+unique(demografico$estado_civil)
+
+#> [1] "CASADO"   "VIUVO"   "SOLTEIRO"   "SEPARADO"   NA
+```
+
+#### Outros tratamentos de texto
+
+As funções `substr()` e `paste()` são úteis para recortar e combinar textos.
+
+```{r}
+#| eval: false
+
+xy <- "xis ípsilon"
+
+# recortar da primeira até a terceira letra
+x <- substr(xy, 1, 3)
+x
+
+#> [1] "xis"
+
+# juntar "xis" com "zê"
+xz <- paste(x, "zê")
+xz
+
+#> [1] "xis zê"
+```
+
+### Tratamento de valores nulos
+
+Valores nulos (`NA`) representam informações ausentes. Antes de removê-los, é importante entender quantos são e onde estão.
+
+```{r}
+#| eval: false
+
+# contagem de NAs por coluna
+colSums(is.na(demografico))
+
+#>                     id                   nome                   sexo
+#>                      0                      0                      0
+#>        data_nascimento           estado_civil n_residentes_domicilio
+#>                      0                     15                      0
+#>            renda_reais      escolaridade_anos
+#>                      0                      0
+```
+
+```{r}
+# remover linhas com NA em 'estado_civil'
+demografico <- demografico[!is.na(demografico$estado_civil), ]
+```
+
+::: {.callout-note}
+Neste caso, os 15 valores nulos representam menos de 1% dos registros, então a remoção é uma abordagem segura. Quando a proporção de NAs é maior — acima de 20%, por exemplo — removê-los pode introduzir viés, e técnicas de imputação (substituição por média, mediana ou modelos estatísticos) devem ser consideradas.
+:::
+
+### Correção da classe das variáveis
+
+#### Números
+
+Às vezes, uma variável que deveria conter números acaba sendo tratada como texto (`character`) após a importação — especialmente se houver algum caractere inesperado na coluna.
+
+No exemplo abaixo, a variável `escolaridade_anos` é convertida para texto propositalmente, apenas para demonstrar como identificar e corrigir esse problema.
+
+```{r}
+#| eval: false
+
+demografico$escolaridade_anos <- as.character(demografico$escolaridade_anos)
+class(demografico$escolaridade_anos)
+
+#> [1] "character"
+```
+
+Correção com `as.numeric()`:
+
+```{r}
+#| eval: false
+
+demografico$escolaridade_anos <- as.numeric(demografico$escolaridade_anos)
+class(demografico$escolaridade_anos)
+
+#> [1] "numeric"
+
+```
+
+#### Datas
+
+Datas também costumam ser importadas como texto. A função `as.Date()` faz a conversão, desde que você informe o formato correto com o argumento `format`.
+
+```{r}
+#| eval: false
+
+class(demografico$data_nascimento)
+
+#> [1] "character"
+
+demografico$data_nascimento <- as.Date(demografico$data_nascimento, format = "%d/%m/%Y")
+class(demografico$data_nascimento)
+
+#> [1] "Date"
+```
+
+::: {.callout-tip}
+Os códigos de formato seguem a convenção do R: `%d` = dia, `%m` = mês numérico, `%Y` = ano com quatro dígitos. Para a data `"18/01/1931"`, o formato correto é `"%d/%m/%Y"`.
+:::
+
+#### Categorias
+
+Variáveis categóricas como `sexo` e `estado_civil` devem ser convertidas para fator (`factor`). Isso indica ao R que elas representam categorias, não texto livre, o que melhora a exibição de tabelas e gráficos.
+
+```{r}
+#| eval: false
+
+class(demografico$sexo)
+
+#> [1] "character"
+
+# converter 'sexo' para fator
+demografico$sexo <- as.factor(demografico$sexo)
+class(demografico$sexo)
+
+#> [1] "factor"
+
+```
+
+```{r}
+#| eval: false
+
+class(demografico$estado_civil)
+
+#> [1] "character"
+
+# converter 'estado_civil' para fator
+demografico$estado_civil <- as.factor(demografico$estado_civil)
+class(demografico$estado_civil)
+
+#> [1] "factor"
+```
+
+```{r}
+str(demografico)
+```
+
+## 🔥 [Hora de praticar](ex3.html)

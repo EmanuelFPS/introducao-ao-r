@@ -1,0 +1,263 @@
+---
+title: "Projeto prático"
+---
+
+Você faz parte de uma equipe de vigilância epidemiológica do estado de Minas Gerais. A equipe coletou dados de **500 indivíduos** de 10 municípios diferentes, com o objetivo de estudar a prevalência de uma doença crônica e seus possíveis fatores associados.
+
+Os dados chegaram para você em um arquivo Excel, e como é comum em projetos reais, **estão longe de estar prontos para análise**.
+
+Seu trabalho é organizar esses dados, explorar os padrões e responder às perguntas da equipe, com evidências estatísticas.
+
+## 📫 Entrega
+
+A entrega do arquivo pode ser realizada no formato **.R** para o e-mail `emanuel.simoes@aluno.ufop.edu.br`, de modo que as correções possam ser feitas e contribuam para uma melhor compreensão do aluno.
+
+Sugestão de script:
+
+```{r}
+#| eval: false
+
+library(readxl)
+
+dados <- read_excel('data/demografico.xlsx')
+
+## QUESTÃO 1
+
+str(dados)
+summary(dados)
+
+# 1606 linhas e 8 colunas
+# data_nascimento está no formato character
+# sexo e estado_civil são categóricas e estão no formato character
+
+
+## QUESTÃO 2
+## ...
+```
+
+A ideia é manter respostas bem simples, para que o cursista não se perca durante a análise e possa usar suas próprias anotações como apoio. Em caso de dúvidas, é possível entrar em contato pelo mesmo e-mail de entrega.
+
+## 📦 Dados
+
+Importe o arquivo `dados_epidemiologicos.xlsx`, disponível na pasta `data/` do seu projeto.
+
+```{r}
+#| warning: false
+
+library(readxl)
+
+dados <- read_excel('data/dados_epidemiologicos.xlsx')
+```
+
+O banco contém as seguintes variáveis:
+
+```{r}
+#| echo: false
+#| warning: false
+
+library(gt)
+
+variaveis <- data.frame(
+  Variável = c("idade", "sexo", "cidade", "diagnostico", "imc", "pressao_sistolica"),
+  Tipo = c("Numérica", "Categórica", "Categórica", "Categórica", "Numérica", "Numérica"),
+  Descrição = c(
+    "Idade em anos completos",
+    "Sexo do participante",
+    "Município de residência",
+    "Diagnóstico da doença (Sim/Não)",
+    "Índice de Massa Corporal (kg/m²)",
+    "Pressão arterial sistólica (mmHg)"
+  )
+)
+
+variaveis |>
+  gt() |>
+  cols_align(align = "left") |>
+  cols_label(
+    Variável  = md("**Variável**"),
+    Tipo      = md("**Tipo**"),
+    Descrição = md("**Descrição**")
+  ) |>
+  tab_options(table.align = "left")
+```
+
+---
+
+## Parte 1 — Conhecendo e preparando os dados
+
+### Questão 1
+
+Inspecione o banco de dados e verifique quantas linhas e colunas ele tem. Também verifique se todas as classes estão corretas.
+
+> **Funções úteis:** `str()`, `summary()`
+
+---
+
+### Questão 2
+
+Verifique se há valores duplicados e valores nulos no banco. Quantos são? Em quais colunas estão concentrados?
+
+> **Funções úteis:** `sum(duplicated())`, `is.na()`, `colSums()`
+
+---
+
+### Questão 3
+
+Observe os valores únicos das variáveis `sexo` e `diagnostico`. Você vai notar que a mesma categoria foi registrada de formas diferentes ao longo do banco.
+
+Padronize ambas as variáveis para que:
+
+- `sexo` contenha apenas `"F"` e `"M"`
+- `diagnostico` contenha apenas `"SIM"` e `"NAO"`
+
+Após a padronização, converta as duas para fator.
+
+> **Funções úteis:** `unique()`, `toupper()`, `gsub()`, `as.factor()`
+
+::: {.callout-tip}
+Uma forma prática de substituir múltiplos valores de uma vez é combinando `toupper()` para normalizar a capitalização e depois `gsub()` para ajustar variações específicas.
+:::
+
+---
+
+### Questão 4
+
+Remova as linhas com valores nulos nas variáveis `diagnostico`, `imc` e `pressao_sistolica`, pois elas são essenciais para a análise. Para as demais variáveis com NA, mantenha os registros. Após a remoção, deve restar 470 observações.
+
+> **Funções úteis:** `is.na()`, indexação com `[ ]`
+
+---
+
+### Questão 5
+
+Crie duas novas variáveis no banco:
+
+**a)** `faixa_etaria`: categorize a idade nos seguintes grupos:
+
+| Faixa | Intervalo |
+|-------|-----------|
+| `"18-29"` | 18 a 29 anos |
+| `"30-39"` | 30 a 39 anos |
+| `"40-49"` | 40 a 49 anos |
+| `"50-59"` | 50 a 59 anos |
+| `"60-69"` | 60 a 69 anos |
+| `"70+"` | 70 anos ou mais |
+
+**b)** `grupo_risco`: classifique cada participante como `"Alto risco"` se tiver **IMC ≥ 30** e **pressão sistólica ≥ 140 mmHg** simultaneamente, e `"Baixo risco"` caso contrário. Converta para fator ao final.
+
+> **Funções úteis:** `ifelse()`, `as.factor()`
+
+---
+
+## Parte 2 — Análise descritiva
+
+### Questão 6
+
+Calcule para as variáveis `idade`, `imc` e `pressao_sistolica`:
+
+- Média
+- Mediana
+- Desvio padrão
+- Mínimo e máximo
+
+Organize os resultados e interprete brevemente: a distribuição de alguma variável parece assimétrica? O que isso significa?
+
+> **Funções úteis:** `mean()`, `median()`, `sd()`, `range()`, `summary()`
+
+---
+
+### Questão 7
+
+Construa uma tabela de frequência absoluta e relativa (%) para a variável `diagnostico`. Em seguida, faça o mesmo separando por `sexo`. Ou seja, uma tabela cruzada entre `diagnostico` e `sexo`.
+
+Qual é a prevalência geral da doença? Ela é diferente entre homens e mulheres?
+
+> **Funções úteis:** `table()`, `prop.table()`
+
+---
+
+### Questão 8
+
+Calcule a prevalência do diagnóstico (%) por `faixa_etaria`. 
+
+Existe algum padrão claro? Crie um gráfico de barras que mostre essa prevalência visualmente.
+
+> **Funções úteis:** `aggregate()`, `barplot()`
+
+::: {.callout-tip}
+Para calcular a prevalência por faixa, uma abordagem é usar `aggregate()` com `FUN = mean` em uma variável numérica `0/1` criada a partir do diagnóstico: `as.numeric(dados$diagnostico == "SIM")`.
+:::
+
+---
+
+## Parte 3 — Exploração e visualização
+
+### Questão 9
+
+Compare a distribuição do IMC e da pressão sistólica entre os grupos `diagnostico == "SIM"` e `diagnostico == "NAO"` usando boxplots lado a lado.
+
+O que os gráficos sugerem sobre a relação entre essas variáveis e o diagnóstico?
+
+> **Funções úteis:** `boxplot(variavel ~ grupo, data = ...)`
+
+---
+
+### Questão 10
+
+Calcule a correlação de Pearson entre `imc` e `pressao_sistolica`. O resultado é significativo? 
+
+Em seguida, produza um gráfico de dispersão entre as duas variáveis.
+
+> **Funções úteis:** `cor()`, `cor.test()`, `plot()`
+
+---
+
+## Parte 4 — Testes estatísticos
+
+### Questão 11
+
+A equipe quer saber se a **pressão sistólica média** é **significativamente diferente** entre os participantes diagnosticados e os não diagnosticados.
+
+Aplique o teste t adequado e interprete o resultado: há diferença significativa? Qual grupo apresenta maior pressão média?
+
+> **Funções úteis:** `t.test(variavel ~ grupo, data = ...)`
+
+---
+
+### Questão 12
+
+Existe associação entre o diagnóstico e o grupo de risco (`grupo_risco`) criado na Questão 5?
+
+Construa a tabela de contingência e aplique o teste qui-quadrado. Interprete o resultado.
+
+> **Funções úteis:** `table()`, `chisq.test()`
+
+---
+
+## Parte 5 — Síntese
+
+### Questão 13
+
+Com base em tudo que você analisou, escreva um pequeno parágrafo (3 a 5 linhas) resumindo os principais achados:
+
+- Qual é a prevalência geral da doença?
+- O risco aumenta com a idade?
+- IMC e pressão estão associados ao diagnóstico?
+- O grupo de alto risco concentra mais casos?
+
+> Esta questão não tem código — é uma interpretação livre com base nos resultados que você obteve.
+
+---
+
+## ✅ Checklist final
+
+Antes de entregar, verifique se você:
+
+- [ ] Padronizou e corrigiu as variáveis categóricas
+- [ ] Removeu os valores nulos essenciais
+- [ ] Criou `faixa_etaria` e `grupo_risco` corretamente
+- [ ] Calculou as medidas descritivas das variáveis numéricas
+- [ ] Construiu tabelas de frequência e calculou prevalências
+- [ ] Produziu pelo menos 3 gráficos (barras, boxplot, dispersão)
+- [ ] Aplicou e interpretou os testes t e qui-quadrado
+- [ ] Escreveu a síntese final (Questão 13)

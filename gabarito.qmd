@@ -1,0 +1,150 @@
+---
+title: "Gabarito"
+editor: visual
+---
+
+## Questão 1
+
+```{r}
+dados <- readxl::read_excel("data/dados_epidemiologicos.xlsx")
+
+str(dados)
+```
+
+## Questão 2
+
+```{r}
+sum(duplicated(dados))
+```
+Há um total de zero dados duplicados.
+```{r}
+colSums(is.na(dados))
+```
+Há 10 dados NAs em cada uma das colunas.
+
+## Questão 3
+
+```{r}
+dados$sexo <- substr(dados$sexo, 1, 1)
+dados$sexo <- toupper(dados$sexo)
+dados$sexo <- as.factor(dados$sexo)
+
+dados$diagnostico <- toupper(dados$diagnostico)
+dados$diagnostico <- as.factor(dados$diagnostico)
+```
+
+## Questão 4
+
+```{r}
+dados <- dados[!is.na(dados$diagnostico),]
+dados <- dados[!is.na(dados$imc),]
+dados <- dados[!is.na(dados$pressao_sistolica),]
+```
+
+## Questão 5
+
+### A)
+
+```{r}
+dados$faixa_etaria <- ifelse(dados$idade > 18 & dados$idade < 30, "18-29", 
+       ifelse(dados$idade > 29 & dados$idade < 40, "30-39",
+       ifelse(dados$idade > 39 & dados$idade < 50, "40-49",
+       ifelse(dados$idade > 49 & dados$idade < 60, "50-59",
+       ifelse(dados$idade > 59 & dados$idade < 70, "60-69",
+       ifelse(dados$idade > 69, "70+", NA))))))
+```
+
+### B)
+
+```{r}
+dados$grupo_risco <- ifelse(
+  dados$imc >= 30 & dados$pressao_sistolica >= 140, 
+  "Alto risco", 
+  "Baixo risco")
+```
+
+## Questão 6
+
+```{r}
+mean(dados$idade, na.rm = TRUE)
+median(dados$idade, na.rm = TRUE)
+sd(dados$idade, na.rm = TRUE)
+min(dados$idade, na.rm = TRUE)
+max(dados$idade, na.rm = TRUE)
+
+mean(dados$imc, na.rm = TRUE)
+median(dados$imc, na.rm = TRUE)
+sd(dados$imc, na.rm = TRUE)
+min(dados$imc, na.rm = TRUE)
+max(dados$imc, na.rm = TRUE)
+
+mean(dados$pressao_sistolica, na.rm = TRUE)
+median(dados$pressao_sistolica, na.rm = TRUE)
+sd(dados$pressao_sistolica, na.rm = TRUE)
+min(dados$pressao_sistolica, na.rm = TRUE)
+max(dados$pressao_sistolica, na.rm = TRUE)
+```
+
+## Questão 7
+
+```{r}
+table(dados$diagnostico)
+
+table(dados$sexo)
+
+table(dados$diagnostico, dados$sexo)
+
+```
+
+## Questão 8
+
+A prevalência consiste na proporção de pessoas diagnosticadas em relação à amostra. Neste caso, segmenta-se por faixa etária.
+
+
+
+```{r}
+dados$diag_num <- as.numeric(dados$diagnostico == "SIM")
+dados$diag_num
+
+prevalencia_diagnostico_por_fx_etaria <- aggregate(diag_num ~ faixa_etaria, dados, FUN = mean)
+
+prevalencia_diagnostico_por_fx_etaria$diag_num <- prevalencia_diagnostico_por_fx_etaria$diag_num * 100
+
+barplot(prevalencia_diagnostico_por_fx_etaria$diag_num,
+        names.arg = prevalencia_diagnostico_por_fx_etaria$faixa_etaria,
+        main = "Prevalência (%) por faixa etária",
+        ylab = "Prevalência (%)",
+        col = c("red", "blue", "green", "orange", "purple", "cyan"))
+
+```
+
+## Questão 9
+
+```{r}
+boxplot(imc ~ diagnostico, data = dados)
+```
+
+## Questão 10
+
+```{r}
+cor(dados$imc, dados$pressao_sistolica)
+
+cor.test(dados$imc, dados$pressao_sistolica)
+
+plot(dados$imc, dados$pressao_sistolica)
+```
+
+## Questão 11
+
+```{r}
+t.test(pressao_sistolica ~ diagnostico, data = dados)
+```
+
+## Questão 12
+
+```{r}
+diag_x_grupo_risco <- table(dados$diagnostico, dados$grupo_risco)
+
+chisq.test(diag_x_grupo_risco)
+```
+
