@@ -111,6 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <meta property="og:title" content="Operações e estrutura básica – GPENSC | UFOP">
 <meta property="og:description" content="">
+<meta property="og:image" content="images/imc.png">
 <meta property="og:site_name" content="GPENSC | UFOP">
 </head>
 
@@ -182,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Análise, interpretação e apresentação</span></a>
+ <span class="menu-text">Análise e apresentação</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -196,23 +197,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">SUMÁRIO</h2>
-   
-  <ul>
-  <li><a href="#operações-aritméticas" id="toc-operações-aritméticas" class="nav-link active" data-scroll-target="#operações-aritméticas">➕ Operações aritméticas</a></li>
-  <li><a href="#operações-lógicas" id="toc-operações-lógicas" class="nav-link" data-scroll-target="#operações-lógicas">🧩 Operações lógicas</a></li>
-  <li><a href="#variáveis-classes-e-objetos" id="toc-variáveis-classes-e-objetos" class="nav-link" data-scroll-target="#variáveis-classes-e-objetos">🏷️ Variáveis, classes e objetos</a></li>
-  <li><a href="#vetores-e-seleção-de-elementos" id="toc-vetores-e-seleção-de-elementos" class="nav-link" data-scroll-target="#vetores-e-seleção-de-elementos">🔢 Vetores e seleção de elementos</a>
-  <ul class="collapse">
-  <li><a href="#como-criar-vetores" id="toc-como-criar-vetores" class="nav-link" data-scroll-target="#como-criar-vetores">Como criar vetores</a></li>
-  <li><a href="#selecionar-elementos-por-índice" id="toc-selecionar-elementos-por-índice" class="nav-link" data-scroll-target="#selecionar-elementos-por-índice">Selecionar elementos por índice</a></li>
-  <li><a href="#selecionar-elementos-com-lógica" id="toc-selecionar-elementos-com-lógica" class="nav-link" data-scroll-target="#selecionar-elementos-com-lógica">Selecionar elementos com lógica</a></li>
-  </ul></li>
-  <li><a href="#hora-de-praticar" id="toc-hora-de-praticar" class="nav-link" data-scroll-target="#hora-de-praticar">🔥 Hora de praticar</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -237,28 +223,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Toda grande análise começa com coisas simples: somar, comparar, organizar. Parece básico, e é mesmo. Mas é como aprender acordes no violão: no começo são só posições, depois viram música. Aqui você começa a perceber que pequenas operações, quando bem feitas, viram raciocínios poderosos.</p>
-<section id="operações-aritméticas" class="level2">
-<h2 class="anchored" data-anchor-id="operações-aritméticas">➕ Operações aritméticas</h2>
-<p>São usadas para fazer <strong>contas com números</strong> e a saída sempre são <strong>números</strong>.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">➕ Operações aritméticas e lógicas</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">🏷️ Variáveis, classes e objetos</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">🔢 Vetores e seleção de elementos</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<section id="operações-aritméticas" class="level3">
+<h3 class="anchored" data-anchor-id="operações-aritméticas">Operações aritméticas</h3>
+<p>As operações aritméticas são usadas para fazer <strong>contas com números</strong> e a saída sempre são <strong>números</strong>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="oogvipagoy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#oogvipagoy table {
+<div id="trqvavoapq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#trqvavoapq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#oogvipagoy thead, #oogvipagoy tbody, #oogvipagoy tfoot, #oogvipagoy tr, #oogvipagoy td, #oogvipagoy th {
+#trqvavoapq thead, #trqvavoapq tbody, #trqvavoapq tfoot, #trqvavoapq tr, #trqvavoapq td, #trqvavoapq th {
   border-style: none;
 }
 
-#oogvipagoy p {
+#trqvavoapq p {
   margin: 0;
   padding: 0;
 }
 
-#oogvipagoy .gt_table {
+#trqvavoapq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -284,12 +274,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#oogvipagoy .gt_caption {
+#trqvavoapq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#oogvipagoy .gt_title {
+#trqvavoapq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -301,7 +291,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#oogvipagoy .gt_subtitle {
+#trqvavoapq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -313,7 +303,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#oogvipagoy .gt_heading {
+#trqvavoapq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -325,13 +315,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#oogvipagoy .gt_bottom_border {
+#trqvavoapq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#oogvipagoy .gt_col_headings {
+#trqvavoapq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -346,7 +336,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#oogvipagoy .gt_col_heading {
+#trqvavoapq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -366,7 +356,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#oogvipagoy .gt_column_spanner_outer {
+#trqvavoapq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -378,15 +368,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#oogvipagoy .gt_column_spanner_outer:first-child {
+#trqvavoapq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#oogvipagoy .gt_column_spanner_outer:last-child {
+#trqvavoapq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#oogvipagoy .gt_column_spanner {
+#trqvavoapq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -398,11 +388,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#oogvipagoy .gt_spanner_row {
+#trqvavoapq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#oogvipagoy .gt_group_heading {
+#trqvavoapq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -428,7 +418,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#oogvipagoy .gt_empty_group_heading {
+#trqvavoapq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -443,15 +433,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#oogvipagoy .gt_from_md > :first-child {
+#trqvavoapq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#oogvipagoy .gt_from_md > :last-child {
+#trqvavoapq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#oogvipagoy .gt_row {
+#trqvavoapq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -470,7 +460,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#oogvipagoy .gt_stub {
+#trqvavoapq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -483,7 +473,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#oogvipagoy .gt_stub_row_group {
+#trqvavoapq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -497,15 +487,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#oogvipagoy .gt_row_group_first td {
+#trqvavoapq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#oogvipagoy .gt_row_group_first th {
+#trqvavoapq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#oogvipagoy .gt_summary_row {
+#trqvavoapq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -515,16 +505,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#oogvipagoy .gt_first_summary_row {
+#trqvavoapq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#oogvipagoy .gt_first_summary_row.thick {
+#trqvavoapq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#oogvipagoy .gt_last_summary_row {
+#trqvavoapq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -534,7 +524,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#oogvipagoy .gt_grand_summary_row {
+#trqvavoapq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -544,7 +534,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#oogvipagoy .gt_first_grand_summary_row {
+#trqvavoapq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -554,7 +544,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#oogvipagoy .gt_last_grand_summary_row_top {
+#trqvavoapq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -564,11 +554,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#oogvipagoy .gt_striped {
+#trqvavoapq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#oogvipagoy .gt_table_body {
+#trqvavoapq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -577,7 +567,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#oogvipagoy .gt_footnotes {
+#trqvavoapq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -591,7 +581,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#oogvipagoy .gt_footnote {
+#trqvavoapq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -600,7 +590,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#oogvipagoy .gt_sourcenotes {
+#trqvavoapq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -614,7 +604,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#oogvipagoy .gt_sourcenote {
+#trqvavoapq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -622,72 +612,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#oogvipagoy .gt_left {
+#trqvavoapq .gt_left {
   text-align: left;
 }
 
-#oogvipagoy .gt_center {
+#trqvavoapq .gt_center {
   text-align: center;
 }
 
-#oogvipagoy .gt_right {
+#trqvavoapq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#oogvipagoy .gt_font_normal {
+#trqvavoapq .gt_font_normal {
   font-weight: normal;
 }
 
-#oogvipagoy .gt_font_bold {
+#trqvavoapq .gt_font_bold {
   font-weight: bold;
 }
 
-#oogvipagoy .gt_font_italic {
+#trqvavoapq .gt_font_italic {
   font-style: italic;
 }
 
-#oogvipagoy .gt_super {
+#trqvavoapq .gt_super {
   font-size: 65%;
 }
 
-#oogvipagoy .gt_footnote_marks {
+#trqvavoapq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#oogvipagoy .gt_asterisk {
+#trqvavoapq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#oogvipagoy .gt_indent_1 {
+#trqvavoapq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#oogvipagoy .gt_indent_2 {
+#trqvavoapq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#oogvipagoy .gt_indent_3 {
+#trqvavoapq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#oogvipagoy .gt_indent_4 {
+#trqvavoapq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#oogvipagoy .gt_indent_5 {
+#trqvavoapq .gt_indent_5 {
   text-indent: 25px;
 }
 
-#oogvipagoy .katex-display {
+#trqvavoapq .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#oogvipagoy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#trqvavoapq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -772,28 +762,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="operações-lógicas" class="level2">
-<h2 class="anchored" data-anchor-id="operações-lógicas">🧩 Operações lógicas</h2>
-<p>São usadas para fazer <strong>comparações</strong> ou <strong>decisões</strong> e a saída pode ser <code>TRUE</code> ou <code>FALSE</code>.</p>
+<section id="operações-lógicas" class="level3">
+<h3 class="anchored" data-anchor-id="operações-lógicas">Operações lógicas</h3>
+<p>Já as operações lógicas são usadas para fazer <strong>comparações</strong> ou <strong>decisões</strong> e a saída pode ser <code>TRUE</code> ou <code>FALSE</code>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="hndadhwxgv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hndadhwxgv table {
+<div id="sdjqcctbbn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#sdjqcctbbn table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#hndadhwxgv thead, #hndadhwxgv tbody, #hndadhwxgv tfoot, #hndadhwxgv tr, #hndadhwxgv td, #hndadhwxgv th {
+#sdjqcctbbn thead, #sdjqcctbbn tbody, #sdjqcctbbn tfoot, #sdjqcctbbn tr, #sdjqcctbbn td, #sdjqcctbbn th {
   border-style: none;
 }
 
-#hndadhwxgv p {
+#sdjqcctbbn p {
   margin: 0;
   padding: 0;
 }
 
-#hndadhwxgv .gt_table {
+#sdjqcctbbn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -819,12 +809,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#hndadhwxgv .gt_caption {
+#sdjqcctbbn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#hndadhwxgv .gt_title {
+#sdjqcctbbn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -836,7 +826,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#hndadhwxgv .gt_subtitle {
+#sdjqcctbbn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -848,7 +838,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#hndadhwxgv .gt_heading {
+#sdjqcctbbn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -860,13 +850,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#hndadhwxgv .gt_bottom_border {
+#sdjqcctbbn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hndadhwxgv .gt_col_headings {
+#sdjqcctbbn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -881,7 +871,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#hndadhwxgv .gt_col_heading {
+#sdjqcctbbn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -901,7 +891,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#hndadhwxgv .gt_column_spanner_outer {
+#sdjqcctbbn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -913,15 +903,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#hndadhwxgv .gt_column_spanner_outer:first-child {
+#sdjqcctbbn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hndadhwxgv .gt_column_spanner_outer:last-child {
+#sdjqcctbbn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hndadhwxgv .gt_column_spanner {
+#sdjqcctbbn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -933,11 +923,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#hndadhwxgv .gt_spanner_row {
+#sdjqcctbbn .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#hndadhwxgv .gt_group_heading {
+#sdjqcctbbn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -963,7 +953,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#hndadhwxgv .gt_empty_group_heading {
+#sdjqcctbbn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -978,15 +968,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#hndadhwxgv .gt_from_md > :first-child {
+#sdjqcctbbn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hndadhwxgv .gt_from_md > :last-child {
+#sdjqcctbbn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hndadhwxgv .gt_row {
+#sdjqcctbbn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1005,7 +995,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#hndadhwxgv .gt_stub {
+#sdjqcctbbn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1018,7 +1008,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hndadhwxgv .gt_stub_row_group {
+#sdjqcctbbn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1032,15 +1022,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#hndadhwxgv .gt_row_group_first td {
+#sdjqcctbbn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hndadhwxgv .gt_row_group_first th {
+#sdjqcctbbn .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#hndadhwxgv .gt_summary_row {
+#sdjqcctbbn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1050,16 +1040,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hndadhwxgv .gt_first_summary_row {
+#sdjqcctbbn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hndadhwxgv .gt_first_summary_row.thick {
+#sdjqcctbbn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hndadhwxgv .gt_last_summary_row {
+#sdjqcctbbn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1069,7 +1059,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#hndadhwxgv .gt_grand_summary_row {
+#sdjqcctbbn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1079,7 +1069,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hndadhwxgv .gt_first_grand_summary_row {
+#sdjqcctbbn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1089,7 +1079,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#hndadhwxgv .gt_last_grand_summary_row_top {
+#sdjqcctbbn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1099,11 +1089,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#hndadhwxgv .gt_striped {
+#sdjqcctbbn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hndadhwxgv .gt_table_body {
+#sdjqcctbbn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1112,7 +1102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#hndadhwxgv .gt_footnotes {
+#sdjqcctbbn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1126,7 +1116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#hndadhwxgv .gt_footnote {
+#sdjqcctbbn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1135,7 +1125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hndadhwxgv .gt_sourcenotes {
+#sdjqcctbbn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1149,7 +1139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#hndadhwxgv .gt_sourcenote {
+#sdjqcctbbn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1157,72 +1147,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hndadhwxgv .gt_left {
+#sdjqcctbbn .gt_left {
   text-align: left;
 }
 
-#hndadhwxgv .gt_center {
+#sdjqcctbbn .gt_center {
   text-align: center;
 }
 
-#hndadhwxgv .gt_right {
+#sdjqcctbbn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hndadhwxgv .gt_font_normal {
+#sdjqcctbbn .gt_font_normal {
   font-weight: normal;
 }
 
-#hndadhwxgv .gt_font_bold {
+#sdjqcctbbn .gt_font_bold {
   font-weight: bold;
 }
 
-#hndadhwxgv .gt_font_italic {
+#sdjqcctbbn .gt_font_italic {
   font-style: italic;
 }
 
-#hndadhwxgv .gt_super {
+#sdjqcctbbn .gt_super {
   font-size: 65%;
 }
 
-#hndadhwxgv .gt_footnote_marks {
+#sdjqcctbbn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#hndadhwxgv .gt_asterisk {
+#sdjqcctbbn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hndadhwxgv .gt_indent_1 {
+#sdjqcctbbn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hndadhwxgv .gt_indent_2 {
+#sdjqcctbbn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hndadhwxgv .gt_indent_3 {
+#sdjqcctbbn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hndadhwxgv .gt_indent_4 {
+#sdjqcctbbn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hndadhwxgv .gt_indent_5 {
+#sdjqcctbbn .gt_indent_5 {
   text-indent: 25px;
 }
 
-#hndadhwxgv .katex-display {
+#sdjqcctbbn .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#hndadhwxgv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#sdjqcctbbn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1333,18 +1323,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>No caso de <code>x | y</code>, é preciso que pelo menos uma das condições seja verdadeira para retornar <code>TRUE</code>, caso contrário, retornará <code>FALSE</code>.</p>
-<p>Enquanto para <code>x &amp; y</code>, todas as condições precisam ser verdadeiras para retornar <code>TRUE</code>, senão, retornará <code>FALSE</code>.</p>
-<p>Já para <code>x %in% y</code>, tanto <code>x</code> quanto <code>y</code> são <strong>vetores</strong>, cuja definição será abordada mais adiante.</p>
+<p>No caso de <code>x | y</code>, é preciso que pelo menos uma das condições seja verdadeira para retornar <code>TRUE</code>, caso contrário, retornará <code>FALSE</code>. Enquanto para <code>x &amp; y</code>, todas as condições precisam ser verdadeiras para retornar <code>TRUE</code>, senão, retornará <code>FALSE</code>. Já para <code>x %in% y</code>, tanto <code>x</code> quanto <code>y</code> são <strong>vetores</strong>, cuja definição será abordada mais adiante.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Prática 2.01: Cálculo e classificação de IMC
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Davi tem 19 anos, 1,68m de altura e pesa 72kg.</p>
+<p><strong>a)</strong> Calcule o IMC de Davi usando operadores aritméticos. A fórmula é: peso dividido pela altura ao quadrado.</p>
+<p><strong>b)</strong> A tabela abaixo mostra as classificações do IMC. Use operadores lógicos para verificar se o IMC de Davi se enquadra em cada uma delas.</p>
+<p><img src="images/imc.png" class="img-fluid"></p>
+<p><strong>c)</strong> Verifique se o IMC de Davi está na faixa de peso normal (entre 18,5 e 24,9).</p>
+<p><strong>d)</strong> Ana tem IMC 20,4. Use operadores lógicos para verificar se pelo menos um dos dois está acima do peso normal, e depois se os dois estão.</p>
+</div>
+</div>
 </section>
-<section id="variáveis-classes-e-objetos" class="level2">
-<h2 class="anchored" data-anchor-id="variáveis-classes-e-objetos">🏷️ Variáveis, classes e objetos</h2>
-<p><strong>Regras para nomear uma variável:</strong></p>
-<ul>
-<li><p>Nomes de variáveis devem começar com uma <strong>letra</strong>.</p></li>
-<li><p>Podem conter <strong>letras</strong>, <strong>números</strong>, <strong>pontos</strong> (.) e <strong>sublinhados</strong> (_).</p></li>
-<li><p><strong>Maiúsculas</strong> e <strong>minúsculas</strong> são consideradas <strong>diferentes</strong>.</p></li>
-</ul>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>O nome das variáveis podem conter <strong>letras</strong>, <strong>números</strong>, <strong>pontos</strong> (.) e <strong>sublinhados</strong> (_), mas devem começar com uma <strong>letra</strong>. Lembre-se também que <strong>MAIÚSCULAS</strong> e <strong>minúsculas</strong> são consideradas <strong>diferentes</strong>.</p>
 <p><strong>As principais classes de objetos são:</strong></p>
 <ul>
 <li><p><code>numeric</code>: números, que podem ser <strong>inteiros</strong>, sem casas decimais, ou <strong>reais</strong>, com casas decimais.</p></li>
@@ -1359,122 +1360,200 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># imprime o valor da variável</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>variavel_numerica</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.5</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># imprime a classe da variável 'variavel_numerica'</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(variavel_numerica)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "numeric"</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># imprime a classe da variável</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(variavel_numerica)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.5</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
 </div>
 <p>Abaixo, a variável <code>variavel_numerica</code> é convertida para texto com a função <code>as.character</code>. Observe também que textos são escritos entre aspas.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># converte 'variavel_numerica' para texto (character)</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>variavel_textual <span class="ot">&lt;-</span> <span class="fu">as.character</span>(variavel_numerica)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>variavel_textual</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2.5"</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># imprime a classe da variável 'variavel_textual'</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(variavel_textual)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "character"</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># reatribui um valor para a variavel 'variavel_textual'</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>variavel_textual <span class="ot">&lt;-</span> <span class="st">"dois ponto cinco"</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>variavel_textual</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "dois ponto cinco"</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># converte 'variavel_numerica' para texto (character)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>variavel_textual <span class="ot">&lt;-</span> <span class="fu">as.character</span>(variavel_numerica)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>variavel_textual</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># imprime a classe da variável 'variavel_textual'</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(variavel_textual)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># reatribui um valor para a variavel 'variavel_textual'</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>variavel_textual <span class="ot">&lt;-</span> <span class="st">"dois ponto cinco"</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>variavel_textual</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2.5"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "dois ponto cinco"</code></pre>
+</div>
 </div>
 <p>Agora, obtém-se uma variável lógica a partir das variáveis <code>variavel_numerica</code> e <code>variavel_textual</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># verifica se 2.5 é igual a "dois ponto cinco", a partir do operador lógico '=='</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>verificacao <span class="ot">&lt;-</span> variavel_numerica <span class="sc">==</span> variavel_textual</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>verificacao</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(verificacao)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "logical"</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># pergunta se a variável 'verificacao' armazena um objeto de classe 'logical'</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">is.logical</span>(verificacao)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># verifica se 2.5 é igual a "dois ponto cinco", a partir do operador lógico '=='</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>verificacao <span class="ot">&lt;-</span> variavel_numerica <span class="sc">==</span> variavel_textual</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>verificacao</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(verificacao)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># pergunta se a variável 'verificacao' armazena um objeto de classe 'logical'</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">is.logical</span>(verificacao)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="vetores-e-seleção-de-elementos" class="level2">
-<h2 class="anchored" data-anchor-id="vetores-e-seleção-de-elementos">🔢 Vetores e seleção de elementos</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "logical"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Prática 2.02: Variáveis e classes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Agora que você já calculou o IMC de Davi manualmente, vamos organizar essas informações em variáveis.</p>
+<p><strong>a)</strong> Crie variáveis para o nome, idade, altura e peso de Davi. Use class() para confirmar a classe de cada uma.</p>
+<p><strong>b)</strong> Calcule e armazene o IMC de Davi em uma variável. Em seguida, use is.numeric() para confirmar que o resultado é numérico.</p>
+<p><strong>c)</strong> Crie uma variável em_peso_normal que armazene o resultado da verificação lógica do item c) da prática anterior. Qual a classe dessa variável?</p>
+</div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <p>Vetores armazenam vários elementos de mesma classe.</p>
 <section id="como-criar-vetores" class="level3">
 <h3 class="anchored" data-anchor-id="como-criar-vetores">Como criar vetores</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vetor de nomes</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>vetor_de_nomes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Bernardo"</span>, <span class="st">"Danilo"</span>, <span class="st">"José"</span>, <span class="st">"Emanuel"</span>, <span class="st">"Kauann"</span>, <span class="st">"Guilherme"</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>vetor_de_nomes</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "Bernardo" "Danilo" "José" "Emanuel" "Kauann" "Guilherme"</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># vetor de números</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>vetor_de_numeros <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># é o mesmo que:</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>vetor_de_numeros <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">9</span>, <span class="dv">1</span>) <span class="co"># sequência de 0 a 9, saltando de 1 em 1</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># ou:</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>vetor_de_numeros <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">9</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>vetor_de_numeros</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0 1 2 3 4 5 6 7 8 9</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># segundo vetor de números</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>vetor_de_numeros_2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># é o mesmo que:</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>vetor_de_numeros_2 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">3</span>, <span class="dv">5</span>) <span class="co"># repetir o número 3 cinco vezes</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>vetor_de_numeros_2</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3 3 3 3 3</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vetor de nomes</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>vetor_de_nomes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Bernardo"</span>, <span class="st">"Danilo"</span>, <span class="st">"José"</span>, <span class="st">"Emanuel"</span>, <span class="st">"Kauann"</span>, <span class="st">"Guilherme"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>vetor_de_nomes</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Bernardo"  "Danilo"    "José"      "Emanuel"   "Kauann"    "Guilherme"</code></pre>
 </div>
-<p>Cada elemento possui um <strong>indexador associado</strong>, de modo que o primeiro elemento possui índice 1, o segundo possui índice 2, e assim por diante.</p>
-<p>Ou seja, “<em>Bernardo</em>” possui índice 1, “<em>Danilo</em>” possui índice 2, “<em>José</em>” possui índice 3, e assim por diante.</p>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vetor de números</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>vetor_de_numeros <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># é o mesmo que:</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>vetor_de_numeros <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">9</span>, <span class="dv">1</span>) <span class="co"># sequência de 0 a 9, saltando de 1 em 1</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ou:</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>vetor_de_numeros <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">9</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>vetor_de_numeros</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0 1 2 3 4 5 6 7 8 9</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># segundo vetor de números</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>vetor_de_numeros_2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># é o mesmo que:</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>vetor_de_numeros_2 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">3</span>, <span class="dv">5</span>) <span class="co"># repetir o número 3 cinco vezes</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>vetor_de_numeros_2</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3 3 3 3 3</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Prática 2.03: Criando vetores numéricos
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Crie os vetores abaixo usando a forma mais curta possível:</p>
+<p><strong>a)</strong> Números de 1 a 10.</p>
+<p><strong>b)</strong> Números de 0 a 100, de 10 em 10.</p>
+<p><strong>c)</strong> O número 5 repetido 8 vezes.</p>
+</div>
+</div>
 </section>
 <section id="selecionar-elementos-por-índice" class="level3">
 <h3 class="anchored" data-anchor-id="selecionar-elementos-por-índice">Selecionar elementos por índice</h3>
+<p>Cada elemento possui um <strong>indexador associado</strong>, de modo que o primeiro elemento possui índice 1, o segundo possui índice 2, e assim por diante.</p>
+<p>Ou seja, “<em>Bernardo</em>” possui índice 1, “<em>Danilo</em>” possui índice 2, “<em>José</em>” possui índice 3, e assim por diante.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># seleciona um elemento</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>vetor_de_nomes[<span class="dv">2</span>]</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "Danilo"</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># seleciona elementos seguidos</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>vetor_de_nomes[<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "Danilo" "José" "Emanuel" "Kauann"</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># seleciona elementos em posições específicas</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>vetor_de_nomes[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">6</span>)]</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "Danilo" "Guilherme"</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># seleciona um elemento</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>vetor_de_nomes[<span class="dv">2</span>]</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Danilo"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># seleciona elementos seguidos</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>vetor_de_nomes[<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Danilo"  "José"    "Emanuel" "Kauann" </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># seleciona elementos em posições específicas</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>vetor_de_nomes[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">6</span>)]</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Danilo"    "Guilherme"</code></pre>
+</div>
 </div>
 </section>
 <section id="selecionar-elementos-com-lógica" class="level3">
 <h3 class="anchored" data-anchor-id="selecionar-elementos-com-lógica">Selecionar elementos com lógica</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># seleciona os nomes diferentes de "Kauann"</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>vetor_de_nomes[vetor_de_nomes <span class="sc">!=</span> <span class="st">"Kauann"</span>]</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "Bernardo" "Danilo" "José" "Emanuel" "Guilherme"</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># seleciona os elementos numéricos maiores do que 3</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>vetor_de_numeros[vetor_de_numeros <span class="sc">&gt;</span> <span class="dv">3</span>]</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4 5 6 7 8 9</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># seleciona os nomes diferentes de "Kauann"</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>vetor_de_nomes[vetor_de_nomes <span class="sc">!=</span> <span class="st">"Kauann"</span>]</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Bernardo"  "Danilo"    "José"      "Emanuel"   "Guilherme"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># seleciona os elementos numéricos maiores do que 3</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>vetor_de_numeros[vetor_de_numeros <span class="sc">&gt;</span> <span class="dv">3</span>]</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4 5 6 7 8 9</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Prática 2.04: Selecionando elementos dos vetores
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>O vetor abaixo representa os batimentos cardíacos (bpm) medidos de 8 pacientes:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>bpm <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">72</span>, <span class="dv">85</span>, <span class="dv">91</span>, <span class="dv">68</span>, <span class="dv">77</span>, <span class="dv">104</span>, <span class="dv">83</span>, <span class="dv">95</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>a)</strong> Selecione o terceiro valor do vetor.</p>
+<p><strong>b)</strong> Selecione os valores do segundo ao quinto elemento.</p>
+<p><strong>c)</strong> Selecione apenas os valores acima de 90 bpm.</p>
+<p><strong>d)</strong> Quantos pacientes têm bpm acima de 90? Use <code>sum()</code>.</p>
+</div>
 </div>
 </section>
-</section>
-<section id="hora-de-praticar" class="level2">
-<h2 class="anchored" data-anchor-id="hora-de-praticar">🔥 <a href="ex2.html">Hora de praticar</a></h2>
+</div>
+</div>
+</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -35,7 +35,7 @@ website:
       - href: 4.qmd
         text: Manipulação
       - href: 5.qmd
-        text: Análise, interpretação e apresentação
+        text: Análise e apresentação
       - href: projeto-pratico.qmd
         text: Projeto prático
 

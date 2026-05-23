@@ -13,9 +13,13 @@ pacman::p_load(gt, knitr, tidyverse)
 
 Toda grande análise começa com coisas simples: somar, comparar, organizar. Parece básico, e é mesmo. Mas é como aprender acordes no violão: no começo são só posições, depois viram música. Aqui você começa a perceber que pequenas operações, quando bem feitas, viram raciocínios poderosos.
 
-## ➕ Operações aritméticas
+::: {.panel-tabset}
 
-São usadas para fazer **contas com números** e a saída sempre são **números**.
+## ➕ Operações aritméticas e lógicas
+
+### Operações aritméticas
+
+As operações aritméticas são usadas para fazer **contas com números** e a saída sempre são **números**.
 
 ```{r}
 #| echo: false
@@ -71,9 +75,9 @@ operadores_df %>%
   )
 ```
 
-## 🧩 Operações lógicas
+### Operações lógicas
 
-São usadas para fazer **comparações** ou **decisões** e a saída pode ser `TRUE` ou `FALSE`.
+Já as operações lógicas são usadas para fazer **comparações** ou **decisões** e a saída pode ser `TRUE` ou `FALSE`.
 
 ```{r}
 #| echo: false
@@ -113,31 +117,39 @@ op_logic %>%
   )
 ```
 
-No caso de `x | y`, é preciso que pelo menos uma das condições seja verdadeira para retornar `TRUE`, caso contrário, retornará `FALSE`. 
+No caso de `x | y`, é preciso que pelo menos uma das condições seja verdadeira para retornar `TRUE`, caso contrário, retornará `FALSE`. Enquanto para `x & y`, todas as condições precisam ser verdadeiras para retornar `TRUE`, senão, retornará `FALSE`. Já para `x %in% y`, tanto `x` quanto `y` são **vetores**, cuja definição será abordada mais adiante.
 
-Enquanto para `x & y`, todas as condições precisam ser verdadeiras para retornar `TRUE`, senão, retornará `FALSE`.
+::: {.callout-note}
 
-Já para `x %in% y`, tanto `x` quanto `y` são **vetores**, cuja definição será abordada mais adiante.
+### Prática 2.01: Cálculo e classificação de IMC
+
+Davi tem 19 anos, 1,68m de altura e pesa 72kg.
+
+**a)** Calcule o IMC de Davi usando operadores aritméticos. A fórmula é: peso dividido pela altura ao quadrado.
+
+**b)** A tabela abaixo mostra as classificações do IMC. Use operadores lógicos para verificar se o IMC de Davi se enquadra em cada uma delas.
+
+![](images/imc.png)
+
+**c)** Verifique se o IMC de Davi está na faixa de peso normal (entre 18,5 e 24,9).
+
+**d)** Ana tem IMC 20,4. Use operadores lógicos para verificar se pelo menos um dos dois está acima do peso normal, e depois se os dois estão.
+
+:::
 
 ## 🏷️ Variáveis, classes e objetos
 
-**Regras para nomear uma variável:**
-
--   Nomes de variáveis devem começar com uma **letra**.
-
--   Podem conter **letras**, **números**, **pontos** (.) e **sublinhados** (_).
-
--   **Maiúsculas** e **minúsculas** são consideradas **diferentes**.
+O nome das variáveis podem conter **letras**, **números**, **pontos** (.) e **sublinhados** (\_), mas devem começar com uma **letra**. Lembre-se também que **MAIÚSCULAS** e **minúsculas** são consideradas **diferentes**.
 
 **As principais classes de objetos são:**
 
--   `numeric`: números, que podem ser **inteiros**, sem casas decimais, ou **reais**, com casas decimais.
+- `numeric`: números, que podem ser **inteiros**, sem casas decimais, ou **reais**, com casas decimais.
 
--   `character`: textos.
+- `character`: textos.
 
--   `logical`: **TRUE** ou **FALSE**.
+- `logical`: **TRUE** ou **FALSE**.
 
--   `factor`: categorias.
+- `factor`: categorias.
 
 No código abaixo, foi atribuido à variável `variavel_numerica` um objeto de classe `numeric` com valor `2.5`.
 
@@ -149,13 +161,20 @@ variavel_numerica <- 2.5
 # imprime o valor da variável
 variavel_numerica
 
-#> [1] 2.5
-
-# imprime a classe da variável 'variavel_numerica'
+# imprime a classe da variável
 class(variavel_numerica)
+```
 
-#> [1] "numeric"
+```{r}
+#| echo: false
 
+# atribuição
+variavel_numerica <- 2.5 
+# imprime o valor da variável
+variavel_numerica
+
+# imprime a classe da variável
+class(variavel_numerica)
 ```
 
 Abaixo, a variável `variavel_numerica` é convertida para texto com a função `as.character`. Observe também que textos são escritos entre aspas.
@@ -167,19 +186,27 @@ Abaixo, a variável `variavel_numerica` é convertida para texto com a função 
 variavel_textual <- as.character(variavel_numerica)
 variavel_textual
 
-#> [1] "2.5"
-
 # imprime a classe da variável 'variavel_textual'
 class(variavel_textual)
-
-#> [1] "character"
 
 # reatribui um valor para a variavel 'variavel_textual'
 variavel_textual <- "dois ponto cinco"
 variavel_textual
+```
 
-#> [1] "dois ponto cinco"
+```{r}
+#| echo: false
 
+# converte 'variavel_numerica' para texto (character)
+variavel_textual <- as.character(variavel_numerica)
+variavel_textual
+
+# imprime a classe da variável 'variavel_textual'
+class(variavel_textual)
+
+# reatribui um valor para a variavel 'variavel_textual'
+variavel_textual <- "dois ponto cinco"
+variavel_textual
 ```
 
 Agora, obtém-se uma variável lógica a partir das variáveis `variavel_numerica` e `variavel_textual`.
@@ -191,18 +218,40 @@ Agora, obtém-se uma variável lógica a partir das variáveis `variavel_numeric
 verificacao <- variavel_numerica == variavel_textual
 verificacao
 
-#> [1] FALSE
-
 class(verificacao)
-
-#> [1] "logical"
 
 # pergunta se a variável 'verificacao' armazena um objeto de classe 'logical'
 is.logical(verificacao)
-
-#> [1] TRUE
-
 ```
+
+```{r}
+#| echo: false
+
+# verifica se 2.5 é igual a "dois ponto cinco", a partir do operador lógico '=='
+verificacao <- variavel_numerica == variavel_textual
+verificacao
+
+class(verificacao)
+
+# pergunta se a variável 'verificacao' armazena um objeto de classe 'logical'
+is.logical(verificacao)
+```
+
+---
+
+::: {.callout-note}
+
+### Prática 2.02: Variáveis e classes
+
+Agora que você já calculou o IMC de Davi manualmente, vamos organizar essas informações em variáveis.
+
+**a)** Crie variáveis para o nome, idade, altura e peso de Davi. Use class() para confirmar a classe de cada uma.
+
+**b)** Calcule e armazene o IMC de Davi em uma variável. Em seguida, use is.numeric() para confirmar que o resultado é numérico.
+
+**c)** Crie uma variável em_peso_normal que armazene o resultado da verificação lógica do item c) da prática anterior. Qual a classe dessa variável?
+
+:::
 
 ## 🔢 Vetores e seleção de elementos
 
@@ -211,14 +260,12 @@ Vetores armazenam vários elementos de mesma classe.
 ### Como criar vetores
 
 ```{r}
-#| eval: false
-
 # vetor de nomes
 vetor_de_nomes <- c("Bernardo", "Danilo", "José", "Emanuel", "Kauann", "Guilherme")
 vetor_de_nomes
+```
 
-#> [1] "Bernardo" "Danilo" "José" "Emanuel" "Kauann" "Guilherme"
-
+```{r}
 # vetor de números
 vetor_de_numeros <- c(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
 # é o mesmo que:
@@ -226,60 +273,81 @@ vetor_de_numeros <- seq(0, 9, 1) # sequência de 0 a 9, saltando de 1 em 1
 # ou:
 vetor_de_numeros <- 0:9
 vetor_de_numeros
+```
 
-#> [1] 0 1 2 3 4 5 6 7 8 9
-
+```{r}
 # segundo vetor de números
 vetor_de_numeros_2 <- c(3, 3, 3, 3, 3)
 # é o mesmo que:
 vetor_de_numeros_2 <- rep(3, 5) # repetir o número 3 cinco vezes
 vetor_de_numeros_2
-
-#> [1] 3 3 3 3 3
-
 ```
+
+::: {.callout-note}
+
+### Prática 2.03: Criando vetores numéricos
+
+Crie os vetores abaixo usando a forma mais curta possível:
+
+**a)** Números de 1 a 10.
+
+**b)** Números de 0 a 100, de 10 em 10.
+
+**c)** O número 5 repetido 8 vezes.
+
+:::
+
+### Selecionar elementos por índice
 
 Cada elemento possui um **indexador associado**, de modo que o primeiro elemento possui índice 1, o segundo possui índice 2, e assim por diante.
 
 Ou seja, "*Bernardo*" possui índice 1, "*Danilo*" possui índice 2, "*José*" possui índice 3, e assim por diante.
 
-### Selecionar elementos por índice
-
 ```{r}
-#| eval: false
-
 # seleciona um elemento
 vetor_de_nomes[2]
+```
 
-#> [1] "Danilo"
-
+```{r}
 # seleciona elementos seguidos
 vetor_de_nomes[2:5]
+```
 
-#> [1] "Danilo" "José" "Emanuel" "Kauann"
-
+```{r}
 # seleciona elementos em posições específicas
 vetor_de_nomes[c(2,6)]
-
-#> [1] "Danilo" "Guilherme"
 ```
 
 ### Selecionar elementos com lógica
 
 ```{r}
-#| eval: false
-
 # seleciona os nomes diferentes de "Kauann"
 vetor_de_nomes[vetor_de_nomes != "Kauann"]
-
-#> [1] "Bernardo" "Danilo" "José" "Emanuel" "Guilherme"
-
-# seleciona os elementos numéricos maiores do que 3
-vetor_de_numeros[vetor_de_numeros > 3]
-
-#> [1] 4 5 6 7 8 9
-
 ```
 
+```{r}
+# seleciona os elementos numéricos maiores do que 3
+vetor_de_numeros[vetor_de_numeros > 3]
+```
 
-## 🔥 [Hora de praticar](ex2.html)
+::: {.callout-note}
+
+### Prática 2.04: Selecionando elementos dos vetores
+
+O vetor abaixo representa os batimentos cardíacos (bpm) medidos de 8 pacientes:
+
+```{r}
+bpm <- c(72, 85, 91, 68, 77, 104, 83, 95)
+```
+
+**a)** Selecione o terceiro valor do vetor.
+
+**b)** Selecione os valores do segundo ao quinto elemento. 
+
+**c)** Selecione apenas os valores acima de 90 bpm.  
+
+**d)** Quantos pacientes têm bpm acima de 90? Use `sum()`.
+
+:::
+
+:::

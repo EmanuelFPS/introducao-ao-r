@@ -181,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Análise, interpretação e apresentação</span></a>
+ <span class="menu-text">Análise e apresentação</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -201,14 +201,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#objetivos-do-curso" id="toc-objetivos-do-curso" class="nav-link active" data-scroll-target="#objetivos-do-curso">🎯 Objetivos do curso</a></li>
-  <li><a href="#estrutura-do-curso" id="toc-estrutura-do-curso" class="nav-link" data-scroll-target="#estrutura-do-curso">📚 Estrutura do Curso</a></li>
-  <li><a href="#demonstrações" id="toc-demonstrações" class="nav-link" data-scroll-target="#demonstrações">▶️ Demonstrações</a>
+  <li><a href="#estrutura-do-curso" id="toc-estrutura-do-curso" class="nav-link" data-scroll-target="#estrutura-do-curso">📚 Estrutura do Curso</a>
   <ul class="collapse">
-  <li><a href="#distribuição-de-pressão-arterial" id="toc-distribuição-de-pressão-arterial" class="nav-link" data-scroll-target="#distribuição-de-pressão-arterial">Distribuição de pressão arterial</a></li>
-  <li><a href="#verificação-de-diferença-significativa-em-níveis-de-glicemia" id="toc-verificação-de-diferença-significativa-em-níveis-de-glicemia" class="nav-link" data-scroll-target="#verificação-de-diferença-significativa-em-níveis-de-glicemia">Verificação de diferença significativa em níveis de glicemia</a></li>
-  <li><a href="#simulação-de-amostragem" id="toc-simulação-de-amostragem" class="nav-link" data-scroll-target="#simulação-de-amostragem">Simulação de amostragem</a></li>
-  <li><a href="#série-temporal-de-um-acompanhamento-epidemiológico" id="toc-série-temporal-de-um-acompanhamento-epidemiológico" class="nav-link" data-scroll-target="#série-temporal-de-um-acompanhamento-epidemiológico">Série temporal de um acompanhamento epidemiológico</a></li>
+  <li><a href="#projeto-bambuí" id="toc-projeto-bambuí" class="nav-link" data-scroll-target="#projeto-bambuí">Projeto Bambuí</a></li>
+  <li><a href="#vigilância-epidemiológica-em-minas-gerais" id="toc-vigilância-epidemiológica-em-minas-gerais" class="nav-link" data-scroll-target="#vigilância-epidemiológica-em-minas-gerais">Vigilância epidemiológica em Minas Gerais</a></li>
   </ul></li>
+  <li><a href="#demonstrações" id="toc-demonstrações" class="nav-link" data-scroll-target="#demonstrações">▶️ Demonstrações</a></li>
   <li><a href="#agradecimentos" id="toc-agradecimentos" class="nav-link" data-scroll-target="#agradecimentos">🙏 Agradecimentos</a></li>
   <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências">📖 Referências</a></li>
   </ul>
@@ -239,28 +237,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>R é uma linguagem e ambiente computacional voltado à análise estatística de dados. Trata-se de um software livre, desenvolvido a partir da linguagem S, que oferece ferramentas robustas para manipulação, visualização e modelagem de dados.</p>
 <section id="objetivos-do-curso" class="level2">
 <h2 class="anchored" data-anchor-id="objetivos-do-curso">🎯 Objetivos do curso</h2>
-<p>Este curso é uma iniciativa de extensão do Grupo de Pesquisa e Ensino em Nutrição e Saúde Coletiva (GPENSC) da Universidade Federal de Ouro Preto, voltada para profissionais e estudantes da área da saúde que desejam dar os primeiros passos na análise de dados com o software R. A proposta parte de situações práticas do contexto epidemiológico, permitindo que o participante desenvolva habilidades reais de organização, manipulação e interpretação de dados em saúde.</p>
-<p><strong>Ao final do curso, você será capaz de:</strong></p>
-<ul>
-<li>Organizar projetos no RStudio com scripts claros e reutilizáveis.</li>
-<li>Importar e estruturar bancos de dados de diferentes formatos.</li>
-<li>Identificar e corrigir inconsistências e valores ausentes.</li>
-<li>Manipular dados: filtrar, transformar e combinar tabelas.</li>
-<li>Automatizar análises repetitivas com scripts.</li>
-<li>Calcular e interpretar medidas e testes estatísticos básicos.</li>
-<li>Criar gráficos para explorar e comunicar resultados.</li>
-</ul>
+<p>Este curso é uma iniciativa de extensão do <a href="https://www.instagram.com/gpenscufop/">Grupo de Pesquisa e Ensino em Nutrição e Saúde Coletiva (GPENSC)</a> da <strong>Universidade Federal de Ouro Preto</strong>, voltada para profissionais e estudantes da área da saúde que desejam dar os primeiros passos na análise de dados com o software R. A proposta parte de situações práticas do contexto epidemiológico, permitindo que o participante desenvolva habilidades reais de organização, manipulação e interpretação de dados em saúde.</p>
 </section>
 <section id="estrutura-do-curso" class="level2">
 <h2 class="anchored" data-anchor-id="estrutura-do-curso">📚 Estrutura do Curso</h2>
 <p>O conteúdo está organizado em módulos progressivos, combinando teoria e prática com exemplos reais, e está dividido nos seguintes tópicos:</p>
 <p><img src="images/estrutura.png" class="img-fluid"></p>
+<section id="projeto-bambuí" class="level3">
+<h3 class="anchored" data-anchor-id="projeto-bambuí">Projeto Bambuí</h3>
+<p>Os dados utilizados ao longo do curso são sintéticos, inspirados no <strong>Projeto Bambuí</strong>, um dos estudos epidemiológicos longitudinais mais importantes já realizados no Brasil, que acompanhou por décadas uma coorte de idosos em Minas Gerais e gerou evidências fundamentais sobre envelhecimento, doenças crônicas e determinantes sociais de saúde no país. Trabalhar com dados desse contexto significa que cada linha de código que você escrever aqui tem um paralelo direto com análises reais que moldaram políticas públicas brasileiras. O curso utiliza cinco tabelas interligadas:</p>
+<ul>
+<li><strong>demografico</strong>: informações pessoais e socioeconômicas dos 1.609 participantes;</li>
+<li><strong>laboratorio</strong>: resultados de exames de sangue;</li>
+<li><strong>medidas_fisicas</strong>: peso, altura, IMC e pressão arterial;</li>
+<li><strong>saude_percebida</strong>: autopercepção de saúde, condições crônicas e uso de medicamentos;</li>
+<li><strong>habitos</strong>: informações sobre alimentação, atividade física e consumo de substâncias.</li>
+</ul>
+<p>Ao longo dos tópicos, você vai importar e inspecionar essas tabelas, identificar e corrigir inconsistências, uni-las por um identificador comum, criar e transformar variáveis, calcular medidas descritivas e aplicar testes estatísticos, construindo, passo a passo, o mesmo tipo de análise que pesquisadores usam para entender a saúde de populações inteiras.</p>
+</section>
+<section id="vigilância-epidemiológica-em-minas-gerais" class="level3">
+<h3 class="anchored" data-anchor-id="vigilância-epidemiológica-em-minas-gerais">Vigilância epidemiológica em Minas Gerais</h3>
+<p>Já os dados do <strong>Projeto Prático</strong> foram simulados com base no perfil epidemiológico típico de municípios mineiros, representando 500 indivíduos de 10 cidades diferentes. Ao longo das questões, você vai colocar em prática tudo que aprendeu no curso, desde a limpeza e padronização dos dados até a construção de variáveis, análise descritiva, visualizações e testes estatísticos, chegando a conclusões reais sobre a prevalência de uma doença crônica e seus fatores associados.</p>
+</section>
 </section>
 <section id="demonstrações" class="level2">
 <h2 class="anchored" data-anchor-id="demonstrações">▶️ Demonstrações</h2>
 <p>As demonstrações utilizam dados simulados, inspirados em situações epidemiológicas reais, com o objetivo de facilitar o entendimento dos conceitos apresentados.</p>
-<section id="distribuição-de-pressão-arterial" class="level3">
-<h3 class="anchored" data-anchor-id="distribuição-de-pressão-arterial">Distribuição de pressão arterial</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Histogramas</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Testes estatísticos</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Simulação de amostragem</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Séries temporais</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>Simula medições de pressão arterial de vários pacientes e mostra como esses valores se distribuem. Útil para identificar o que é comum e o que foge do padrão.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pressao <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">120</span>, <span class="at">sd =</span> <span class="dv">15</span>)</span>
@@ -273,9 +279,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section>
-<section id="verificação-de-diferença-significativa-em-níveis-de-glicemia" class="level3">
-<h3 class="anchored" data-anchor-id="verificação-de-diferença-significativa-em-níveis-de-glicemia">Verificação de diferença significativa em níveis de glicemia</h3>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p>Compara níveis de glicemia entre dois grupos (por exemplo, com e sem intervenção) e verifica se a diferença observada pode ser considerada real.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
@@ -289,18 +294,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     Welch Two Sample t-test
 
 data:  glicemia by grupo
-t = 49.26, df = 97.6, p-value &lt; 2.2e-16
+t = 53.621, df = 96.329, p-value &lt; 2.2e-16
 alternative hypothesis: true difference in means between group Controle and group Tratamento is not equal to 0
 95 percent confidence interval:
-  9.620362 10.428071
+ 10.01578 10.78581
 sample estimates:
   mean in group Controle mean in group Tratamento 
-               100.04602                 90.02181 </code></pre>
+                100.2009                  89.8001 </code></pre>
 </div>
 </div>
-</section>
-<section id="simulação-de-amostragem" class="level3">
-<h3 class="anchored" data-anchor-id="simulação-de-amostragem">Simulação de amostragem</h3>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <p>Simula 5 coletas diferentes de pacientes e calcula a média de cada uma, mostrando como os resultados podem variar entre amostras, mesmo em condições semelhantes.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>medias <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">5</span>)</span>
@@ -311,12 +315,11 @@ sample estimates:
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>medias</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 100.18322  99.95620 100.05088  99.95696 100.00550</code></pre>
+<pre><code>[1]  99.83928  99.90073 100.12175 100.18552  99.91881</code></pre>
 </div>
 </div>
-</section>
-<section id="série-temporal-de-um-acompanhamento-epidemiológico" class="level3">
-<h3 class="anchored" data-anchor-id="série-temporal-de-um-acompanhamento-epidemiológico">Série temporal de um acompanhamento epidemiológico</h3>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
 <p>Representa a evolução de casos ao longo do tempo, ajudando a visualizar tendências de crescimento em um acompanhamento epidemiológico.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dias <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
@@ -330,7 +333,9 @@ sample estimates:
 </div>
 </div>
 </div>
-</section>
+</div>
+</div>
+</div>
 </section>
 <section id="agradecimentos" class="level2">
 <h2 class="anchored" data-anchor-id="agradecimentos">🙏 Agradecimentos</h2>
@@ -339,10 +344,10 @@ sample estimates:
 </section>
 <section id="referências" class="level2">
 <h2 class="anchored" data-anchor-id="referências">📖 Referências</h2>
-<p>BATTISTI, Iara Denise Endruweit; SMOLSKI, Felipe Micail da Silva (orgs.). <strong>Software R: Análise estatística de dados utilizando um programa livre</strong>. Bagé: Faith, 2019. Disponível em: http:// www.editorafaith.com.br/ebooks/grat/978-85-68221-44-0.pdf.</p>
+<p>BATTISTI, Iara Denise Endruweit; SMOLSKI, Felipe Micail da Silva (orgs.). <strong>Software R: Análise estatística de dados utilizando um programa livre</strong>. Bagé: Faith, 2019. Disponível em: http://www.editorafaith.com.br/ebooks/grat/978-85-68221-44-0.pdf.</p>
 <p>COSTA, Maria Fernanda F. Lima et al.&nbsp;<strong>The Bambuí health and ageing study (BHAS): methodological approach and preliminary results of a population-based cohort study of the elderly in Brazil.</strong> Revista de Saúde Pública, v. 34, p.&nbsp;126-135, 2000.</p>
 <p>LIMA E COSTA, Maria Fernanda F. de et al.&nbsp;<strong>Projeto Bambuí: um estudo epidemiológico de características sociodemográficas, suporte social e indicadores de condição de saúde dos idosos em comparação aos adultos jovens</strong>. Informe epidemiológico do SUS, v. 10, n.&nbsp;4, p.&nbsp;147-161, 2001.</p>
-<p>WICKHAM, Hadley; ÇETINKAYA-RUNDEL, Mine; GROLEMUND, Garrett. <strong>R for Data Science</strong>. 2. ed.&nbsp;Disponível em: https://r4ds.hadley.nz/.</p>
+<p>WICKHAM, Hadley; ÇETINKAYA-RUNDEL, Mine; GROLEMUND, Garrett. <strong>R for Data Science</strong>. 2. ed.&nbsp;Disponível em: https://pt.r4ds.hadley.nz/.</p>
 
 
 </section>

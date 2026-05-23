@@ -16,10 +16,13 @@ str(dados)
 ```{r}
 sum(duplicated(dados))
 ```
+
 Há um total de zero dados duplicados.
+
 ```{r}
 colSums(is.na(dados))
 ```
+
 Há 10 dados NAs em cada uma das colunas.
 
 ## Questão 3
@@ -46,12 +49,12 @@ dados <- dados[!is.na(dados$pressao_sistolica),]
 ### A)
 
 ```{r}
-dados$faixa_etaria <- ifelse(dados$idade > 18 & dados$idade < 30, "18-29", 
-       ifelse(dados$idade > 29 & dados$idade < 40, "30-39",
-       ifelse(dados$idade > 39 & dados$idade < 50, "40-49",
-       ifelse(dados$idade > 49 & dados$idade < 60, "50-59",
-       ifelse(dados$idade > 59 & dados$idade < 70, "60-69",
-       ifelse(dados$idade > 69, "70+", NA))))))
+dados$faixa_etaria <- ifelse(dados$idade >= 18 & dados$idade <= 29, "18-29",
+                                      ifelse(dados$idade >= 30 & dados$idade <= 39, "30-39",
+                                      ifelse(dados$idade >= 40 & dados$idade <= 49, "40-49",
+                                      ifelse(dados$idade >= 50 & dados$idade <= 59, "50-59",
+                                      ifelse(dados$idade >= 60 & dados$idade <= 69, "60-69",
+                                      ifelse(dados$idade >= 70, "70+", NA))))))
 ```
 
 ### B)
@@ -100,11 +103,8 @@ table(dados$diagnostico, dados$sexo)
 
 A prevalência consiste na proporção de pessoas diagnosticadas em relação à amostra. Neste caso, segmenta-se por faixa etária.
 
-
-
 ```{r}
 dados$diag_num <- as.numeric(dados$diagnostico == "SIM")
-dados$diag_num
 
 prevalencia_diagnostico_por_fx_etaria <- aggregate(diag_num ~ faixa_etaria, dados, FUN = mean)
 
@@ -147,4 +147,3 @@ diag_x_grupo_risco <- table(dados$diagnostico, dados$grupo_risco)
 
 chisq.test(diag_x_grupo_risco)
 ```
-

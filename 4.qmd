@@ -14,11 +14,13 @@ source('tratado.r')
 
 Agora imagine pegar várias tabelas soltas e transformá-las em uma única história coerente. Aqui você começa a "moldar" os dados: filtrar, juntar, organizar. É como montar um quebra-cabeça — só que você decide quais peças entram e qual imagem final quer revelar.
 
+::: {.panel-tabset}
+
 ## 🔗 Junção de tabelas
 
 No curso, temos 5 tabelas separadas que descrevem os mesmos participantes. Todas compartilham uma coluna `id`, que identifica unicamente cada indivíduo. Esse `id` é a chave para unir as tabelas com a função `merge()`.
 
-Acesse aqui as [tabelas tratadas](https://raw.githubusercontent.com/EmanuelFPS/introducao-ao-r/main/tratado.R).
+[Acesse aqui](https://raw.githubusercontent.com/EmanuelFPS/introducao-ao-r/main/tratado.R) o comando para tratar as tabelas se precisar.
 
 ![](images/joins.png)
 
@@ -70,8 +72,6 @@ joins_df %>%
 O `all.x = TRUE` (left join) é o mais usado no dia a dia: você parte de uma tabela principal e vai incorporando informações das demais.
 
 ```{r}
-#| eval: false
-
 # unir demografico com laboratorio pela coluna 'id'
 dados <- merge(demografico, laboratorio, by = "id", all.x = TRUE)
 
@@ -81,6 +81,18 @@ dados <- merge(dados, medidas_fisicas, by = "id", all.x = TRUE)
 dados <- merge(dados, habitos,         by = "id", all.x = TRUE)
 ```
 
+::: {.callout-note}
+
+### Prática 4.01: Unindo tabelas
+
+**a)** Una as tabelas `demografico`, `laboratorio`, `saude_percebida`, `medidas_fisicas` e `habitos` usando `merge()` com `all.x = TRUE` e salve o resultado no objeto `dados`.
+
+**b)** Quantas linhas e colunas a base unificada tem? Use `dim()`.
+
+**c)** Quais são os nomes das colunas? Use `colnames()`.
+
+:::
+
 ## 🔄 Reordenação
 
 ### Reordenar colunas
@@ -88,8 +100,6 @@ dados <- merge(dados, habitos,         by = "id", all.x = TRUE)
 Após unir tabelas, pode ser útil reorganizar a ordem das colunas.
 
 ```{r}
-#| eval: false
-
 # colocar 'id' e 'nome' primeiro, mantendo o restante
 dados <- dados[, c("id", "nome", colnames(dados)[!colnames(dados) %in% c("id", "nome")])]
 ```
@@ -108,6 +118,7 @@ demografico[order(demografico$renda_reais, decreasing = TRUE), ]
 # ordenar por estado civil e, dentro de cada grupo, por idade
 demografico[order(demografico$estado_civil, demografico$idade), ]
 ```
+
 
 ## ✏️ Criar e transformar variáveis
 
@@ -136,8 +147,6 @@ demografico$baixa_renda <- ifelse(demografico$renda_reais < 120, "Sim", "Não")
 Quando há mais de duas categorias, os `ifelse()` podem ser aninhados um dentro do outro.
 
 ```{r}
-#| eval: false
-
 # categorizar escolaridade em níveis
 demografico$nivel_escolaridade <- ifelse(
   demografico$escolaridade_anos == 0,  "Sem instrução",
@@ -147,32 +156,39 @@ demografico$nivel_escolaridade <- ifelse(
   ifelse(demografico$escolaridade_anos > 11,  "Superior", NA)))))
 
 unique(demografico$nivel_escolaridade)
-
-#> [1] "Fundamental I"  "Médio"  "Sem instrução"  "Fundamental II"  "Superior"  NA
 ```
 
+::: {.callout-note}
+
+### Prática 4.02: Criando uma variável nova
+
+No banco `demografico`, crie uma variável chamada `baixa_renda` que vale `"Sim"` se a renda for menor que R$ 120 e `"Não"` caso contrário. Use `ifelse()`.
+
+Em seguida, use `table()` para ver quantos participantes estão em cada categoria.
+
+::: {.callout-tip collapse="true"}
+## Ajuda
+
+```r
+demografico$baixa_renda <- ifelse(demografico$renda_reais < 120, "Sim", "Não")
+table(demografico$baixa_renda)
+```
+:::
+
 ---
+
+:::
 
 ## 📊 Agrupar e resumir com `aggregate()`
 
 A função `aggregate()` calcula uma estatística para uma variável e separada por grupos, como por exemplo a média de renda por sexo ou por estado civil.
 
 ```{r}
-#| eval: false
-
 # média de renda por sexo
 aggregate(renda_reais ~ sexo, data = demografico, FUN = mean)
 
-#>   sexo renda_reais
-#> 1    F    812.3241
-#> 2    M    976.1147
-
 # média de renda e idade por sexo (múltiplas variáveis resposta)
 aggregate(cbind(renda_reais, idade) ~ sexo, data = demografico, FUN = mean)
-
-#>   sexo renda_reais    idade
-#> 1    F    812.3241 71.30851
-#> 2    M    976.1147 70.82569
 
 # média de renda por sexo e estado civil (múltiplos grupos)
 aggregate(renda_reais ~ sexo + estado_civil, data = demografico, FUN = mean)
@@ -181,19 +197,11 @@ aggregate(renda_reais ~ sexo + estado_civil, data = demografico, FUN = mean)
 Para contar observações por grupo, usa-se `table()`.
 
 ```{r}
-#| eval: false
-
 # contagem por estado civil
 table(demografico$estado_civil)
 
-#>  CASADO SEPARADO SOLTEIRO    VIUVO
-#>     748       87      235      524
-
 # proporção (em %)
 round(prop.table(table(demografico$estado_civil)) * 100, 1)
-
-#>  CASADO SEPARADO SOLTEIRO    VIUVO
-#>    47.2      5.5     14.8     33.1
 ```
 
 As principais funções usadas dentro do `aggregate()` são:
@@ -241,6 +249,87 @@ resumo_df %>%
 Sempre use `na.rm = TRUE` nas funções de resumo quando houver valores nulos. Sem esse argumento, o resultado será `NA` se houver qualquer valor faltante. Exemplo: `aggregate(renda_reais ~ sexo, data = demografico, FUN = mean, na.rm = TRUE)`.
 :::
 
----
+::: {.callout-note}
 
-## 🔥 [Hora de praticar](ex4.html)
+### Prática 4.03: Resumindo por grupo
+
+Use a função `aggregate()` para calcular a **média de renda** separada por **estado civil** no banco `demografico`.
+
+::: {.callout-tip collapse="true"}
+## Ajuda
+
+```r
+aggregate(renda_reais ~ estado_civil, data = demografico, FUN = mean, na.rm = TRUE)
+```
+
+A fórmula `variavel ~ grupo` significa: "calcule a variável separada por grupo".
+:::
+
+:::
+
+::: {.callout-note}
+
+### Prática 4.04: Conhecendo os participantes
+
+Use o banco `demografico` para responder:
+
+**a)** Quantos participantes há de cada sexo? Use `table()`.
+
+**b)** Quantos participantes há de cada estado civil? Use `table()`.
+
+**c)** Ordene o banco por idade em ordem decrescente. Quem são os 3 participantes mais velhos? Mostre apenas `nome` e `idade`.
+
+::: {.callout-tip collapse="true"}
+## Ajuda
+
+```r
+# a)
+table(demografico$sexo)
+
+# b)
+table(demografico$estado_civil)
+
+# c)
+ordenado <- demografico[order(demografico$idade, decreasing = TRUE), ]
+ordenado[1:3, c("nome", "idade")]
+```
+:::
+
+:::
+
+::: {.callout-note}
+
+### Prática 4.05: Classificando o IMC
+
+O banco `medidas_fisicas` contém a variável `imc`. Crie uma variável chamada `classif_imc` usando a tabela abaixo:
+
+| Classificação | IMC |
+|---|---|
+| `"Abaixo do peso"` | < 18,5 |
+| `"Peso normal"` | 18,5 a 24,9 |
+| `"Sobrepeso"` | 25,0 a 29,9 |
+| `"Obesidade"` | ≥ 30,0 |
+
+**a)** Crie a variável com `ifelse()` aninhado.
+
+**b)** Use `table()` para ver quantos participantes há em cada categoria.
+
+::: {.callout-tip collapse="true"}
+## Ajuda
+
+O `ifelse()` aninhado funciona assim: dentro do "senão" de um `ifelse()`, você coloca outro `ifelse()`.
+
+```r
+medidas_fisicas$classif_imc <- ifelse(
+  medidas_fisicas$imc < 18.5, "Abaixo do peso",
+  ifelse(medidas_fisicas$imc < 25, "Peso normal",
+  ifelse(medidas_fisicas$imc < 30, "Sobrepeso",
+                                   "Obesidade")))
+
+table(medidas_fisicas$classif_imc)
+```
+:::
+
+:::
+
+:::

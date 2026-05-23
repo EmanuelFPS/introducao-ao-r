@@ -5,9 +5,6 @@ editor: visual
 
 Para usar o **RStudio**, é preciso instalar o **R**, depois o **RStudio**, conforme o tutorial abaixo:
 
-{{< video 
-https://www.youtube.com/watch?v=cwoKhB_e5cE
-width="700"
-height="400" >}}
+{{< video https://www.youtube.com/watch?v=cwoKhB_e5cE width="700" height="400" >}}
 
 ![](images/R.png){width="700px"}

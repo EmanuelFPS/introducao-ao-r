@@ -183,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Análise, interpretação e apresentação</span></a>
+ <span class="menu-text">Análise e apresentação</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -197,26 +197,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">SUMÁRIO</h2>
-   
-  <ul>
-  <li><a href="#junção-de-tabelas" id="toc-junção-de-tabelas" class="nav-link active" data-scroll-target="#junção-de-tabelas">🔗 Junção de tabelas</a></li>
-  <li><a href="#reordenação" id="toc-reordenação" class="nav-link" data-scroll-target="#reordenação">🔄 Reordenação</a>
-  <ul class="collapse">
-  <li><a href="#reordenar-colunas" id="toc-reordenar-colunas" class="nav-link" data-scroll-target="#reordenar-colunas">Reordenar colunas</a></li>
-  <li><a href="#reordenar-linhas" id="toc-reordenar-linhas" class="nav-link" data-scroll-target="#reordenar-linhas">Reordenar linhas</a></li>
-  </ul></li>
-  <li><a href="#criar-e-transformar-variáveis" id="toc-criar-e-transformar-variáveis" class="nav-link" data-scroll-target="#criar-e-transformar-variáveis">✏️ Criar e transformar variáveis</a>
-  <ul class="collapse">
-  <li><a href="#condicionais-com-ifelse" id="toc-condicionais-com-ifelse" class="nav-link" data-scroll-target="#condicionais-com-ifelse">Condicionais com <code>ifelse()</code></a></li>
-  <li><a href="#condicionais-múltiplas-com-ifelse-aninhado" id="toc-condicionais-múltiplas-com-ifelse-aninhado" class="nav-link" data-scroll-target="#condicionais-múltiplas-com-ifelse-aninhado">Condicionais múltiplas com <code>ifelse()</code> aninhado</a></li>
-  </ul></li>
-  <li><a href="#agrupar-e-resumir-com-aggregate" id="toc-agrupar-e-resumir-com-aggregate" class="nav-link" data-scroll-target="#agrupar-e-resumir-com-aggregate">📊 Agrupar e resumir com <code>aggregate()</code></a></li>
-  <li><a href="#hora-de-praticar" id="toc-hora-de-praticar" class="nav-link" data-scroll-target="#hora-de-praticar">🔥 Hora de praticar</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -241,31 +223,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Agora imagine pegar várias tabelas soltas e transformá-las em uma única história coerente. Aqui você começa a “moldar” os dados: filtrar, juntar, organizar. É como montar um quebra-cabeça — só que você decide quais peças entram e qual imagem final quer revelar.</p>
-<section id="junção-de-tabelas" class="level2">
-<h2 class="anchored" data-anchor-id="junção-de-tabelas">🔗 Junção de tabelas</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">🔗 Junção de tabelas</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">🔄 Reordenação</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">✏️ Criar e transformar variáveis</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">📊 Agrupar e resumir com <code>aggregate()</code></a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>No curso, temos 5 tabelas separadas que descrevem os mesmos participantes. Todas compartilham uma coluna <code>id</code>, que identifica unicamente cada indivíduo. Esse <code>id</code> é a chave para unir as tabelas com a função <code>merge()</code>.</p>
-<p>Acesse aqui as <a href="https://raw.githubusercontent.com/EmanuelFPS/introducao-ao-r/main/tratado.R">tabelas tratadas</a>.</p>
+<p><a href="https://raw.githubusercontent.com/EmanuelFPS/introducao-ao-r/main/tratado.R">Acesse aqui</a> o comando para tratar as tabelas se precisar.</p>
 <p><img src="images/joins.png" class="img-fluid"></p>
 <p>Os principais tipos de junção são controlados pelos argumentos <code>all.x</code> e <code>all.y</code>:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="pvouggkbzq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pvouggkbzq table {
+<div id="wqpkcskqxa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wqpkcskqxa table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pvouggkbzq thead, #pvouggkbzq tbody, #pvouggkbzq tfoot, #pvouggkbzq tr, #pvouggkbzq td, #pvouggkbzq th {
+#wqpkcskqxa thead, #wqpkcskqxa tbody, #wqpkcskqxa tfoot, #wqpkcskqxa tr, #wqpkcskqxa td, #wqpkcskqxa th {
   border-style: none;
 }
 
-#pvouggkbzq p {
+#wqpkcskqxa p {
   margin: 0;
   padding: 0;
 }
 
-#pvouggkbzq .gt_table {
+#wqpkcskqxa .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -291,12 +275,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#pvouggkbzq .gt_caption {
+#wqpkcskqxa .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pvouggkbzq .gt_title {
+#wqpkcskqxa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -308,7 +292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#pvouggkbzq .gt_subtitle {
+#wqpkcskqxa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -320,7 +304,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#pvouggkbzq .gt_heading {
+#wqpkcskqxa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -332,13 +316,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#pvouggkbzq .gt_bottom_border {
+#wqpkcskqxa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pvouggkbzq .gt_col_headings {
+#wqpkcskqxa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -353,7 +337,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#pvouggkbzq .gt_col_heading {
+#wqpkcskqxa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -373,7 +357,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#pvouggkbzq .gt_column_spanner_outer {
+#wqpkcskqxa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -385,15 +369,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#pvouggkbzq .gt_column_spanner_outer:first-child {
+#wqpkcskqxa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pvouggkbzq .gt_column_spanner_outer:last-child {
+#wqpkcskqxa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pvouggkbzq .gt_column_spanner {
+#wqpkcskqxa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -405,11 +389,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#pvouggkbzq .gt_spanner_row {
+#wqpkcskqxa .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pvouggkbzq .gt_group_heading {
+#wqpkcskqxa .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -435,7 +419,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#pvouggkbzq .gt_empty_group_heading {
+#wqpkcskqxa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -450,15 +434,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#pvouggkbzq .gt_from_md > :first-child {
+#wqpkcskqxa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pvouggkbzq .gt_from_md > :last-child {
+#wqpkcskqxa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pvouggkbzq .gt_row {
+#wqpkcskqxa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -477,7 +461,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#pvouggkbzq .gt_stub {
+#wqpkcskqxa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -490,7 +474,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#pvouggkbzq .gt_stub_row_group {
+#wqpkcskqxa .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -504,15 +488,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#pvouggkbzq .gt_row_group_first td {
+#wqpkcskqxa .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pvouggkbzq .gt_row_group_first th {
+#wqpkcskqxa .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pvouggkbzq .gt_summary_row {
+#wqpkcskqxa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -522,16 +506,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#pvouggkbzq .gt_first_summary_row {
+#wqpkcskqxa .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pvouggkbzq .gt_first_summary_row.thick {
+#wqpkcskqxa .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pvouggkbzq .gt_last_summary_row {
+#wqpkcskqxa .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -541,7 +525,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#pvouggkbzq .gt_grand_summary_row {
+#wqpkcskqxa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -551,7 +535,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#pvouggkbzq .gt_first_grand_summary_row {
+#wqpkcskqxa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -561,7 +545,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#pvouggkbzq .gt_last_grand_summary_row_top {
+#wqpkcskqxa .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -571,11 +555,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#pvouggkbzq .gt_striped {
+#wqpkcskqxa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pvouggkbzq .gt_table_body {
+#wqpkcskqxa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -584,7 +568,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#pvouggkbzq .gt_footnotes {
+#wqpkcskqxa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -598,7 +582,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#pvouggkbzq .gt_footnote {
+#wqpkcskqxa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -607,7 +591,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#pvouggkbzq .gt_sourcenotes {
+#wqpkcskqxa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -621,7 +605,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#pvouggkbzq .gt_sourcenote {
+#wqpkcskqxa .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -629,72 +613,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#pvouggkbzq .gt_left {
+#wqpkcskqxa .gt_left {
   text-align: left;
 }
 
-#pvouggkbzq .gt_center {
+#wqpkcskqxa .gt_center {
   text-align: center;
 }
 
-#pvouggkbzq .gt_right {
+#wqpkcskqxa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pvouggkbzq .gt_font_normal {
+#wqpkcskqxa .gt_font_normal {
   font-weight: normal;
 }
 
-#pvouggkbzq .gt_font_bold {
+#wqpkcskqxa .gt_font_bold {
   font-weight: bold;
 }
 
-#pvouggkbzq .gt_font_italic {
+#wqpkcskqxa .gt_font_italic {
   font-style: italic;
 }
 
-#pvouggkbzq .gt_super {
+#wqpkcskqxa .gt_super {
   font-size: 65%;
 }
 
-#pvouggkbzq .gt_footnote_marks {
+#wqpkcskqxa .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pvouggkbzq .gt_asterisk {
+#wqpkcskqxa .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pvouggkbzq .gt_indent_1 {
+#wqpkcskqxa .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pvouggkbzq .gt_indent_2 {
+#wqpkcskqxa .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pvouggkbzq .gt_indent_3 {
+#wqpkcskqxa .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pvouggkbzq .gt_indent_4 {
+#wqpkcskqxa .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pvouggkbzq .gt_indent_5 {
+#wqpkcskqxa .gt_indent_5 {
   text-indent: 25px;
 }
 
-#pvouggkbzq .katex-display {
+#wqpkcskqxa .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#pvouggkbzq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wqpkcskqxa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -760,9 +744,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">merge</span>(dados, medidas_fisicas, <span class="at">by =</span> <span class="st">"id"</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">merge</span>(dados, habitos,         <span class="at">by =</span> <span class="st">"id"</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="reordenação" class="level2">
-<h2 class="anchored" data-anchor-id="reordenação">🔄 Reordenação</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Prática 4.01: Unindo tabelas
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Una as tabelas <code>demografico</code>, <code>laboratorio</code>, <code>saude_percebida</code>, <code>medidas_fisicas</code> e <code>habitos</code> usando <code>merge()</code> com <code>all.x = TRUE</code> e salve o resultado no objeto <code>dados</code>.</p>
+<p><strong>b)</strong> Quantas linhas e colunas a base unificada tem? Use <code>dim()</code>.</p>
+<p><strong>c)</strong> Quais são os nomes das colunas? Use <code>colnames()</code>.</p>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <section id="reordenar-colunas" class="level3">
 <h3 class="anchored" data-anchor-id="reordenar-colunas">Reordenar colunas</h3>
 <p>Após unir tabelas, pode ser útil reorganizar a ordem das colunas.</p>
@@ -784,9 +782,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>demografico[<span class="fu">order</span>(demografico<span class="sc">$</span>estado_civil, demografico<span class="sc">$</span>idade), ]</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="criar-e-transformar-variáveis" class="level2">
-<h2 class="anchored" data-anchor-id="criar-e-transformar-variáveis">✏️ Criar e transformar variáveis</h2>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <p>Novas colunas são criadas atribuindo valores diretamente com <code>$</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># criar uma coluna com a renda em salários mínimos (R$ 120,00 em 1997)</span></span>
@@ -812,68 +809,114 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(demografico<span class="sc">$</span>escolaridade_anos <span class="sc">&lt;=</span> <span class="dv">11</span>, <span class="st">"Médio"</span>,</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(demografico<span class="sc">$</span>escolaridade_anos <span class="sc">&gt;</span> <span class="dv">11</span>,  <span class="st">"Superior"</span>, <span class="cn">NA</span>)))))</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(demografico<span class="sc">$</span>nivel_escolaridade)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "Fundamental I"  "Médio"  "Sem instrução"  "Fundamental II"  "Superior"  NA</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(demografico<span class="sc">$</span>nivel_escolaridade)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Sem instrução"  "Fundamental I"  "Médio"          "Fundamental II"
+[5] "Superior"      </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Prática 4.02: Criando uma variável nova
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No banco <code>demografico</code>, crie uma variável chamada <code>baixa_renda</code> que vale <code>"Sim"</code> se a renda for menor que R$ 120 e <code>"Não"</code> caso contrário. Use <code>ifelse()</code>.</p>
+<p>Em seguida, use <code>table()</code> para ver quantos participantes estão em cada categoria.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Dica</span>Ajuda
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>demografico<span class="sc">$</span>baixa_renda <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(demografico<span class="sc">$</span>renda_reais <span class="sc">&lt;</span> <span class="dv">120</span>, <span class="st">"Sim"</span>, <span class="st">"Não"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(demografico<span class="sc">$</span>baixa_renda)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
 </div>
 <hr>
+</div>
+</div>
 </section>
-</section>
-<section id="agrupar-e-resumir-com-aggregate" class="level2">
-<h2 class="anchored" data-anchor-id="agrupar-e-resumir-com-aggregate">📊 Agrupar e resumir com <code>aggregate()</code></h2>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
 <p>A função <code>aggregate()</code> calcula uma estatística para uma variável e separada por grupos, como por exemplo a média de renda por sexo ou por estado civil.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># média de renda por sexo</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(renda_reais <span class="sc">~</span> sexo, <span class="at">data =</span> demografico, <span class="at">FUN =</span> mean)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   sexo renda_reais</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    F    812.3241</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    M    976.1147</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># média de renda e idade por sexo (múltiplas variáveis resposta)</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(<span class="fu">cbind</span>(renda_reais, idade) <span class="sc">~</span> sexo, <span class="at">data =</span> demografico, <span class="at">FUN =</span> mean)</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   sexo renda_reais    idade</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    F    812.3241 71.30851</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    M    976.1147 70.82569</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># média de renda por sexo e estado civil (múltiplos grupos)</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(renda_reais <span class="sc">~</span> sexo <span class="sc">+</span> estado_civil, <span class="at">data =</span> demografico, <span class="at">FUN =</span> mean)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># média de renda por sexo</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(renda_reais <span class="sc">~</span> sexo, <span class="at">data =</span> demografico, <span class="at">FUN =</span> mean)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  sexo renda_reais
+1    F    315.6128
+2    M    323.4039</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># média de renda e idade por sexo (múltiplas variáveis resposta)</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(<span class="fu">cbind</span>(renda_reais, idade) <span class="sc">~</span> sexo, <span class="at">data =</span> demografico, <span class="at">FUN =</span> mean)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  sexo renda_reais    idade
+1    F    315.6128 68.90021
+2    M    323.4039 68.97269</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># média de renda por sexo e estado civil (múltiplos grupos)</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(renda_reais <span class="sc">~</span> sexo <span class="sc">+</span> estado_civil, <span class="at">data =</span> demografico, <span class="at">FUN =</span> mean)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  sexo estado_civil renda_reais
+1    F       CASADO    316.2912
+2    M       CASADO    330.3731
+3    F     SEPARADO    362.4827
+4    M     SEPARADO    242.5076
+5    F     SOLTEIRO    317.5362
+6    M     SOLTEIRO    340.6034
+7    F        VIUVO    307.2073
+8    M        VIUVO    320.4607</code></pre>
+</div>
 </div>
 <p>Para contar observações por grupo, usa-se <code>table()</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># contagem por estado civil</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(demografico<span class="sc">$</span>estado_civil)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  CASADO SEPARADO SOLTEIRO    VIUVO</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     748       87      235      524</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># proporção (em %)</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(<span class="fu">table</span>(demografico<span class="sc">$</span>estado_civil)) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  CASADO SEPARADO SOLTEIRO    VIUVO</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    47.2      5.5     14.8     33.1</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># contagem por estado civil</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(demografico<span class="sc">$</span>estado_civil)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  CASADO SEPARADO SOLTEIRO    VIUVO 
+     763       86      166      576 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># proporção (em %)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(<span class="fu">table</span>(demografico<span class="sc">$</span>estado_civil)) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  CASADO SEPARADO SOLTEIRO    VIUVO 
+    48.0      5.4     10.4     36.2 </code></pre>
+</div>
 </div>
 <p>As principais funções usadas dentro do <code>aggregate()</code> são:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="pscyjrfqru" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pscyjrfqru table {
+<div id="ddkumfrejs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ddkumfrejs table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pscyjrfqru thead, #pscyjrfqru tbody, #pscyjrfqru tfoot, #pscyjrfqru tr, #pscyjrfqru td, #pscyjrfqru th {
+#ddkumfrejs thead, #ddkumfrejs tbody, #ddkumfrejs tfoot, #ddkumfrejs tr, #ddkumfrejs td, #ddkumfrejs th {
   border-style: none;
 }
 
-#pscyjrfqru p {
+#ddkumfrejs p {
   margin: 0;
   padding: 0;
 }
 
-#pscyjrfqru .gt_table {
+#ddkumfrejs .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -899,12 +942,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#pscyjrfqru .gt_caption {
+#ddkumfrejs .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pscyjrfqru .gt_title {
+#ddkumfrejs .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -916,7 +959,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#pscyjrfqru .gt_subtitle {
+#ddkumfrejs .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -928,7 +971,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#pscyjrfqru .gt_heading {
+#ddkumfrejs .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -940,13 +983,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#pscyjrfqru .gt_bottom_border {
+#ddkumfrejs .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pscyjrfqru .gt_col_headings {
+#ddkumfrejs .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -961,7 +1004,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#pscyjrfqru .gt_col_heading {
+#ddkumfrejs .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -981,7 +1024,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#pscyjrfqru .gt_column_spanner_outer {
+#ddkumfrejs .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -993,15 +1036,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#pscyjrfqru .gt_column_spanner_outer:first-child {
+#ddkumfrejs .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pscyjrfqru .gt_column_spanner_outer:last-child {
+#ddkumfrejs .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pscyjrfqru .gt_column_spanner {
+#ddkumfrejs .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1013,11 +1056,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#pscyjrfqru .gt_spanner_row {
+#ddkumfrejs .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pscyjrfqru .gt_group_heading {
+#ddkumfrejs .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1043,7 +1086,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#pscyjrfqru .gt_empty_group_heading {
+#ddkumfrejs .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1058,15 +1101,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#pscyjrfqru .gt_from_md > :first-child {
+#ddkumfrejs .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pscyjrfqru .gt_from_md > :last-child {
+#ddkumfrejs .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pscyjrfqru .gt_row {
+#ddkumfrejs .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1085,7 +1128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#pscyjrfqru .gt_stub {
+#ddkumfrejs .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1098,7 +1141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#pscyjrfqru .gt_stub_row_group {
+#ddkumfrejs .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1112,15 +1155,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#pscyjrfqru .gt_row_group_first td {
+#ddkumfrejs .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pscyjrfqru .gt_row_group_first th {
+#ddkumfrejs .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pscyjrfqru .gt_summary_row {
+#ddkumfrejs .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1130,16 +1173,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#pscyjrfqru .gt_first_summary_row {
+#ddkumfrejs .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pscyjrfqru .gt_first_summary_row.thick {
+#ddkumfrejs .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pscyjrfqru .gt_last_summary_row {
+#ddkumfrejs .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1149,7 +1192,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#pscyjrfqru .gt_grand_summary_row {
+#ddkumfrejs .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1159,7 +1202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#pscyjrfqru .gt_first_grand_summary_row {
+#ddkumfrejs .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1169,7 +1212,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#pscyjrfqru .gt_last_grand_summary_row_top {
+#ddkumfrejs .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1179,11 +1222,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#pscyjrfqru .gt_striped {
+#ddkumfrejs .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pscyjrfqru .gt_table_body {
+#ddkumfrejs .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1192,7 +1235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#pscyjrfqru .gt_footnotes {
+#ddkumfrejs .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1206,7 +1249,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#pscyjrfqru .gt_footnote {
+#ddkumfrejs .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1215,7 +1258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#pscyjrfqru .gt_sourcenotes {
+#ddkumfrejs .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1229,7 +1272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#pscyjrfqru .gt_sourcenote {
+#ddkumfrejs .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1237,72 +1280,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#pscyjrfqru .gt_left {
+#ddkumfrejs .gt_left {
   text-align: left;
 }
 
-#pscyjrfqru .gt_center {
+#ddkumfrejs .gt_center {
   text-align: center;
 }
 
-#pscyjrfqru .gt_right {
+#ddkumfrejs .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pscyjrfqru .gt_font_normal {
+#ddkumfrejs .gt_font_normal {
   font-weight: normal;
 }
 
-#pscyjrfqru .gt_font_bold {
+#ddkumfrejs .gt_font_bold {
   font-weight: bold;
 }
 
-#pscyjrfqru .gt_font_italic {
+#ddkumfrejs .gt_font_italic {
   font-style: italic;
 }
 
-#pscyjrfqru .gt_super {
+#ddkumfrejs .gt_super {
   font-size: 65%;
 }
 
-#pscyjrfqru .gt_footnote_marks {
+#ddkumfrejs .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pscyjrfqru .gt_asterisk {
+#ddkumfrejs .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pscyjrfqru .gt_indent_1 {
+#ddkumfrejs .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pscyjrfqru .gt_indent_2 {
+#ddkumfrejs .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pscyjrfqru .gt_indent_3 {
+#ddkumfrejs .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pscyjrfqru .gt_indent_4 {
+#ddkumfrejs .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pscyjrfqru .gt_indent_5 {
+#ddkumfrejs .gt_indent_5 {
   text-indent: 25px;
 }
 
-#pscyjrfqru .katex-display {
+#ddkumfrejs .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#pscyjrfqru div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ddkumfrejs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1390,13 +1433,145 @@ Importante
 <p>Sempre use <code>na.rm = TRUE</code> nas funções de resumo quando houver valores nulos. Sem esse argumento, o resultado será <code>NA</code> se houver qualquer valor faltante. Exemplo: <code>aggregate(renda_reais ~ sexo, data = demografico, FUN = mean, na.rm = TRUE)</code>.</p>
 </div>
 </div>
-<hr>
-</section>
-<section id="hora-de-praticar" class="level2">
-<h2 class="anchored" data-anchor-id="hora-de-praticar">🔥 <a href="ex4.html">Hora de praticar</a></h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Prática 4.03: Resumindo por grupo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use a função <code>aggregate()</code> para calcular a <strong>média de renda</strong> separada por <strong>estado civil</strong> no banco <code>demografico</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Dica</span>Ajuda
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(renda_reais <span class="sc">~</span> estado_civil, <span class="at">data =</span> demografico, <span class="at">FUN =</span> mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A fórmula <code>variavel ~ grupo</code> significa: “calcule a variável separada por grupo”.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Prática 4.04: Conhecendo os participantes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use o banco <code>demografico</code> para responder:</p>
+<p><strong>a)</strong> Quantos participantes há de cada sexo? Use <code>table()</code>.</p>
+<p><strong>b)</strong> Quantos participantes há de cada estado civil? Use <code>table()</code>.</p>
+<p><strong>c)</strong> Ordene o banco por idade em ordem decrescente. Quem são os 3 participantes mais velhos? Mostre apenas <code>nome</code> e <code>idade</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Dica</span>Ajuda
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a)</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(demografico<span class="sc">$</span>sexo)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># b)</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(demografico<span class="sc">$</span>estado_civil)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># c)</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>ordenado <span class="ot">&lt;-</span> demografico[<span class="fu">order</span>(demografico<span class="sc">$</span>idade, <span class="at">decreasing =</span> <span class="cn">TRUE</span>), ]</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>ordenado[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="fu">c</span>(<span class="st">"nome"</span>, <span class="st">"idade"</span>)]</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Prática 4.05: Classificando o IMC
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>O banco <code>medidas_fisicas</code> contém a variável <code>imc</code>. Crie uma variável chamada <code>classif_imc</code> usando a tabela abaixo:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Classificação</th>
+<th>IMC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>"Abaixo do peso"</code></td>
+<td>&lt; 18,5</td>
+</tr>
+<tr class="even">
+<td><code>"Peso normal"</code></td>
+<td>18,5 a 24,9</td>
+</tr>
+<tr class="odd">
+<td><code>"Sobrepeso"</code></td>
+<td>25,0 a 29,9</td>
+</tr>
+<tr class="even">
+<td><code>"Obesidade"</code></td>
+<td>≥ 30,0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>a)</strong> Crie a variável com <code>ifelse()</code> aninhado.</p>
+<p><strong>b)</strong> Use <code>table()</code> para ver quantos participantes há em cada categoria.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Dica</span>Ajuda
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>O <code>ifelse()</code> aninhado funciona assim: dentro do “senão” de um <code>ifelse()</code>, você coloca outro <code>ifelse()</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>medidas_fisicas<span class="sc">$</span>classif_imc <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  medidas_fisicas<span class="sc">$</span>imc <span class="sc">&lt;</span> <span class="fl">18.5</span>, <span class="st">"Abaixo do peso"</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(medidas_fisicas<span class="sc">$</span>imc <span class="sc">&lt;</span> <span class="dv">25</span>, <span class="st">"Peso normal"</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(medidas_fisicas<span class="sc">$</span>imc <span class="sc">&lt;</span> <span class="dv">30</span>, <span class="st">"Sobrepeso"</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Obesidade"</span>)))</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(medidas_fisicas<span class="sc">$</span>classif_imc)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1806,8 +1981,8 @@ Importante
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./5.html" class="pagination-link" aria-label="Análise, interpretação e apresentação">
-        <span class="nav-page-text">Análise, interpretação e apresentação</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./5.html" class="pagination-link" aria-label="Análise e apresentação">
+        <span class="nav-page-text">Análise e apresentação</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

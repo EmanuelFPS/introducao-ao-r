@@ -181,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Análise, interpretação e apresentação</span></a>
+ <span class="menu-text">Análise e apresentação</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -302,12 +302,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="a" class="level3">
 <h3 class="anchored" data-anchor-id="a">A)</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>faixa_etaria <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(dados<span class="sc">$</span>idade <span class="sc">&gt;</span> <span class="dv">18</span> <span class="sc">&amp;</span> dados<span class="sc">$</span>idade <span class="sc">&lt;</span> <span class="dv">30</span>, <span class="st">"18-29"</span>, </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ifelse</span>(dados<span class="sc">$</span>idade <span class="sc">&gt;</span> <span class="dv">29</span> <span class="sc">&amp;</span> dados<span class="sc">$</span>idade <span class="sc">&lt;</span> <span class="dv">40</span>, <span class="st">"30-39"</span>,</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ifelse</span>(dados<span class="sc">$</span>idade <span class="sc">&gt;</span> <span class="dv">39</span> <span class="sc">&amp;</span> dados<span class="sc">$</span>idade <span class="sc">&lt;</span> <span class="dv">50</span>, <span class="st">"40-49"</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ifelse</span>(dados<span class="sc">$</span>idade <span class="sc">&gt;</span> <span class="dv">49</span> <span class="sc">&amp;</span> dados<span class="sc">$</span>idade <span class="sc">&lt;</span> <span class="dv">60</span>, <span class="st">"50-59"</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ifelse</span>(dados<span class="sc">$</span>idade <span class="sc">&gt;</span> <span class="dv">59</span> <span class="sc">&amp;</span> dados<span class="sc">$</span>idade <span class="sc">&lt;</span> <span class="dv">70</span>, <span class="st">"60-69"</span>,</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ifelse</span>(dados<span class="sc">$</span>idade <span class="sc">&gt;</span> <span class="dv">69</span>, <span class="st">"70+"</span>, <span class="cn">NA</span>))))))</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>faixa_etaria <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(dados<span class="sc">$</span>idade <span class="sc">&gt;=</span> <span class="dv">18</span> <span class="sc">&amp;</span> dados<span class="sc">$</span>idade <span class="sc">&lt;=</span> <span class="dv">29</span>, <span class="st">"18-29"</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">ifelse</span>(dados<span class="sc">$</span>idade <span class="sc">&gt;=</span> <span class="dv">30</span> <span class="sc">&amp;</span> dados<span class="sc">$</span>idade <span class="sc">&lt;=</span> <span class="dv">39</span>, <span class="st">"30-39"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">ifelse</span>(dados<span class="sc">$</span>idade <span class="sc">&gt;=</span> <span class="dv">40</span> <span class="sc">&amp;</span> dados<span class="sc">$</span>idade <span class="sc">&lt;=</span> <span class="dv">49</span>, <span class="st">"40-49"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">ifelse</span>(dados<span class="sc">$</span>idade <span class="sc">&gt;=</span> <span class="dv">50</span> <span class="sc">&amp;</span> dados<span class="sc">$</span>idade <span class="sc">&lt;=</span> <span class="dv">59</span>, <span class="st">"50-59"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">ifelse</span>(dados<span class="sc">$</span>idade <span class="sc">&gt;=</span> <span class="dv">60</span> <span class="sc">&amp;</span> dados<span class="sc">$</span>idade <span class="sc">&lt;=</span> <span class="dv">69</span>, <span class="st">"60-69"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">ifelse</span>(dados<span class="sc">$</span>idade <span class="sc">&gt;=</span> <span class="dv">70</span>, <span class="st">"70+"</span>, <span class="cn">NA</span>))))))</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="b" class="level3">
@@ -414,31 +414,16 @@ NAO SIM
 <p>A prevalência consiste na proporção de pessoas diagnosticadas em relação à amostra. Neste caso, segmenta-se por faixa etária.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>diag_num <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(dados<span class="sc">$</span>diagnostico <span class="sc">==</span> <span class="st">"SIM"</span>)</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>diag_num</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  [1] 1 1 1 0 1 1 1 0 1 1 1 0 1 1 1 1 0 1 0 0 1 1 1 0 1 1 1 0 0 1 0 0 0 1 0 1 0
- [38] 0 0 0 1 0 1 1 0 1 1 0 0 1 0 0 0 0 1 0 1 0 1 1 1 1 1 0 1 1 0 0 0 1 0 1 1 1
- [75] 1 0 1 0 0 1 0 1 0 1 0 1 0 0 1 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0
-[112] 1 0 1 0 0 0 0 0 0 1 1 0 1 0 1 0 1 0 1 0 0 1 1 1 0 0 1 0 0 0 1 0 0 1 1 1 0
-[149] 0 1 1 1 0 0 1 1 0 1 0 0 1 1 1 1 1 1 0 0 1 0 1 1 1 0 0 0 1 0 1 0 0 0 1 0 1
-[186] 0 1 0 0 0 0 0 1 0 0 1 1 1 1 1 0 1 1 1 1 1 0 1 0 1 0 1 1 1 0 0 1 0 0 0 1 0
-[223] 1 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 1 0 0 0 1 1 1 1 1 1 1 1 0 0 1 0 0 0 1 0 0
-[260] 0 1 0 0 1 0 0 1 0 1 1 1 0 0 0 0 1 0 0 1 1 0 0 1 1 0 1 1 0 0 0 1 0 0 0 0 1
-[297] 1 0 1 1 1 1 1 0 0 1 1 1 1 0 1 0 0 0 0 1 1 1 1 0 0 0 1 0 0 0 0 1 1 0 1 1 0
-[334] 0 1 0 0 1 0 1 1 0 1 0 0 0 1 1 1 1 0 1 0 0 0 1 0 1 0 0 1 1 0 1 1 0 0 0 0 0
-[371] 0 1 0 0 1 0 0 1 1 1 1 0 0 1 0 0 0 0 0 0 1 0 0 1 0 0 1 1 0 0 1 1 1 0 0 1 1
-[408] 1 0 0 1 0 1 1 0 1 0 0 0 0 1 0 1 0 0 1 0 0 1 0 1 1 1 0 0 1 0 1 1 1 1 0 0 0
-[445] 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>prevalencia_diagnostico_por_fx_etaria <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(diag_num <span class="sc">~</span> faixa_etaria, dados, <span class="at">FUN =</span> mean)</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>prevalencia_diagnostico_por_fx_etaria<span class="sc">$</span>diag_num <span class="ot">&lt;-</span> prevalencia_diagnostico_por_fx_etaria<span class="sc">$</span>diag_num <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(prevalencia_diagnostico_por_fx_etaria<span class="sc">$</span>diag_num,</span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> prevalencia_diagnostico_por_fx_etaria<span class="sc">$</span>faixa_etaria,</span>
-<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Prevalência (%) por faixa etária"</span>,</span>
-<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Prevalência (%)"</span>,</span>
-<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"green"</span>, <span class="st">"orange"</span>, <span class="st">"purple"</span>, <span class="st">"cyan"</span>))</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>prevalencia_diagnostico_por_fx_etaria <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(diag_num <span class="sc">~</span> faixa_etaria, dados, <span class="at">FUN =</span> mean)</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>prevalencia_diagnostico_por_fx_etaria<span class="sc">$</span>diag_num <span class="ot">&lt;-</span> prevalencia_diagnostico_por_fx_etaria<span class="sc">$</span>diag_num <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(prevalencia_diagnostico_por_fx_etaria<span class="sc">$</span>diag_num,</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> prevalencia_diagnostico_por_fx_etaria<span class="sc">$</span>faixa_etaria,</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Prevalência (%) por faixa etária"</span>,</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Prevalência (%)"</span>,</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"green"</span>, <span class="st">"orange"</span>, <span class="st">"purple"</span>, <span class="st">"cyan"</span>))</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -451,7 +436,7 @@ NAO SIM
 <section id="questão-9" class="level2">
 <h2 class="anchored" data-anchor-id="questão-9">Questão 9</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(imc <span class="sc">~</span> diagnostico, <span class="at">data =</span> dados)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(imc <span class="sc">~</span> diagnostico, <span class="at">data =</span> dados)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -464,11 +449,11 @@ NAO SIM
 <section id="questão-10" class="level2">
 <h2 class="anchored" data-anchor-id="questão-10">Questão 10</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(dados<span class="sc">$</span>imc, dados<span class="sc">$</span>pressao_sistolica)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(dados<span class="sc">$</span>imc, dados<span class="sc">$</span>pressao_sistolica)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3767135</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(dados<span class="sc">$</span>imc, dados<span class="sc">$</span>pressao_sistolica)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(dados<span class="sc">$</span>imc, dados<span class="sc">$</span>pressao_sistolica)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's product-moment correlation
@@ -482,7 +467,7 @@ sample estimates:
       cor 
 0.3767135 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dados<span class="sc">$</span>imc, dados<span class="sc">$</span>pressao_sistolica)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dados<span class="sc">$</span>imc, dados<span class="sc">$</span>pressao_sistolica)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -495,7 +480,7 @@ sample estimates:
 <section id="questão-11" class="level2">
 <h2 class="anchored" data-anchor-id="questão-11">Questão 11</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(pressao_sistolica <span class="sc">~</span> diagnostico, <span class="at">data =</span> dados)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(pressao_sistolica <span class="sc">~</span> diagnostico, <span class="at">data =</span> dados)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -514,9 +499,9 @@ mean in group NAO mean in group SIM
 <section id="questão-12" class="level2">
 <h2 class="anchored" data-anchor-id="questão-12">Questão 12</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>diag_x_grupo_risco <span class="ot">&lt;-</span> <span class="fu">table</span>(dados<span class="sc">$</span>diagnostico, dados<span class="sc">$</span>grupo_risco)</span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(diag_x_grupo_risco)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>diag_x_grupo_risco <span class="ot">&lt;-</span> <span class="fu">table</span>(dados<span class="sc">$</span>diagnostico, dados<span class="sc">$</span>grupo_risco)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(diag_x_grupo_risco)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test with Yates' continuity correction
